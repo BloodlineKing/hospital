@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>登记人员信息</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="keywords" content="">
+		<meta name="description" content="医疗管理系统，为您提供更优质的服务">
+		<link rel="stylesheet" href="css/layui.css">
+		<link rel="stylesheet" href="css/global.css">
+		<style>
+			.layui-form-label {
+				width: 150px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="fly-header layui-bg-black">
+
+			<div class="layui-row layui-col-space10">
+				<div class="layui-col-md4 layui-col-md-offset5" style="height: 50px;font-size: 26px; line-height: 50px;">
+					医疗体检管理系统
+				</div>
+				<ul class="layui-nav fly-nav-user">
+					<!-- 登入后的状态 -->
+					<li class="layui-nav-item">
+						<a class="fly-nav-avatar" href="javascript:;">
+							<cite class="layui-hide-xs">尊敬的护士小姐你好</cite>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="layui-container fly-marginTop fly-user-main">
+			<ul class="layui-nav layui-nav-tree layui-inline" lay-filter="user">
+
+				<li class="layui-nav-item">
+					<a href="nursePre.html">
+						<i class="layui-icon">&#xe612;</i> 查询体检人员
+					</a>
+				</li>
+				<li class="layui-nav-item layui-this">
+					<a href="nurseRegistration.html">
+						<i class="layui-icon">&#xe620;</i> 登记人员信息
+					</a>
+				</li>
+				<li class="layui-nav-item">
+					<a href="nursePrint.html">
+						<i class="layui-icon">&#xe611;</i> 打印
+					</a>
+				</li>
+			</ul>
+
+			<div class="site-tree-mobile layui-hide">
+				<i class="layui-icon">&#xe602;</i>
+			</div>
+			<div class="site-mobile-shade"></div>
+
+			<div class="site-tree-mobile layui-hide">
+				<i class="layui-icon">&#xe602;</i>
+			</div>
+			<div class="site-mobile-shade"></div>
+
+			<div class="fly-panel fly-panel-user" pad20>
+				<h2>体检人员登记</h2>
+				<div class="layui-tab layui-tab-brief" lay-filter="user" style="font-size: 16px;">
+					<form class="layui-form">
+						<div class="layui-form-item">
+							<label class="layui-form-label">姓名：</label>
+							<div class="layui-input-block">
+								<input style="width: 300px;" type="text" name="title" required lay-verify="required" placeholder="请输入姓名（必填）" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">年龄：</label>
+							<div class="layui-input-block">
+								<div class="layui-input-inline">
+									<input style="width: 300px;" type="text" name="age" required lay-verify="required|number" placeholder="请输入年龄（必填）" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">性别：</label>
+							<div class="layui-input-block">
+								<input type="radio" name="sex" value="男" title="男" checked>
+								<input type="radio" name="sex" value="女" title="女">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">出生日期：</label>
+							<div class="layui-input-block">
+								<input style="width: 300px;" required lay-verify="required|date" name="bron" type="text" class="layui-input" id="born" placeholder="yyyy-MM-dd(必填)">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">身份证号：</label>
+							<div class="layui-input-block">
+								<input style="width: 300px;" required lay-verify="required|identity" name="id_card" type="text" class="layui-input" id="id_card" placeholder="请输入身份证（必填）">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">婚否：</label>
+							<div class="layui-input-block">
+								<input type="radio" name="marital_status" value="0" title="未婚" checked>
+								<input type="radio" name="marital_status" value="1" title="已婚	">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">联系电话：</label>
+							<div class="layui-input-block">
+								<input style="width: 300px;" required lay-verify="required|phone" name="id_card" type="text" class="layui-input" id="id_card" placeholder="请输入身份证（必填）">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">联系地址：</label>
+							<div class="layui-input-block">
+								<input style="width: 300px;" type="text" name="address" placeholder="请输入联系地址" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">姓名拼音简码：</label>
+							<div class="layui-input-block">
+								<input style="width: 300px;" type="text" name="name_code" required lay-verify="required" placeholder="请输入拼音简码（必填）" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">工作编号：</label>
+							<div class="layui-input-block">
+								<input style="width: 300px;" type="text" name="work_number" placeholder="请输入工作编号" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">人员类别：</label>
+							<div class="layui-input-block">
+								<input style="width: 300px;" type="text" name="person_type" placeholder="请输入人员类别" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">状态：</label>
+							<div class="layui-input-block">
+								<input type="radio" name="status" value="0" title="个人" checked>
+								<input type="radio" name="status" value="1" title="单位">
+							</div>
+						</div>
+
+						<div class="layui-form-item">
+							<label class="layui-form-label">所属公司:</label>
+							<div class="layui-input-block">
+								<input style="width: 300px;" type="text" name="person_type" placeholder="请输入公司名称" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md-offset1">
+							<div class="layui-input-block">
+								<button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+								<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+									<a href="#">EXCELE批量导入</a>
+							</div>
+						</div>
+					
+					</form>
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="fly-footer">
+			<p>
+				<a href="http://fly.layui.com/" target="_blank">医疗体检系统</a> 2018 &copy;
+				<a href="http://www.layui.com/" target="_blank">多元合创 出品</a>
+			</p>
+			<p>
+				<a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
+			</p>
+		</div>*
+
+		<script src="layui.js"></script>
+		<script src="js/nurseRegistration.js"></script>
+	</body>
+
+</html>

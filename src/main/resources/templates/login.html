@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>登录</title>
+		<link rel="stylesheet" href="css/layui.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+
+	<body>
+
+		<div class="login-main">
+			<header class="layui-elip">医疗体检系统登陆</header>
+			<form class="layui-form">
+				<div class="layui-input-inline">
+					<input type="text" name="account" required lay-verify="required" placeholder="账号" autocomplete="off" class="layui-input">
+				</div>
+				<div class="layui-input-inline">
+					<input type="password" name="password" required lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input">
+				</div>
+				<div class="layui-input-inline" style="width: 400px;">
+					<input type="radio" name="user" value="科室医生" title="科室医生">
+					<input type="radio" name="user" value="总诊医生" title="总诊医生">
+					<input type="radio" name="user" value="护士" title="护士">
+					<input type="radio" name="user" value="收费处" title="收费处">
+				</div>
+
+				<div class="layui-input-inline login-btn">
+					<button type="submit" class="layui-btn">登录</button>
+				</div>
+				<hr/>
+				<!--<div class="layui-input-inline">
+            <button type="button" class="layui-btn layui-btn-primary">QQ登录</button>
+        </div>
+        <div class="layui-input-inline">
+            <button type="button" class="layui-btn layui-btn-normal">微信登录</button>
+        </div>-->
+				<p>
+					<a href="javascript:;" class="fr">忘记密码？</a>
+				</p>
+			</form>
+		</div>
+
+		<script src="layui.js"></script>
+		<script type="text/javascript">
+			layui.use(['form'], function() {
+
+				// 操作对象
+				var form = layui.form,
+					$ = layui.jquery;
+
+				// you code ...
+
+			});
+		</script>
+	</body>
+
+</html>

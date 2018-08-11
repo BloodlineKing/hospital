@@ -4,14 +4,15 @@
 <mapper namespace="com.dyhc.hospital.dao.UserRegisterInfoMapper">
     <!--查询个人的预约记录-->
    <select id="findUserRegisterInfos" resultType="com.dyhc.hospital.entity.UserRegisterInfo">
-        SELECT * FROM `user_register_info`
-        <where>
-            <if test="nameCode != null and nameCode != ''">
-                and name_code = #{nameCode}
-            </if>
-            <if test="telephone != null and telephone != ''">
-                and telephone = #{telephone}
-            </if>
-        </where>
+       SELECT * FROM `user_register_info` WHERE `create_time` IS NULL AND `create_by` IS NULL
+       <if test="nameCode != null and nameCode != ''">
+               and name_code = #{nameCode}
+           </if>
+           <if test="telephone != null and telephone != ''">
+               and telephone = #{telephone}
+           </if>
    </select>
+    <select id="findUserRegisterInfoByTestNumber" resultType="com.dyhc.hospital.entity.UserRegisterInfo" >
+        SELECT * FROM `user_register_info` WHERE `test_number` = #{testNumber};
+    </select>
 </mapper>

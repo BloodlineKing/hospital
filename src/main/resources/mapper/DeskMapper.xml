@@ -3,4 +3,40 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dyhc.hospital.dao.DeskMapper">
 
+    <!--查询科室信息-->
+    <select id="getAllDeskInfo" resultType="com.dyhc.hospital.entity.Desk">
+    SELECT * FROM desk LIMIT #{pageIndex},#{pageSize}
+    </select>
+
+    <!--添加科室信息-->
+    <insert id="addDeskInfo">
+      INSERT INTO desk VALUES(#{deskId},#{deskName},#{deskTypeId},#{deskSummary},#{deskStatus},#{remark})
+    </insert>
+
+    <!--删除科室信息-->
+    <update id="delDeskInfo">
+        UPDATE desk SET desk_status=0 WHERE desk_id=#{deskId}
+    </update>
+
+    <!--根据id查询科室信息-->
+    <select id="getAllDeskInfoByid" resultType="com.dyhc.hospital.entity.Desk">
+    SELECT * FROM desk where desk_id=#{deskId}
+    </select>
+
+
+    <!--修改科室信息-->
+    <update id="updDeskInfo" parameterType="com.dyhc.hospital.entity.Desk">
+        UPDATE
+          `desk`
+        SET
+          `desk_name` = #{deskName},
+          `desk_type_id` = #{deskTypeId},
+          `desk_summary` = #{deskSummary},
+          `desk_status` = #{deskStatus},
+          `remark` = #{remark}
+        WHERE `desk_id` = #{deskId};
+    </update>
+
+
+
 </mapper>

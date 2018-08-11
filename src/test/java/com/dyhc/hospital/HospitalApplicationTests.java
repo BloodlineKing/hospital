@@ -1,13 +1,11 @@
 package com.dyhc.hospital;
 
-import com.dyhc.hospital.dao.ArchivesMapper;
-import com.dyhc.hospital.dao.CostDetailMapper;
-import com.dyhc.hospital.dao.UserRegisterInfoMapper;
+import com.dyhc.hospital.dao.*;
 
-import com.dyhc.hospital.dao.UserTestInfoMapper;
 import com.dyhc.hospital.entity.CostDetail;
 import com.dyhc.hospital.entity.Medical;
 import com.dyhc.hospital.entity.Archives;
+import com.dyhc.hospital.entity.Package;
 import com.dyhc.hospital.entity.UserRegisterInfo;
 import org.apache.catalina.User;
 import org.junit.Test;
@@ -29,7 +27,8 @@ public class HospitalApplicationTests {
     public CostDetailMapper costDetailMapper;
     @Autowired
     public UserTestInfoMapper userTestInfoMapper;
-
+    @Autowired
+    public PackageMapper packageMapper;
     private ArchivesMapper archivesMapper;
     @Test
     public void contextLoads() {
@@ -39,7 +38,7 @@ public class HospitalApplicationTests {
 
         //userRegisterlwr();
         //userlwr();
-        //registerUserInfos();
+        registerUserInfos();
     }
 
 
@@ -103,24 +102,36 @@ public class HospitalApplicationTests {
      *  进行用户登录信息
      */
     public void registerUserInfos(){
-        UserRegisterInfo userRegisterInfo = new UserRegisterInfo();
-        userRegisterInfo.setAddress("12");
-        userRegisterInfo.setAge(10);
-        userRegisterInfo.setBelongtoUnits(1);
-        userRegisterInfo.setBorn(new Date());
-        userRegisterInfo.setCreateBy(1);
-        userRegisterInfo.setIdCard("110");
-        userRegisterInfo.setMaritalStatus(1);
-        userRegisterInfo.setNameCode("lwr");
-        userRegisterInfo.setPersonType("11");
-        userRegisterInfo.setSex("女");
-        userRegisterInfo.setStatus(1);
-        userRegisterInfo.setTelephone("10");
-        userRegisterInfo.setTestNumber("20180606");
-        userRegisterInfo.setUserName("李文荣");
-        userRegisterInfo.setWorkNumber("aa");
+//        UserRegisterInfo userRegisterInfo = new UserRegisterInfo();
+//        userRegisterInfo.setAddress("12");
+//        userRegisterInfo.setAge(10);
+//        userRegisterInfo.setBelongtoUnits(1);
+//        userRegisterInfo.setBorn(new Date());
+//        userRegisterInfo.setCreateBy(1);
+//        userRegisterInfo.setIdCard("110");
+//        userRegisterInfo.setMaritalStatus(1);
+//        userRegisterInfo.setNameCode("lwr");
+//        userRegisterInfo.setPersonType("11");
+//        userRegisterInfo.setSex("女");
+//        userRegisterInfo.setStatus(1);
+//        userRegisterInfo.setTelephone("10");
+//        userRegisterInfo.setTestNumber("20180606");
+//        userRegisterInfo.setUserName("李文荣");
+//        userRegisterInfo.setWorkNumber("aa");
+//
+//        Integer result = userRegisterInfoMapper.registerUserInfo(userRegisterInfo);
+        //System.out.println("长度是:"+result);
 
-        Integer result = userRegisterInfoMapper.registerUserInfo(userRegisterInfo);
-        System.out.println("长度是:"+result);
+//        List<Package> list=packageMapper.getAllPackageInfoByid(7);
+//        Package ppp=new Package();
+//        ppp.setPackageName("bb");
+//        ppp.setNote("bb");
+//        ppp.setScopeApplication("bb");
+//        ppp.setIsEnable(1);
+//        ppp.setPackageId(7);
+//        int a=packageMapper.updPackageInfo(ppp);
+//        System.out.println(a);
+
+
     }
 }

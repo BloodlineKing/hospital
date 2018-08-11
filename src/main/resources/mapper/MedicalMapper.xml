@@ -3,4 +3,50 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dyhc.hospital.dao.MedicalMapper">
 
+
+    <!--查询科室项目信息-->
+    <select id="getMedicalInfoByDesk" resultType="com.dyhc.hospital.entity.Medical">
+    SELECT * FROM medical where desk_id=#{deskId} LIMIT #{pageIndex},#{pageSize}
+    </select>
+
+    <!--添加科室项目信息-->
+    <insert id="addMedicalInfo">
+      INSERT INTO medical VALUES
+      (#{medicalId},#{deskId},#{projectName},#{applyGender},#{pingyingCode},#{normalResult},#{resultType},#{price},#{promptInfo},#{unit},#{referenceLowerLimit},#{referenceUpperLimit},#{lowTip},#{highTip},#{minValue},#{maxValue},#{isEnalbe})
+    </insert>
+
+    <!--删除科室项目信息-->
+    <update id="delMedicalInfo">
+        UPDATE medical SET isEnalbe=0 WHERE medical_id=#{medicalId}
+    </update>
+
+    <!--根据id查询科室项目信息-->
+    <select id="getAllMedicalInfoByid">
+    SELECT * FROM medical where medical_id=#{medicalId}
+    </select>
+
+
+    <!--修改科室项目信息-->
+    <update id="updMedicalInfo" parameterType="com.dyhc.hospital.entity.Desk">
+        UPDATE
+          `medical`
+        SET
+          `desk_id` = #{deskId},
+          `project_name` = #{projectName},
+          `apply_gender` = #{applyGender},
+          `pingying_code` = #{pingyingCode},
+          `normal_result` = #{normalResult;},
+          `result_type` = #{resultType;},
+          `price` = #{price;},
+          `prompt_info` = #{promptInfo;},
+          `unit` = #{unit;},
+          `reference_lower_limit` = #{referenceLowerLimit;},
+          `reference_ upper_limit` = #{referenceUpperLimit;},
+          `low_tip` = #{lowTip;},
+          `high_tip` = #{highTip;},
+          `min_value` = #{minValue;},
+          `max_value` = #{maxValue;},
+          `isEnable`=isEnalbe
+        WHERE `desk_id` = #{deskId};
+    </update>
 </mapper>

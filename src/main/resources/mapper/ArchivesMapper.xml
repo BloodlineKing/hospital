@@ -2,8 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dyhc.hospital.dao.ArchivesMapper">
-    <!---->
+    <!--判断用户是否有存档 如果存在 就调用userRegisterlwr()方法进行显示,如果没有就登记信息 -->
     <select id="ifArchives" resultType="com.dyhc.hospital.entity.Archives">
         SELECT * FROM `archives` WHERE `test_number` = #{testNumber};
     </select>
+    <!--检查次数加1-->
+    <update id="updArchivesCheckCount">
+        UPDATE `archives` SET `check_count` = `check_count` +1 WHERE `test_number` = #{testNumber};
+    </update>
 </mapper>

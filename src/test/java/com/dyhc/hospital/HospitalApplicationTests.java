@@ -36,8 +36,10 @@ public class HospitalApplicationTests {
     public void contextLoads() {
         //archiveslwr();
            // medicle();
-        add();
+           add();
 
+        //userRegisterlwr();
+        //userlwr();
     }
 
 
@@ -45,7 +47,7 @@ public class HospitalApplicationTests {
      *  测试查询个人的预约记录
      */
     public void userlwr(){
-        List<UserRegisterInfo> list = userRegisterInfoMapper.findUserRegisterInfos("lh","17635692127");
+        List<UserRegisterInfo> list = userRegisterInfoMapper.findUserRegisterInfos(null,"12345678912");
         System.out.print("长度是=========>"+list.size());
     }
 
@@ -82,10 +84,18 @@ public class HospitalApplicationTests {
     }
 
     /*
-     * 判断用户是否有存档 如果存在 就调用这些信息进行显示,如果没有就登记信息
+     * 判断用户是否有存档 如果存在 就调用userRegisterlwr()方法进行显示,如果没有就登记信息
      */
     public void archiveslwr(){
         Archives info = archivesMapper.ifArchives("20180810001");
         System.out.println("检查结果:"+info);
+    }
+
+    /**
+     *  根据用户编号查看存档信息 存在这个用户 就把用户信息显示出来,并且检查次数加1==>updArchivesCheckCount()方法
+     */
+    public void userRegisterlwr(){
+        UserRegisterInfo list = userRegisterInfoMapper.findUserRegisterInfoByTestNumber("20150302001");
+        System.out.println("检查结果:"+list);
     }
 }

@@ -1,9 +1,11 @@
 package com.dyhc.hospital;
 
 import com.dyhc.hospital.dao.ArchivesMapper;
+import com.dyhc.hospital.dao.CostDetailMapper;
 import com.dyhc.hospital.dao.UserRegisterInfoMapper;
 
 import com.dyhc.hospital.dao.UserTestInfoMapper;
+import com.dyhc.hospital.entity.CostDetail;
 import com.dyhc.hospital.entity.Medical;
 import com.dyhc.hospital.entity.Archives;
 import com.dyhc.hospital.entity.UserRegisterInfo;
@@ -14,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -23,13 +27,16 @@ public class HospitalApplicationTests {
     @Autowired
     public UserRegisterInfoMapper userRegisterInfoMapper;
     @Autowired
+    public CostDetailMapper costDetailMapper;
+    @Autowired
     public UserTestInfoMapper userTestInfoMapper;
 
     private ArchivesMapper archivesMapper;
     @Test
     public void contextLoads() {
         //archiveslwr();
-            medicle();
+           // medicle();
+        add();
 
     }
 
@@ -54,6 +61,25 @@ public class HospitalApplicationTests {
         System.out.print("长度是=========>"+list3.size());
     }
 
+    /**
+     * 增加
+     */
+    public void add(){
+        List<CostDetail> list=new ArrayList<CostDetail>() ;
+        CostDetail costDetail=new CostDetail();
+        costDetail.setTestNumber("122");
+        costDetail.setMedicalId("010001");
+        costDetail.setCostType(2);
+        costDetail.setNote("dsfsf");
+        list.add(costDetail);
+        Integer a=costDetailMapper.addCost(list);
+        if(a>0){
+            System.out.println("成功");
+        }else{
+            System.out.println("失败");
+        }
+
+    }
 
     /*
      * 判断用户是否有存档 如果存在 就调用这些信息进行显示,如果没有就登记信息

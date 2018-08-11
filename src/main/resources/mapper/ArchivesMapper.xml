@@ -2,5 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dyhc.hospital.dao.ArchivesMapper">
-
+    <!---->
+    <select id="ifArchives" resultType="com.dyhc.hospital.entity.Archives">
+        SELECT * FROM `archives` WHERE `test_number` = #{testNumber};
+    </select>
 </mapper>

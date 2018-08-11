@@ -1,8 +1,11 @@
 package com.dyhc.hospital;
 
+import com.dyhc.hospital.dao.ArchivesMapper;
 import com.dyhc.hospital.dao.UserRegisterInfoMapper;
+
 import com.dyhc.hospital.dao.UserTestInfoMapper;
 import com.dyhc.hospital.entity.Medical;
+import com.dyhc.hospital.entity.Archives;
 import com.dyhc.hospital.entity.UserRegisterInfo;
 import org.apache.catalina.User;
 import org.junit.Test;
@@ -21,9 +24,13 @@ public class HospitalApplicationTests {
     public UserRegisterInfoMapper userRegisterInfoMapper;
     @Autowired
     public UserTestInfoMapper userTestInfoMapper;
+
+    private ArchivesMapper archivesMapper;
     @Test
     public void contextLoads() {
-        medicle();
+        //archiveslwr();
+            medicle();
+
     }
 
 
@@ -48,5 +55,11 @@ public class HospitalApplicationTests {
     }
 
 
-
+    /*
+     * 判断用户是否有存档 如果存在 就调用这些信息进行显示,如果没有就登记信息
+     */
+    public void archiveslwr(){
+        Archives info = archivesMapper.ifArchives("20180810001");
+        System.out.println("检查结果:"+info);
+    }
 }

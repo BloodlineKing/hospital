@@ -27,5 +27,13 @@ public interface UserRegisterInfoMapper {
      */
     public UserRegisterInfo findUserRegisterInfoByTestNumber(@Param("testNumber") String testNumber);
 
+    /**
+     *  李文荣
+     *  进行用户登录信息
+     * @param userRegisterInfo
+     * @return
+     */
+    public Integer registerUserInfo(UserRegisterInfo userRegisterInfo);
+
 
 }

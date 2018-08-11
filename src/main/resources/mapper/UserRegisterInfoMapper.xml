@@ -12,7 +12,17 @@
                and telephone = #{telephone}
            </if>
    </select>
+    <!--根据用户编号查看存档信息 存在这个用户 就把用户信息显示出来,并且检查次数加1==>updArchivesCheckCount()方法-->
     <select id="findUserRegisterInfoByTestNumber" resultType="com.dyhc.hospital.entity.UserRegisterInfo" >
         SELECT * FROM `user_register_info` WHERE `test_number` = #{testNumber};
     </select>
+    <!--进行用户登录信息-->
+    <insert id="registerUserInfo">
+        INSERT INTO `hospital_test_manager_db`.`user_register_info` ( `test_number`,`user_name`,`age`,`born`,`sex`,`id_card`,
+              `marital_status`, `telephone`, `address`, `name_code`,`work_number`,`person_type`,
+                `status`,`belongto_units`,`create_time`,`create_by`)
+        VALUES( #{testNumber}, #{userName}, #{age},#{born},#{sex},#{idCard}, #{maritalStatus}, #{telephone},#{address},#{nameCode}
+        ,#{workNumber}, #{personType},#{status},#{belongtoUnits},now(), #{createBy});
+    </insert>
+
 </mapper>

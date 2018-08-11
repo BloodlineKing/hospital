@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -32,6 +33,7 @@ public class HospitalApplicationTests {
            // medicle();
         //userRegisterlwr();
         //userlwr();
+        registerUserInfos();
 
     }
 
@@ -71,5 +73,30 @@ public class HospitalApplicationTests {
     public void userRegisterlwr(){
         UserRegisterInfo list = userRegisterInfoMapper.findUserRegisterInfoByTestNumber("20150302001");
         System.out.println("检查结果:"+list);
+    }
+
+    /**
+     *  进行用户登录信息
+     */
+    public void registerUserInfos(){
+        UserRegisterInfo userRegisterInfo = new UserRegisterInfo();
+        userRegisterInfo.setAddress("12");
+        userRegisterInfo.setAge(10);
+        userRegisterInfo.setBelongtoUnits(1);
+        userRegisterInfo.setBorn(new Date());
+        userRegisterInfo.setCreateBy(1);
+        userRegisterInfo.setIdCard("110");
+        userRegisterInfo.setMaritalStatus(1);
+        userRegisterInfo.setNameCode("lwr");
+        userRegisterInfo.setPersonType("11");
+        userRegisterInfo.setSex("女");
+        userRegisterInfo.setStatus(1);
+        userRegisterInfo.setTelephone("10");
+        userRegisterInfo.setTestNumber("20180606");
+        userRegisterInfo.setUserName("李文荣");
+        userRegisterInfo.setWorkNumber("aa");
+
+        Integer result = userRegisterInfoMapper.registerUserInfo(userRegisterInfo);
+        System.out.println("长度是:"+result);
     }
 }

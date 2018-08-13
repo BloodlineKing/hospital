@@ -9,5 +9,12 @@ import java.util.List;
 @Mapper
 @Repository
 public interface CostDetailMapper {
-   Integer addCost(List<CostDetail> costDetails);
+   //王娇娇
+   /**
+    *  进行收费记录
+    * @param costDetails
+    * @return
+    * @throws Exception
+    */
+   Integer addCost(List<CostDetail> costDetails)throws  Exception;
 }

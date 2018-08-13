@@ -17,17 +17,17 @@ public interface UserTestInfoMapper {
      * @param test_number
      * @return
      */
-    List<Medical> getMadical(@Param("test_number") String test_number);
+    List<Medical> getMadical(@Param("test_number") String test_number)throws  Exception;
     /**
      * 获取套餐项
      * @param test_number
      * @return
      */
-    List<Medical> getPackage(@Param("test_number")String test_number);
+    List<Medical> getPackage(@Param("test_number")String test_number)throws  Exception;
     /**
      * 获取组合项
      * @param test_number
      * @return
      */
-    List<Medical> getCom(@Param("test_number")String test_number);
+    List<Medical> getCom(@Param("test_number")String test_number)throws  Exception;
 }

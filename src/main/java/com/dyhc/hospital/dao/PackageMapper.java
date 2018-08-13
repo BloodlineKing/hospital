@@ -22,28 +22,28 @@ public interface PackageMapper {
      * @return
      */
 
-    List<Package> getAllPackageInfo(@Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize);
+    List<Package> getAllPackageInfo(@Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize) throws  Exception;
 
     /**
      * 添加套餐信息
      *
      * @return
      */
-    int addPackageInfo(Package pack);
+    int addPackageInfo(Package pack) throws  Exception;
 
     /**
      * 删除套餐信息
      *
      * @return
      */
-    int delPackageInfo(@Param("packageId") int packageId);
+    int delPackageInfo(@Param("packageId") int packageId) throws  Exception;
 
     /**
      * 根据id查询套餐信息
      * @param packageId
      * @return
      */
-    List<Package> getAllPackageInfoByid(@Param("packageId") int packageId);
+    List<Package> getAllPackageInfoByid(@Param("packageId") int packageId) throws  Exception;
 
 
     /**
@@ -51,5 +51,5 @@ public interface PackageMapper {
      * @param pack
      * @return
      */
-    int updPackageInfo(Package pack);
+    int updPackageInfo(Package pack) throws  Exception;
 }

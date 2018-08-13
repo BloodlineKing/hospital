@@ -3,4 +3,45 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dyhc.hospital.dao.UnitsGroupMapper">
 
+    <!--查询单位分组信息-->
+    <select id="getAllUnitsGroupInfo" resultType="com.dyhc.hospital.entity.UnitsGroup">
+    SELECT * FROM units_group LIMIT #{pageIndex},#{pageSize}
+    </select>
+
+    <!--添加单位分组信息-->
+    <insert id="addUnitsGroupInfo">
+      INSERT INTO units_group
+      VALUES(#{unitsGroupId},#{groupName},#{unitsId},#{sexCondition},#{maritalCondition},#{ageUpperLimit},#{ageLowerLimit},#{dutyCondition},#{createBy},#{createTime},#{modifyBy},#{modifuTime},#{isdelete})
+    </insert>
+
+    <!--删除单位分组信息-->
+    <update id="delUnitsGroupInfo">
+        UPDATE units_group SET isdelete=0 WHERE units_group_id=#{unitsGroupId}
+    </update>
+
+    <!--根据id查询单位信息-->
+    <select id="getAllUnitsGroupInfoByid" resultType="com.dyhc.hospital.entity.UnitsGroup">
+    SELECT * FROM units_group where units_group_id=#{unitsGroupId}
+    </select>
+
+
+    <!--修改单位信息-->
+    <update id="updUnitsGroupInfo" parameterType="com.dyhc.hospital.entity.UnitsGroup">
+        UPDATE
+          `units_group`
+        SET
+          `group_name` = #{groupName},
+          `units_id` = #{unitsId},
+          `sex_condition` = #{sexCondition},
+          `marital_condition` = #{maritalCondition},
+          `age_upper_limit` = #{ageUpperLimit},
+          `age_lower_limit` = #{ageLowerLimit},
+          `duty_condition` = #{dutyCondition},
+          `create_by` = #{createBy},
+          `create_time` = #{createTime},
+          `modify_by` = #{modifyBy},
+          `modifu_time` = #{modifuTime},
+          `isdelete` = #{isdelete}
+        WHERE `units_group_id` = #{unitsGroupId};
+    </update>
 </mapper>

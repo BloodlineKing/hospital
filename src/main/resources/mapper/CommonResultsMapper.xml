@@ -3,4 +3,40 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dyhc.hospital.dao.CommonResultsMapper">
 
+    <!--查询常见结果信息-->
+    <select id="getAllCommonResultsInfo" resultType="com.dyhc.hospital.entity.CommonResults">
+    SELECT * FROM common_results LIMIT #{pageIndex},#{pageSize}
+    </select>
+
+    <!--添加常见结果信息-->
+    <insert id="addCommonResultsInfo">
+      INSERT INTO common_results VALUES(null,#{resultCheckItem},#{resultDesc},#{pinyinCode},#{isPositive},#{isConclusion},#{isShowProject},#{isDelete})
+    </insert>
+
+    <!--删除常见结果信息-->
+    <update id="delCommonResultsInfo">
+        UPDATE common_results SET isDelete=0 WHERE common_results_id=#{commonResultsId}
+    </update>
+
+    <!--根据id查询常见结果信息-->
+    <select id="getAllCommonResultsInfoByid" resultType="com.dyhc.hospital.entity.CommonResults">
+    SELECT * FROM common_results where common_results_id=#{commonResultsId}
+    </select>
+
+
+    <!--修改科室信息-->
+    <update id="updCommonResultsInfo" parameterType="com.dyhc.hospital.entity.CommonResults">
+        UPDATE
+          `common_results`
+        SET
+          `result_checkItem` = #{resultCheckItem},
+          `resultDesc` = #{resultDesc},
+          `pinyin_code` = #{pinyinCode},
+          `isPositive` = #{isPositive},
+          `isConclusion` = #{isConclusion},
+          `isShowProject` = #{isShowProject},
+          `isDelete` = #{isDelete}
+        WHERE common_results_id=#{commonResultsId};
+    </update>
+
 </mapper>

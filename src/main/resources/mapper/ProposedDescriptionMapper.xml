@@ -3,4 +3,37 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dyhc.hospital.dao.ProposedDescriptionMapper">
 
+
+    <!--查询建议描述信息-->
+    <select id="getAllProposedDescriptionInfo" resultType="com.dyhc.hospital.entity.ProposedDescription">
+    SELECT * FROM proposed_description LIMIT #{pageIndex},#{pageSize}
+    </select>
+
+    <!--添加建议描述信息-->
+    <insert id="addProposedDescriptionInfo">
+      INSERT INTO proposed_description VALUES(null,#{commonResultsId},#{sciencePopularization},#{adviceContent},#{isDelete})
+    </insert>
+
+    <!--删除建议描述信息-->
+    <update id="delProposedDescriptionInfo">
+        UPDATE proposed_description SET isDelete=0 WHERE proposed_description_id=#{proposedDescriptionId}
+    </update>
+
+    <!--根据id查询建议描述信息-->
+    <select id="getAllProposedDescriptionInfoByid" resultType="com.dyhc.hospital.entity.ProposedDescription">
+    SELECT * FROM proposed_description where proposed_description_id=#{proposedDescriptionId}
+    </select>
+
+
+    <!--修改科室信息-->
+    <update id="updProposedDescriptionInfo" parameterType="com.dyhc.hospital.entity.ProposedDescription">
+        UPDATE
+          `proposed_description`
+        SET
+          `common_results_id` = #{commonResultsId},
+          `science_popularization` = #{sciencePopularization},
+          `advice_content` = #{adviceContent},
+          `isDelete` = #{isDelete}
+        WHERE proposed_description_id=#{proposedDescriptionId};
+    </update>
 </mapper>

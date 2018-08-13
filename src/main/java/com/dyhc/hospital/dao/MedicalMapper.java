@@ -23,14 +23,14 @@ public interface MedicalMapper {
      * @param deskId
      * @return
      */
-    List<Medical> getMedicalInfoByDesk(@Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize, @Param("deskId") int deskId);
+    List<Medical> getMedicalInfoByDesk(@Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize, @Param("deskId") int deskId) throws  Exception;
 
     /**
      * 添加科室体检项目
      * @param medical
      * @return
      */
-    int addMedicalInfo(Medical medical);
+    int addMedicalInfo(Medical medical) throws  Exception;
 
 
     /**
@@ -38,14 +38,14 @@ public interface MedicalMapper {
      * @param medicalId
      * @return
      */
-    int delMedicalInfo(@Param("medicalId") int medicalId);
+    int delMedicalInfo(@Param("medicalId") int medicalId) throws  Exception;
 
     /**
      * 根据id查询科室体检项目信息
      * @param medicalId
      * @return
      */
-    List<Medical> getAllMedicalInfoByid(@Param("medicalId") int medicalId);
+    List<Medical> getAllMedicalInfoByid(@Param("medicalId") int medicalId) throws  Exception;
 
 
     /**
@@ -53,5 +53,5 @@ public interface MedicalMapper {
      * @param medical
      * @return
      */
-    int updMedicalInfo(Medical medical);
+    int updMedicalInfo(Medical medical) throws  Exception;
 }

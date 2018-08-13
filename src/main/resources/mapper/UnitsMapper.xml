@@ -3,4 +3,50 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dyhc.hospital.dao.UnitsMapper">
 
+    <!--查询单位信息-->
+    <select id="getAllUnitsInfo" resultType="com.dyhc.hospital.entity.Units">
+    SELECT * FROM units LIMIT #{pageIndex},#{pageSize}
+    </select>
+
+    <!--添加单位信息-->
+    <insert id="addUnitsInfo">
+      INSERT INTO units
+      VALUES(#{unitsId},#{unitsName},#{spellCode},#{unitsPrincipal},#{telephone},#{postalCode},#{address},#{businessBank},#{bankNumber},#{companyNature},#{authorizedNumber},#{remark},#{isdelete},#{createBy},#{createTime},#{modifyBy},#{modifyTime})
+    </insert>
+
+    <!--删除单位信息-->
+    <update id="delUnitsInfo">
+        UPDATE units SET isdelete=0 WHERE units_id=#{unitsId}
+    </update>
+
+    <!--根据id查询单位信息-->
+    <select id="getAllUnitsInfoByid" resultType="com.dyhc.hospital.entity.Units">
+    SELECT * FROM units where units_id=#{unitsId}
+    </select>
+
+
+    <!--修改单位信息-->
+    <update id="updUnitsInfo" parameterType="com.dyhc.hospital.entity.Units">
+        UPDATE
+          `units`
+        SET
+          `units_name` = #{unitsName},
+          `spell_code` = #{spellCode},
+          `units_principal` = #{unitsPrincipal},
+          `telephone` = #{telephone},
+          `postal_code` = #{postalCode},
+          `address` = #{address},
+          `business_bank` = #{businessBank},
+          `bank_number` = #{bankNumber},
+          `company_nature` = #{companyNature},
+          `authorized_number` = #{authorizedNumber},
+          `remark` = #{remark},
+          `isdelete` = #{isdelete},
+          `create_by` = #{createBy},
+          `create_time` = #{createTime},
+          `modify_by` = #{modifyBy},
+          `modify_time` = #{modifyTime}
+        WHERE `units_id` = #{unitsId};
+    </update>
+
 </mapper>

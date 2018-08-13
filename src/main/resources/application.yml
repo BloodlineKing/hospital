@@ -29,3 +29,4 @@ mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml #映射指定mapper下的所有SQL映射文件
   configuration:
     map-underscore-to-camel-case: true #设置自动映射数据库表有下划线字段属性
+    auto-mapping-behavior: full

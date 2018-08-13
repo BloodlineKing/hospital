@@ -3,6 +3,11 @@ package com.dyhc.hospital.util;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 刘杰
+ * 分页类
+ * @param <T>
+ */
 public class Page<T> {
     private Integer pageIndex;
     private Integer pageSize;

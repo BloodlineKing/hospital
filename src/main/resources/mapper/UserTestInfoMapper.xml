@@ -2,17 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dyhc.hospital.dao.UserTestInfoMapper">
+    <!--用户所选择的体检项-->
      <select id="getMadical" resultType="com.dyhc.hospital.entity.Medical">
          SELECT * FROM `medical` WHERE medical_id IN(
              SELECT medical_id FROM `user_test_info` WHERE test_number=#{test_number})
 
      </select>
+    <!--用户所选择的套餐->
     <select id="getPackage" resultType="com.dyhc.hospital.entity.Medical">
         SELECT * FROM `medical` WHERE medical_id IN(
             SELECT medical_id FROM package_medical WHERE `package_id`=(
               SELECT `package_id` FROM `user_test_info` WHERE test_number=#{test_number}))
 
      </select>
+    <!--用户所选择的组合-->
     <select id="getCom" resultType="com.dyhc.hospital.entity.Medical">
         SELECT * FROM `medical`  WHERE medical_id IN(
            SELECT `medical_id` FROM `combination_ medical` WHERE `combination_id` =

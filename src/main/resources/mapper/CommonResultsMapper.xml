@@ -39,4 +39,8 @@
         WHERE common_results_id=#{commonResultsId};
     </update>
 
+    <update id="updateCommonResultsisDelete">
+        update common_results set isDelete=0   where common_results_id=#{commonResultsId}
+    </update>
+
 </mapper>

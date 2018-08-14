@@ -37,6 +37,13 @@
         WHERE `desk_id` = #{deskId};
     </update>
 
+    <!-- 查询最后一个科室id，生成新的科室id -->
+    <select id="selLastDeskId" resultType="string">
+        SELECT desk_id FROM desk
+        ORDER BY desk_id DESC
+        LIMIT 1
+    </select>
+
 
 
 </mapper>

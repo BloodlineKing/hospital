@@ -34,19 +34,16 @@ public interface MedicalMapper {
 
 
     /**
-     * 删除科室体检项目
-     * @param medicalId
-     * @return
-     */
-    int delMedicalInfo(@Param("medicalId") int medicalId) throws  Exception;
-
-    /**
      * 根据id查询科室体检项目信息
      * @param medicalId
      * @return
      */
     List<Medical> getAllMedicalInfoByid(@Param("medicalId") int medicalId) throws  Exception;
 
+    /**
+     * 根据拼音简码查询体检信息
+     */
+    List<Medical> getMedicalList(@Param("namecode") int namecode)throws  Exception;
 
     /**
      * 修改科室科室信息
@@ -54,23 +51,4 @@ public interface MedicalMapper {
      * @return
      */
     int updMedicalInfo(Medical medical) throws  Exception;
-
-    /**王娇娇
-     * 获取用户的体检项
-     * @param test_number
-     * @return
-     */
-    List<Medical> getMadical(@Param("test_number") String test_number);
-    /**王娇娇
-     * 获取用户的套餐项
-     * @param test_number
-     * @return
-     */
-    List<Medical> getPackage(@Param("test_number")String test_number);
-    /**王娇娇
-     * 获取用户组合项
-     * @param test_number
-     * @return
-     */
-    List<Medical> getCom(@Param("test_number")String test_number);
 }

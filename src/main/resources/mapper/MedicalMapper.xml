@@ -25,6 +25,12 @@
     SELECT * FROM medical where medical_id=#{medicalId}
     </select>
 
+    <!-- 根据拼音简码查询体检信息 -->
+    <select id="getMedicalList" resultType="com.dyhc.hospital.entity.Medical">
+        select * from medical
+        where pingying_code like concat('%',#{namecode},'%')
+    </select>
+
 
     <!--修改科室项目信息-->
     <update id="updMedicalInfo" parameterType="com.dyhc.hospital.entity.Desk">

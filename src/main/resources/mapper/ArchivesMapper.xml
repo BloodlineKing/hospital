@@ -6,6 +6,10 @@
     <select id="ifArchives" resultType="com.dyhc.hospital.entity.Archives">
         SELECT * FROM `archives` WHERE `test_number` = #{testNumber};
     </select>
+    <!--查询所有档案-->
+    <select id="getArchivesList" resultType="com.dyhc.hospital.entity.Archives">
+        SELECT * FROM `archives`
+    </select>
     <!--检查次数加1-->
     <update id="updArchivesCheckCount">
         UPDATE `archives` SET `check_count` = `check_count` +1 WHERE `test_number` = #{testNumber};

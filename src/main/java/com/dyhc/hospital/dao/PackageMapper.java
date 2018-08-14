@@ -1,6 +1,7 @@
 package com.dyhc.hospital.dao;
 
 import com.dyhc.hospital.entity.Package;
+import com.dyhc.hospital.entity.PackageMedical;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -52,4 +53,6 @@ public interface PackageMapper {
      * @return
      */
     int updPackageInfo(Package pack) throws  Exception;
+
+
 }

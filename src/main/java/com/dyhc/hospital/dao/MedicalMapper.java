@@ -54,4 +54,23 @@ public interface MedicalMapper {
      * @return
      */
     int updMedicalInfo(Medical medical) throws  Exception;
+
+    /**王娇娇
+     * 获取用户的体检项
+     * @param test_number
+     * @return
+     */
+    List<Medical> getMadical(@Param("test_number") String test_number);
+    /**王娇娇
+     * 获取用户的套餐项
+     * @param test_number
+     * @return
+     */
+    List<Medical> getPackage(@Param("test_number")String test_number);
+    /**王娇娇
+     * 获取用户组合项
+     * @param test_number
+     * @return
+     */
+    List<Medical> getCom(@Param("test_number")String test_number);
 }

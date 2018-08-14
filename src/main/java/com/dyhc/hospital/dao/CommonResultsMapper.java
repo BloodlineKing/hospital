@@ -51,4 +51,12 @@ public interface CommonResultsMapper {
      * @return
      */
     int updCommonResultsInfo(CommonResults commonResults) throws  Exception;
+
+    /**王娇
+     * 根据id修改常见结果状态
+     * @param commonResultsId
+     * @return
+     * @throws Exception
+     */
+    Integer updateCommonResultsisDelete(Integer commonResultsId) throws Exception;
 }

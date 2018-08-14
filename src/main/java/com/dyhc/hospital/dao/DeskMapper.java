@@ -53,6 +53,13 @@ public interface DeskMapper {
      */
     int updDeskInfo(Desk desk) throws  Exception;
 
+    /**王娇娇
+     * 查询最后一个编号，生成新的科室ID
+     * @return
+     * @throws Exception
+     */
+    String selLastDeskId() throws Exception;
+
 
 
 

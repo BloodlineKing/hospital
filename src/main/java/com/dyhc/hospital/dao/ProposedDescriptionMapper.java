@@ -53,4 +53,12 @@ public interface ProposedDescriptionMapper {
      */
     int updProposedDescriptionInfo(ProposedDescription proposedDescription) throws  Exception;
 
+    /**王娇
+     * 根据id修改建议描述信息状
+     * @param proposedDescriptionId
+     * @return
+     * @throws Exception
+     */
+    Integer updateProposedDescriptionisDelete(Integer proposedDescriptionId) throws Exception;
+
 }

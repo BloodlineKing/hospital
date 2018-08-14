@@ -9,12 +9,23 @@ import java.util.List;
 @Mapper
 @Repository
 public interface CostDetailMapper {
-   //王娇娇
-   /**
-    *  进行收费记录
-    * @param costDetails
+
+   /**王娇娇
+    * 缴费 状态为0
+    * @param costDetail
     * @return
-    * @throws Exception
     */
-   Integer addCost(List<CostDetail> costDetails)throws  Exception;
+   int addCostDetailByPayment(CostDetail costDetail )throws Exception;
+   /**王娇娇
+    * 扣费 状态为1
+    * @param costDetail
+    * @return
+    */
+   int addCostDetailByDeductions(CostDetail costDetail)throws Exception;
+   /**王娇娇
+    * 退费 状态为2
+    * @param costDetail
+    * @return
+    */
+   int addCostDetailByRefund(CostDetail costDetail)throws Exception;
 }

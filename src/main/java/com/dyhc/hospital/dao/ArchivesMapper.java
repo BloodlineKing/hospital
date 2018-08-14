@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface ArchivesMapper {
@@ -21,4 +23,18 @@ public interface ArchivesMapper {
      * @return
      */
     public Integer updArchivesCheckCount(@Param("testNumber") String testNumber );
+
+    /**王娇娇
+     * 进行存档
+     * @param testnumber
+     * @return
+     */
+    Integer   addArchives(String testnumber)throws  Exception;
+
+    /**王娇娇
+     * /查询所有档案
+     * @return
+     */
+    List<Archives> getArchivesList()throws Exception;
+
 }

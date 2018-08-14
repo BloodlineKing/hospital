@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>总检医生登录</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="keywords" content="">
+		<meta name="description" content="医疗管理系统，为您提供更优质的服务">
+		<link rel="stylesheet" href="css/layui.css">
+		<link rel="stylesheet" href="css/global.css">
+	</head>
+
+	<body>
+		<div class="fly-header layui-bg-black">
+			<div class="layui-row layui-col-space10">
+				<div class="layui-col-md4 layui-col-md-offset5" style="height: 50px;font-size: 26px; line-height: 50px;">
+					医疗体检管理系统
+				</div>
+				<ul class="layui-nav fly-nav-user">
+					<!-- 登入后的状态 -->
+					<li class="layui-nav-item">
+						<a class="fly-nav-avatar" href="javascript:;">
+							<cite class="layui-hide-xs">尊敬的医生你好</cite>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="layui-container fly-marginTop fly-user-main">
+			<ul class="layui-nav layui-nav-tree layui-inline" lay-filter="user">
+
+				<li class="layui-nav-item layui-this">
+					<a href="totalcheck.html">
+						<i class="layui-icon">&#xe612;</i> 查询体检人员
+					</a>
+				</li>
+			</ul>
+
+			<div class="site-tree-mobile layui-hide">
+				<i class="layui-icon">&#xe602;</i>
+			</div>
+			<div class="site-mobile-shade"></div>
+
+			<div class="site-tree-mobile layui-hide">
+				<i class="layui-icon">&#xe602;</i>
+			</div>
+			<div class="site-mobile-shade"></div>
+
+			<div class="fly-panel fly-panel-user" pad20>
+				<div class="layui-tab layui-tab-brief" lay-filter="user" id="LAY_msg" style="margin-top: 15px;">
+					<div class="layui-row">
+						<div class="layui-col-md10">
+							<h3 class="layui-inline">请输入人员编号:</h3>
+							<div class="layui-inline" style="width: 300px;">
+								<input type="text" name="username" required lay-verify="required" placeholder="请输入人员编号" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-col-md2">
+							<button class="layui-btn layui-bg-green" id="LAY_delallmsg">快速搜索</button>
+						</div>
+					</div>
+					<div class="layui-row" style="margin-top:2%; margin-left: 3%;">
+						<div class="layui-col-md3" style="height:40px; line-height: 40px;">
+							<label>体检次数：</label>
+							<label id="checkcount">2</label>
+						</div>
+						<div class="layui-col-md3" style="height:40px; line-height: 40px;">
+							<label>姓名：</label>
+							<label class="username">张三</label>
+						</div>
+						<div class="layui-col-md3" style="height:40px; line-height: 40px;">
+							<label>性别：</label>
+							<label class="sex">女</label>
+						</div>
+						<div class="layui-col-md3" style="height:40px; line-height: 40px;">
+							<label>年龄：</label>
+							<label class="age">女</label>
+						</div>
+					</div>
+					<div class="layui-row">
+						<div class="layui-col-md6">
+							<h3>已检项目</h3>
+							<div class="layui-form-item"><label class="layui-form-label">组合项目</label></div>
+							<div class="layui-form-item"><label class="layui-form-label">组合项目</label></div>
+							<div class="layui-form-item"><label class="layui-form-label">组合项目</label></div>
+						</div>
+						<div class="layui-col-md6">
+							<h3>拒检项目</h3>
+							<div class="layui-form-item"><label class="layui-form-label">组合项目</label></div>
+							<div class="layui-form-item"><label class="layui-form-label">组合项目</label></div>
+							<div class="layui-form-item"><label class="layui-form-label">组合项目</label></div>
+						</div>
+					</div>
+					<div style="margin-top:2% ;">
+						<div style=" width: 915px;">
+							<h3>综述：</h3>
+							<br/><textarea name="checkresult" placeholder="请输入综述内容" class="layui-textarea"></textarea>
+						</div>
+					</div>
+					<div>
+						<div style=" width: 915px;">
+							<br />
+							<h3>医生建议：</h3>
+							<br/><textarea name="checkresult" placeholder="请输入医生建议" class="layui-textarea"></textarea>
+						</div>
+					</div>
+					<div class="layui-row">
+						<div class="layui-col-md5">.</div>
+						<div class="layui-col-md7" style="margin-top: 10px;">
+							<div class="layui-form-item layui-inline">
+								<label class="layui-form-label">总检医生：</label>
+								<div class="layui-input-block" style="width: 150px;">
+									<input type="text" name="title" required lay-verify="required" placeholder="请输入名字" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-form-item layui-inline">
+								<label class="layui-form-label">总检日期：</label>
+								<div class="layui-input-block">
+									<input style="width: 150px;" required lay-verify="required|date" name="bron" type="text" class="layui-input" id="checkDate" placeholder="yyyy-MM-dd(必填)">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div style=" text-align: center; margin-top: 1%;">
+						<button style="width: 150px; height: 40px;" class="layui-btn layui-btn-sm">保存总检</button>
+						<button style="width: 150px; height: 40px;" class="layui-btn layui-btn-sm">打印总检</button>
+						<button style="width: 150px; height: 40px;" class="layui-btn layui-btn-sm">退出</button>
+					</div>
+				</div>
+				<div class="layui-tab layui-tab-brief" lay-filter="user">
+				</div>
+			</div>
+		</div>
+
+		<div class="fly-footer">
+			<p>
+				<a href="http://fly.layui.com/" target="_blank">医疗体检系统</a> 2018 &copy;
+				<a href="http://www.layui.com/" target="_blank">多元合创 出品</a>
+			</p>
+			<p>
+				<a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
+			</p>
+		</div>
+		<script src="layui.js"></script>
+		<script type="text/javascript" src="js/totalcheck.js"></script>
+	</body>
+
+</html>

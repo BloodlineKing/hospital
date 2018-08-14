@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>用户中心</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="keywords" content="fly,layui,前端社区">
+		<meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力">
+		<link rel="stylesheet" href="css/layui.css">
+		<link rel="stylesheet" href="css/global.css">
+	</head>
+
+	<body>
+
+		<div class="fly-header layui-bg-black">
+			<div class="layui-row layui-col-space10">
+				<div class="layui-col-md4 layui-col-md-offset5" style="height: 50px;font-size: 26px; line-height: 50px;">
+					医疗体检管理系统
+				</div>
+			</div>
+		</div>
+		</div>
+
+		<div class="layui-container fly-marginTop fly-user-main">
+			<ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
+				<li class="layui-nav-item layui-nav-itemed">
+					<a href="javascript:;">科室节点</a>
+					<dl class="layui-nav-child">
+						<dd>
+							<a href="javascript:;">选项一</a>
+						</dd>
+						<dd>
+							<a href="javascript:;">选项二</a>
+						</dd>
+						<dd>
+							<a href="javascript:;">选项三</a>
+						</dd>
+						<dd>
+							<a href="">跳转项</a>
+						</dd>
+					</dl>
+				</li>
+				<li class="layui-nav-item">
+					<a href="javascript:;">解决方案</a>
+					<dl class="layui-nav-child">
+						<dd>
+							<a href="">移动模块</a>
+						</dd>
+						<dd>
+							<a href="">后台模版</a>
+						</dd>
+						<dd>
+							<a href="">电商平台</a>
+						</dd>
+					</dl>
+				</li>
+				<li class="layui-nav-item">
+					<a href="">云市场</a>
+				</li>
+				<li class="layui-nav-item">
+					<a href="">社区</a>
+				</li>
+			</ul>
+
+			<div class="site-tree-mobile layui-hide">
+				<i class="layui-icon">&#xe602;</i>
+			</div>
+			<div class="site-mobile-shade"></div>
+
+			<div class="site-tree-mobile layui-hide">
+				<i class="layui-icon">&#xe602;</i>
+			</div>
+			<div class="site-mobile-shade"></div>
+
+			<div class="fly-panel fly-panel-user" pad20>
+				<!--
+    <div class="fly-msg" style="margin-top: 15px;">
+      您的邮箱尚未验证，这比较影响您的帐号安全，<a href="activate.html">立即去激活？</a>
+    </div>
+    -->
+				<div class="layui-container">
+					<div class="layui-row">
+						<div class="layui-col-md9" style="text-align: center;">
+							<div class="grid-demo grid-demo-bg2" style="background: white;">
+								<h1>科室信息编辑</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br/>
+				<form class="layui-form">
+					<div class="layui-inline">
+						<label class="layui-form-label">是否启用</label>
+						<div class="layui-input-block">
+							<input type="radio" name="sex" value="是" title="是" checked="">
+							<input type="radio" name="sex" value="否" title="否">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">科室编号</label>
+						<div class="layui-input-inline">
+							<input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<br/><br/>
+					<div class="layui-form-item">
+						<label class="layui-form-label">科室名称</label>
+						<div class="layui-input-inline">
+							<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入名称" class="layui-input" style="width: 600px;">
+						</div>
+					</div>
+					<div class="layui-row">
+						<label class="layui-form-label">科室类型</label>
+						<div class="layui-col-md3">
+							<input type="radio" name="sex" value="检查" title="检查" checked="">
+						</div>
+						<div class="layui-col-md3">
+							<input type="radio" name="sex" value="检验" title="检验">
+						</div>
+						<div class="layui-col-md3">
+							<input type="radio" name="sex" value="功能性" title="功能性">
+						</div>
+					</div>
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">科室小结</label>
+						<div class="layui-input-block">
+							<textarea placeholder="请输入内容" class="layui-textarea" style="width: 600px;"></textarea>
+						</div>
+					</div>
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">备注</label>
+						<div class="layui-input-block">
+							<textarea placeholder="请输入内容" class="layui-textarea" style="width: 600px;"></textarea>
+						</div>
+					</div>
+					<div class="layui-inline" style="width: 120px;">
+						<button class="layui-btn" style="width: 100px;">保存</button>
+					</div>
+					<div class="layui-inline" style="width: 120px;">
+						<button class="layui-btn" style="width: 100px;">取消</button>
+					</div>
+					<div class="layui-inline" style="width: 120px;">
+						<button class="layui-btn" style="width: 100px;">打印</button>
+					</div>
+					<div class="layui-inline">
+						<button class="layui-btn" style="width: 100px;">退出</button>
+					</div>
+				</form>
+
+			</div>
+		</div>
+
+		<div class="fly-footer">
+			<p>
+				<a href="http://fly.layui.com/" target="_blank">医疗体检系统</a> 2018 &copy;
+				<a href="http://www.layui.com/" target="_blank">多元合创 出品</a>
+			</p>
+			<p>
+
+				<a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
+			</p>
+		</div>
+
+		<script src="layui.js"></script>
+		<script>
+			layui.use('element', function() {
+				var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+				//监听导航点击
+				element.on('nav(demo)', function(elem) {
+					//console.log(elem)
+					//layer.msg(elem.text());
+				});
+			});
+
+			layui.use('form', function() {
+				var form = layui.form,
+					layer = layui.layer
+			})
+		</script>
+
+	</body>
+
+</html>

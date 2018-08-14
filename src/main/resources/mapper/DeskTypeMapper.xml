@@ -16,7 +16,7 @@
     </insert>
 
     <!-- 根据id查询科室类型 -->
-    <select id="getDeskTypeById" resultType="com.dyhc.hospitalmanager.pojo.DeskType">
+    <select id="getDeskTypeById" resultType="com.dyhc.hospital.entity.DeskType">
         select * form desk_type
         where desk_type_id = #{deskTypeId}
     </select>
@@ -28,7 +28,7 @@
     </update>
 
     <!-- 获取所有科室类型 -->
-    <select id="getAllDeskTypeList" resultType="com.dyhc.hospitalmanager.pojo.DeskType">
+    <select id="getAllDeskTypeList" resultType="com.dyhc.hospital.entity.DeskType">
         select * from desk_type
     </select>
 

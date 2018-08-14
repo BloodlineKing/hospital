@@ -2,5 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dyhc.hospital.dao.RoleInfoMapper">
-
+    <!--查询全部-->
+     <select id="getRoleInfoList" resultType="com.dyhc.hospital.entity.RoleType">
+         select * from getRoleInfoList
+     </select>
+    <!--增加角色信息-->
+    <insert id="addRoleInfo">
+        insert into role_info values (null,#{roleName},#{userName},#{password},#{deskId},#{roleTypeId})
+    </insert>
+    <!--根据id查询信息-->
+   <select id="getRoleInfoList">
+       select * from getRoleInfoList where role_info_id=#{roleInfoId}
+   </select>
+    <!--修改-->
+   <update id="updRoleInfo">
+       update
+           role_info
+        SET
+         `role_name` = #{roleName},
+         `user_name` = #{userName},
+         `password` = #{password},
+         `desk_id` = #{deskId},
+         `role_type_id` = #{roleTypeId}
+       WHERE `role_info_id` = #{roleInfoId};
+   </update>
 </mapper>

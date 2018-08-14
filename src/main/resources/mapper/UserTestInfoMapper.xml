@@ -8,7 +8,7 @@
              SELECT medical_id FROM `user_test_info` WHERE test_number=#{test_number})
 
      </select>
-    <!--用户所选择的套餐->
+    <!--用户所选择的套餐-->
     <select id="getPackage" resultType="com.dyhc.hospital.entity.Medical">
         SELECT * FROM `medical` WHERE medical_id IN(
             SELECT medical_id FROM package_medical WHERE `package_id`=(

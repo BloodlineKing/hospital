@@ -11,8 +11,8 @@
         insert into role_info values (null,#{roleName},#{userName},#{password},#{deskId},#{roleTypeId})
     </insert>
     <!--根据id查询信息-->
-   <select id="getRoleInfoList">
-       select * from getRoleInfoList where role_info_id=#{roleInfoId}
+   <select id="getRoleInfoById">
+       select * from role_info where role_info_id=#{roleInfoId}
    </select>
     <!--修改-->
    <update id="updRoleInfo">

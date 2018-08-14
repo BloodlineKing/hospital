@@ -1,6 +1,9 @@
 package com.dyhc.hospital.dao;
 
 import com.dyhc.hospital.entity.Archives;
+import com.dyhc.hospital.entity.CombinationMedical;
+import com.dyhc.hospital.entity.PackageMedical;
+import com.dyhc.hospital.entity.UserRegisterInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -11,7 +14,7 @@ import java.util.List;
 @Repository
 public interface ArchivesMapper {
     /** 李文荣
-     *  判断用户是否有存档 如果存在 就调用userRegisterlwr()方法进行显示,如果没有就登记信息
+     *  判断用户是否有存档 如果存在 就调用registerUserInfo()方法进行显示,如果没有就登记信息
      * @return
      */
     Archives ifArchives(@Param("testNumber") String testNumber );
@@ -23,6 +26,8 @@ public interface ArchivesMapper {
      * @return
      */
     public Integer updArchivesCheckCount(@Param("testNumber") String testNumber );
+
+
 
     /**王娇娇
      * 进行存档
@@ -36,5 +41,6 @@ public interface ArchivesMapper {
      * @return
      */
     List<Archives> getArchivesList()throws Exception;
+
 
 }

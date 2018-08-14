@@ -14,4 +14,21 @@
     <update id="updArchivesCheckCount">
         UPDATE `archives` SET `check_count` = `check_count` +1 WHERE `test_number` = #{testNumber};
     </update>
+    <!--进行存档-->
+    <insert id="addArchives">
+        INSERT INTO `hospital_test_manager_db`.`archives` (
+          `archives_id`,
+          `test_number`,
+          `check_count`,
+          `archives_ date`
+        )
+        VALUES
+          (
+            #{archivesId},
+            #{testNumber},
+            1,
+            now()
+          );
+    </insert>
+
 </mapper>

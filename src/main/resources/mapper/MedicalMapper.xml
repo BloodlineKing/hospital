@@ -21,7 +21,7 @@
     </update>
 
     <!--根据id查询科室项目信息-->
-    <select id="getAllMedicalInfoByid">
+    <select id="getAllMedicalInfoByid" resultType="com.dyhc.hospital.entity.Medical">
     SELECT * FROM medical where medical_id=#{medicalId}
     </select>
 

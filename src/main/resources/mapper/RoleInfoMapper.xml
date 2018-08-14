@@ -15,7 +15,7 @@
        select * from role_info where role_info_id=#{roleInfoId}
    </select>
     <!--修改-->
-   <update id="updRoleInfo">
+   <update id="updRoleInfo" parameterType="com.dyhc.hospital.entity.RoleType">
        update
            role_info
         SET

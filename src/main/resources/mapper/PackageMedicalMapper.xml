@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dyhc.hospital.dao.PackageMedicalMapper">
 
-    <select id="getPackageInfoByPackageId">
+    <select id="getPackageInfoByPackageId" resultType="com.dyhc.hospital.entity.PackageMedical">
         select * from package_medical where packageId=#{packageId}
     </select>
 

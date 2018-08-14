@@ -14,7 +14,7 @@
     </insert>
 
     <!--删除科室信息-->
-    <update id="delDeskInfo">
+    <update id="delDeskInfo" >
         UPDATE desk SET desk_status=0 WHERE desk_id=#{deskId}
     </update>
 

@@ -6,4 +6,7 @@
     <select id="listRoleType" resultType="com.dyhc.hospital.entity.RoleType">
         select * from role_type
     </select>
+    <select id="getById" resultType="com.dyhc.hospital.entity.RoleType">
+        select * from role_type where id=#{id}
+    </select>
 </mapper>

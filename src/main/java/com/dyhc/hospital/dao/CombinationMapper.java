@@ -23,7 +23,7 @@ public interface CombinationMapper {
      * @param deskId
      * @return
      */
-    List<Combination> getCombinationInfoByDesk(@Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize, @Param("deskId") int deskId) throws  Exception;
+    List<Combination> getCombinationInfoByDesk(@Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize, @Param("deskId") String deskId) throws  Exception;
 
     /**
      * 添加科室组合
@@ -38,14 +38,14 @@ public interface CombinationMapper {
      * @param combinationId
      * @return
      */
-    int delCombinationInfo(@Param("combinationId") int combinationId) throws  Exception;
+    int delCombinationInfo(@Param("combinationId") String combinationId) throws  Exception;
 
     /**
      * 根据id查询科室组合信息
      * @param combinationId
      * @return
      */
-    List<Combination> getAllCombinationInfoByid(@Param("combinationId") int combinationId) throws  Exception;
+    List<Combination> getAllCombinationInfoByid(@Param("combinationId") String combinationId) throws  Exception;
 
 
     /**

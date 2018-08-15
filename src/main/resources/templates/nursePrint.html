@@ -11,19 +11,22 @@
 	</head>
 
 	<body>
+		<script src="js/nowdate.js" type="text/javascript">
+			
+		</script>
 		<div class="fly-header layui-bg-black">
 			<div class="layui-row layui-col-space10">
 				<div class="layui-col-md4 layui-col-md-offset5" style="height: 50px;font-size: 26px; line-height: 50px;">
 					医疗体检管理系统
 				</div>
-				<ul class="layui-nav fly-nav-user">
-					<!-- 登入后的状态 -->
-					<li class="layui-nav-item">
-						<a class="fly-nav-avatar" href="javascript:;">
-							<cite class="layui-hide-xs">尊敬的护士你好</cite>
-						</a>
-					</li>
-				</ul>
+			</div>
+		</div>
+		<div class="layui-container layui-row" style="margin-top: 1%;">
+			<div class="layui-col-md9">
+				欢迎您，尊敬的护士：<label class="username">admin</label>
+			</div>
+			<div class="layui-col-md3">
+				<label id="nowdate"></label>
 			</div>
 		</div>
 		<div class="layui-container fly-marginTop fly-user-main">
@@ -69,19 +72,19 @@
 							<br />
 							<br />
 							<div class="layui-col-md5">
-								<label class="layui-form-label">体检日期：</label>
-								<input type="text" class="layui-input" id="date" placeholder=" - ">
+								<label class="layui-form-label">职务条件：</label>
+								<input type="text" name="dutycondition" autocomplete="off" class="layui-input">
 							</div>
 							<div class="layui-col-md7 layui-row">
 								<div class="layui-col-md7">
-									<label class="layui-form-label">登记号：</label>
-									<input style="width: 120px;" type="text" name="email" autocomplete="off" class="layui-input">
+									<label class="layui-form-label">年龄：</label>
+									<input style="width: 120px;" type="text" name="ageupperlimit" autocomplete="off" class="layui-input">
 								</div>
 								<div class="layui-col-md1">
 									<label style="line-height: 30px;">——</label>
 								</div>
-								<div class="layui-col-md4"">
-									<input style="width: 120px;" type="text" name="email" autocomplete="off" class="layui-input">
+								<div class="layui-col-md4">
+									<input style="width: 120px;" type="text" name="agelowerlimit" autocomplete="off" class="layui-input">
 								</div>
 							</div>
 						</div>

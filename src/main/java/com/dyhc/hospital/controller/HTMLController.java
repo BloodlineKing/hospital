@@ -26,11 +26,6 @@ public class HTMLController {
         return "departmentInfo.html";
     }
 
-    @RequestMapping("index.html")
-    public String toIndex(){
-        return "index";
-    }
-
     @RequestMapping("jobs.html")
     public String toJobs(){
         return "jobs";
@@ -61,11 +56,6 @@ public class HTMLController {
         return "managerlogin";
     }
 
-    @RequestMapping("message.html")
-    public String toMessage(){
-        return "message";
-    }
-
     @RequestMapping("nursePre.html")
     public String toNursePre(){
         return "nursePre";
@@ -91,6 +81,11 @@ public class HTMLController {
         return "packageInfo";
     }
 
+    @RequestMapping("personalpackage.html")
+    public String toPersonalpackage(){
+        return "personalpackage";
+    }
+
     @RequestMapping("PhysicalinfoManager.html")
     public String toPhysicalinfoManager(){
         return "PhysicalinfoManager";
@@ -104,16 +99,6 @@ public class HTMLController {
     @RequestMapping("PhysicalresultSummer.html")
     public String toPhysicalresultSummer(){
         return "PhysicalresultSummer";
-    }
-
-    @RequestMapping("sectionmanager.html")
-    public String toSectionmanager(){
-        return "sectionmanager";
-    }
-
-    @RequestMapping("set.html")
-    public String toSet(){
-        return "set";
     }
 
     @RequestMapping("Tollgatecharge.html")

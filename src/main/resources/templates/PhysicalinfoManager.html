@@ -12,7 +12,7 @@
 	</head>
 
 	<body>
-
+		<script src="js/nowdate.js"></script>
 		<div class="fly-header layui-bg-black">
 			<div class="layui-row layui-col-space10">
 				<div class="layui-col-md4 layui-col-md-offset5" style="height: 50px;font-size: 26px; line-height: 50px;">
@@ -21,46 +21,46 @@
 			</div>
 		</div>
 		</div>
-
+		<div class="layui-container layui-row" style="margin-top: 1%;">
+			<div class="layui-col-md9">
+				欢迎您，尊敬的系统管理员：<label class="username">admin</label>
+			</div>
+			<div class="layui-col-md3">
+				<label id="nowdate"></label>
+			</div>
+		</div>
 		<div class="layui-container fly-marginTop fly-user-main">
 			<ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
 				<li class="layui-nav-item layui-nav-itemed">
-					<a href="javascript:;">科室节点</a>
+					<a href="javascript:;">体检科室</a>
 					<dl class="layui-nav-child">
 						<dd>
-							<a href="javascript:;">选项一</a>
+							<a href="javascript:;">科室一</a>
+							<dl class="layui-nav-child">
+								<dd>
+									<a href="javascript:;">体检项一</a>
+								</dd>
+							</dl>
 						</dd>
 						<dd>
-							<a href="javascript:;">选项二</a>
+							<a href="javascript:;">科室一</a>
+							<dl class="layui-nav-child">
+								<dd>
+									<a href="javascript:;">体检项一</a>
+								</dd>
+							</dl>
 						</dd>
 						<dd>
-							<a href="javascript:;">选项三</a>
-						</dd>
-						<dd>
-							<a href="">跳转项</a>
+							<a href="javascript:;">科室一</a>
+							<dl class="layui-nav-child">
+								<dd>
+									<a href="javascript:;">体检项一</a>
+								</dd>
+							</dl>
 						</dd>
 					</dl>
 				</li>
-				<li class="layui-nav-item">
-					<a href="javascript:;">解决方案</a>
-					<dl class="layui-nav-child">
-						<dd>
-							<a href="">移动模块</a>
-						</dd>
-						<dd>
-							<a href="">后台模版</a>
-						</dd>
-						<dd>
-							<a href="">电商平台</a>
-						</dd>
-					</dl>
-				</li>
-				<li class="layui-nav-item">
-					<a href="">云市场</a>
-				</li>
-				<li class="layui-nav-item">
-					<a href="">社区</a>
-				</li>
+				
 			</ul>
 
 			<div class="site-tree-mobile layui-hide">
@@ -83,14 +83,14 @@
 					<div class="layui-row">
 						<div class="layui-col-md9" style="text-align: center;">
 							<div class="grid-demo grid-demo-bg2" style="background: white;">
-								<h1>体检信息维护</h1>
+								<h1>体检项信息维护</h1>
 							</div>
 						</div>
 					</div>
 				</div>
 				<br/><br/>
 				<form class="layui-form" style="height: 700px;">
-					
+
 					<div class="layui-row">
 						<div class="layui-col-md6">
 							<div class="layui-inline">
@@ -194,7 +194,7 @@
 						</div>
 					</div>
 					<br />
-						<div class="layui-row">
+					<div class="layui-row">
 						<div class="layui-col-md3">
 							<div class="layui-inline">
 								<label class="layui-form-label">偏低提示</label>
@@ -213,7 +213,7 @@
 						</div>
 					</div>
 					<br />
-						<div class="layui-row">
+					<div class="layui-row">
 						<div class="layui-col-md3">
 							<div class="layui-inline">
 								<label class="layui-form-label">最小值</label>
@@ -233,29 +233,29 @@
 					</div>
 					<br />
 					<div class="layui-input-block" style="margin-left: 0px;">
-								<label class="layui-form-label">单价</label>
-								<div class="layui-input-inline">
-									<input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" style="width: 100px;">
-								</div>
-							</div>
-							<br />
-							<label class="layui-form-label">位置提示</label>
-						<div class="layui-input-block">
-							<textarea placeholder="请输入内容" class="layui-textarea" style="width: 600px;"></textarea>
+						<label class="layui-form-label">单价</label>
+						<div class="layui-input-inline">
+							<input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" style="width: 100px;">
 						</div>
-						<br />
-						<div class="layui-row" style="margin-left: 100px;">
-							<div class="layui-col-md3" style="width: 150px; text-align: right;">
-								<button class="layui-btn" style="width: 140px;">保存</button>
+					</div>
+					<br />
+					<label class="layui-form-label">位置提示</label>
+					<div class="layui-input-block">
+						<textarea placeholder="请输入内容" class="layui-textarea" style="width: 600px;"></textarea>
+					</div>
+					<br />
+					<div class="layui-row" style="margin-left: 100px;">
+						<div class="layui-col-md3" style="width: 150px; text-align: right;">
+							<button class="layui-btn" style="width: 140px;">保存</button>
+						</div>
+						<div class="layui-col-md3" style="width: 150px;text-align: right;">
+								<button class="layui-btn" style="width: 140px; ">取消</button>
 							</div>
-								<div class="layui-col-md3"style="width: 150px;text-align: right;"">
-								<button class="layui-btn" style="width: 140px;">取消</button>
-							</div>
-								<div class="layui-col-md3"style="width: 150px;text-align: right;"">
-								<button class="layui-btn" style="width: 140px;">打印</button>
-							</div>
-								<div class="layui-col-md3"style="width: 150px;text-align: right;"">
-								<button class="layui-btn" style="width: 140px;">退出</button>
+								<div class="layui-col-md3 "style="width: 150px;text-align: right; ">
+							<button class="layui-btn" style="width: 140px;">打印</button>
+						</div>
+						<div class="layui-col-md3" style="width: 150px;text-align: right;">
+								<button class="layui-btn " style="width: 140px; ">退出</button>
 							</div>
 							
 						</div>
@@ -272,18 +272,18 @@
 			</div>
 		</div>
 
-		<div class="fly-footer">
+		<div class="fly-footer ">
 			<p>
-				<a href="http://fly.layui.com/" target="_blank">医疗体检系统</a> 2018 &copy;
-				<a href="http://www.layui.com/" target="_blank">多元合创 出品</a>
+				<a href="http://fly.layui.com/ " target="_blank ">医疗体检系统</a> 2018 &copy;
+				<a href="http://www.layui.com/ " target="_blank ">多元合创 出品</a>
 			</p>
 			<p>
 
-				<a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
+				<a href="http://fly.layui.com/jie/2461/ " target="_blank ">微信公众号</a>
 			</p>
 		</div>
 
-		<script src="layui.js"></script>
+		<script src="layui.js "></script>
 		<script>
 			layui.use('element', function() {
 				var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块

@@ -23,11 +23,12 @@ layui.use('table', function(){
   
   table.render({
     elem: '#info'
-    ,url:'/demo/table/user/'
+    ,url:'table/use.json'
+    ,height:300
     ,cellMinWidth: 200 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
     ,cols: [[
       {field:'name', width:300, title: '体检项目'}
-      ,{type:'checkbox',title:'好'}
+      ,{type:'checkbox'}
       ,{field:'sex', width:300, title: '性别'}
      
     ]]

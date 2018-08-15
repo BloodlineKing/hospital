@@ -25,63 +25,38 @@
 	</head>
 
 	<body>
+		<script src="js/nowdate.js"></script>
 		<div class="fly-header layui-bg-black">
 			<div class="layui-row layui-col-space10">
 				<div class="layui-col-md4 layui-col-md-offset5" style="height: 50px;font-size: 26px; line-height: 50px;">
 					医疗体检管理系统
 				</div>
-				<ul class="layui-nav fly-nav-user">
-					<!-- 登入后的状态 -->
-					<li class="layui-nav-item">
-						<a class="fly-nav-avatar" href="javascript:;">
-							<cite class="layui-hide-xs">尊敬的医生你好</cite>
-						</a>
-					</li>
-				</ul>
+			</div>
+		</div>
+		<div class="layui-container layui-row" style="margin-top: 1%;">
+			<div class="layui-col-md9">
+				欢迎您，尊敬的系统管理员：<label class="username">admin</label>
+			</div>
+			<div class="layui-col-md3">
+				<label id="nowdate"></label>
 			</div>
 		</div>
 		<div class="layui-container fly-marginTop fly-user-main">
 			<ul class="layui-nav layui-nav-tree layui-inline" lay-filter="user">
 				<!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
 				<li class="layui-nav-item ">
-					<a href="javascript:;">默认展开</a>
+					<a href="javascript:;">体检套餐</a>
 					<dl class="layui-nav-child">
 						<dd>
-							<a href="javascript:;">选项1</a>
+							<a href="javascript:;">套餐1</a>
 						</dd>
 						<dd>
-							<a href="javascript:;">选项2</a>
+							<a href="javascript:;">套餐1</a>
 						</dd>
-						<dd>
-							<a href="">跳转</a>
-						</dd>
+					
 					</dl>
 				</li>
-				<li class="layui-nav-item">
-					<a href="javascript:;">解决方案</a>
-					<dl class="layui-nav-child">
-						<dd>
-							<a href="javascript:;">移动模块</a>
-							<dl class="layui-nav-child">
-								<dd>
-									<a href="">三级</a>
-								</dd>
-							</dl>
-						</dd>
-						<dd>
-							<a href="">后台模版</a>
-						</dd>
-						<dd>
-							<a href="">电商平台</a>
-						</dd>
-					</dl>
-				</li>
-				<li class="layui-nav-item">
-					<a href="">产品</a>
-				</li>
-				<li class="layui-nav-item">
-					<a href="">大数据</a>
-				</li>
+			
 			</ul>
 
 			<div class="site-tree-mobile layui-hide">
@@ -96,7 +71,7 @@
 
 			<div class="fly-panel fly-panel-user" pad20>
 				<div class="layui-col-md-offset4" style="margin-top: 2%;">
-					<h2>体检单位信息</h2>
+					<h2>套餐信息维护</h2>
 				</div>
 				<div style="margin-top:2%;">
 					<form class="layui-form" action="">
@@ -151,11 +126,35 @@
 				</div>
 				<div class="py">
 					<h3 class="pyTitle">体检项目</h3>
-					<div class="layui-form-item layui-form-text">
-						<div class="layui-input-block">
-							<textarea name="desc" placeholder="套餐体检项" class="layui-textarea"></textarea>
-						</div>
-					</div>
+					<div class="layui-input-block" style="border: solid 1px #C9C9C9;overflow:auto; width: 700px; height: 200px;">
+								<div style="margin-left:2%;width: 300px; height: 50px; line-height: 50px;">
+									<a>第一个体检项</a>
+								</div>
+								<div style="margin-left:2%;width: 300px; height: 50px; line-height: 50px;">
+									<a>第一个体检项</a>
+								</div>
+								<div style="margin-left:2%;width: 300px; height: 50px; line-height: 50px;">
+									<a>第一个体检项</a>
+								</div>
+								<div style="margin-left:2%;width: 300px; height: 50px; line-height: 50px;">
+									<a>第一个体检项</a>
+								</div>
+								<div style="margin-left:2%;width: 300px; height: 50px; line-height: 50px;">
+									<a>第一个体检项</a>
+								</div>
+								<div style="margin-left:2%;width: 300px; height: 50px; line-height: 50px;">
+									<a>第一个体检项</a>
+								</div>
+								<div style="margin-left:2%;width: 300px; height: 50px; line-height: 50px;">
+									<a>第一个体检项</a>
+								</div>
+								<div style="margin-left:2%;width: 300px; height: 50px; line-height: 50px;">
+									<a>第一个体检项</a>
+								</div>
+								<div style="margin-left:2%;width: 300px; height: 50px; line-height: 50px;">
+									<a>第一个体检项</a>
+								</div>
+							</div>
 				</div>
 			</div>
 

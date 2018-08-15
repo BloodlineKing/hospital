@@ -17,58 +17,43 @@
 				<div class="layui-col-md4 layui-col-md-offset5" style="height: 50px;font-size: 26px; line-height: 50px;">
 					医疗体检管理系统
 				</div>
-				<ul class="layui-nav fly-nav-user">
-					<!-- 登入后的状态 -->
-					<li class="layui-nav-item">
-						<a class="fly-nav-avatar" href="javascript:;">
-							<cite class="layui-hide-xs">尊敬的医生你好</cite>
-						</a>
-					</li>
-				</ul>
+				
+			</div>
+		</div>
+		<div class="layui-container layui-row" style="margin-top: 1%;">
+			<div class="layui-col-md9">
+				欢迎您，尊敬的系统管理员：<label class="username">admin</label>
+			</div>
+			<div class="layui-col-md3">
+				<label id="nowdate"></label>
 			</div>
 		</div>
 		<div class="layui-container fly-marginTop fly-user-main">
 			<ul class="layui-nav layui-nav-tree layui-inline" lay-filter="user">
 				<!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
 				<li class="layui-nav-item ">
-					<a href="javascript:;">默认展开</a>
+					<a href="javascript:;">体检科室</a>
 					<dl class="layui-nav-child">
 						<dd>
-							<a href="javascript:;">选项1</a>
+							<a href="javascript:;">科室1</a>
+							<dl class="layui-nav-child">
+								<dd>
+									<a href="javascript:;">体检项1</a>
+								</dd>
+							</dl>
 						</dd>
 						<dd>
-							<a href="javascript:;">选项2</a>
+							<a href="javascript:;">科室1</a>
+							<dl class="layui-nav-child">
+								<dd>
+									<a href="javascript:;">体检项1</a>
+								</dd>
+							</dl>
 						</dd>
-						<dd>
-							<a href="">跳转</a>
-						</dd>
+						
 					</dl>
 				</li>
-				<li class="layui-nav-item">
-					<a href="javascript:;">解决方案</a>
-					<dl class="layui-nav-child">
-						<dd>
-							< a href="javascript:;">移动模块</a>
-								<dl class="layui-nav-child">
-									<dd>
-										<a href="">三级</a>
-									</dd>
-								</dl>
-						</dd>
-						<dd>
-							<a href="">后台模版</a>
-						</dd>
-						<dd>
-							<a href="">电商平台</a>
-						</dd>
-					</dl>
-				</li>
-				<li class="layui-nav-item">
-					<a href="">产品</a>
-				</li>
-				<li class="layui-nav-item">
-					<a href="">大数据</a>
-				</li>
+				
 			</ul>
 
 			<div class="site-tree-mobile layui-hide">
@@ -83,10 +68,16 @@
 
 			<div class="fly-panel fly-panel-user" pad20>
 				<div class="layui-col-md-offset4" style="margin-top: 2%;">
-					<h2>体检项目可选结果</h2>
+					<h2>常见结果维护</h2>
 				</div>
 				<div>
 					<table class="layui-hide" id="test"></table>
+				</div>
+				<div style="text-align: center; margin-top: 10%;">
+					<button style="width: 200px; height: 50px;" class="layui-btn layui-btn-sm">保存</button>
+					<button style="width: 200px; height: 50px;" class="layui-btn layui-btn-sm">提交</button>
+					<button style="width: 200px; height: 50px;" class="layui-btn layui-btn-sm">取消</button>
+					<button style="width: 200px; height: 50px;" class="layui-btn layui-btn-sm">退出</button>
 				</div>
 			</div>
 
@@ -105,30 +96,35 @@
 		</div>
 		<script src="layui.js"></script>
 		<script src="js/commonresults.js"></script>
-		<script type="text/html" id="switchTpl">
-			<!-- 这里的 checked 的状态只是演示 -->
-			<input type="checkbox" name="sex" value="{{d.id}}" 
-				lay-skin="switch" lay-text="是|否" lay-filter="sexDemo" {{ d.sex ? 'checked' : '' }}>
+		<script src="js/nowdate.js"></script>
+		<script type="text/html" id="sfyx">
+			{{# if(d.yx==1){ }}
+			<input type="checkbox" name="sex" value="{{d.id}}" lay-skin="switch" lay-text="是|否" lay-filter="sexDemo" checked=""> {{# } }} {{# if(d.yx==0){ }}
+			<input type="checkbox" name="sex" value="{{d.id}}" lay-skin="switch" lay-text="是|否" lay-filter="sexDemo"> {{# } }}
+		</script>
+		<script type="text/html" id="sfxj">
+			{{# if(d.xj==1){ }}
+			<input type="checkbox" name="sex" value="{{d.id}}" lay-skin="switch" lay-text="是|否" lay-filter="sexDemo" checked=""> {{# } }} {{# if(d.xj==0){ }}
+			<input type="checkbox" name="sex" value="{{d.id}}" lay-skin="switch" lay-text="是|否" lay-filter="sexDemo"> {{# } }}
+		</script>
+		<script type="text/html" id="xsxmm">
+			{{# if(d.xmm==1){ }}
+			<input type="checkbox" name="sex" value="{{d.id}}" lay-skin="switch" lay-text="是|否" lay-filter="sexDemo" checked=""> {{# } }} {{# if(d.xmm==0){ }}
+			<input type="checkbox" name="sex" value="{{d.id}}" lay-skin="switch" lay-text="是|否" lay-filter="sexDemo"> {{# } }}
 		</script>
 
 		<script>
 			layui.use('table', function() {
 				var table = layui.table,
 					form = layui.form;
-					
-					
-					
-					
+
 				table.render({
 					elem: '#test',
-					url: '/demo/js/use.json',
+					height:300
+					,url: '/医疗体检管理系统页面/js/uses.json',
 					cellMinWidth: 80,
 					cols: [
 						[{
-							type: 'numbers'
-						}, {
-							type: 'checkbox'
-						}, {
 							field: 'id',
 							title: 'ID',
 							width: 100,
@@ -136,41 +132,40 @@
 							sort: true
 						}, {
 							field: 'username',
-							title: '用户名',
-							templet: '#usernameTpl'
-						}, {
-							field: 'city',
-							title: '城市'
+							title: '结果'
 						}, {
 							field: 'wealth',
-							title: '财富',
-							minWidth: 120,
-							sort: true
+							title: '拼音简码',
+							minWidth: 120
 						}, {
-							field: 'sex',
-							title: '是否',
-							width: 85,
-							templet: '#switchTpl',
+							field: 'yx',
+							title: '是否阳性',
+							width: 120,
+							templet: '#sfyx',
 							unresize: true
 						}, {
-							field: 'lock',
-							title: '是否锁定',
-							width: 110,
-							templet: '#checkboxTpl',
+							field: 'xj',
+							title: '是否小结',
+							width: 120,
+							templet: '#sfxj',
+							unresize: true
+						}, {
+							field: 'xmm',
+							title: '显示项目名',
+							width: 120,
+							templet: '#xsxmm',
 							unresize: true
 						}]
-					],
-					page: true
+					]
 				});
-
 				//监听性别操作
 				form.on('switch(sexDemo)', function(obj) {
-					layer.tips(this.value + ' ' + this.name + '：' + obj.elem.checked, obj.othis);
+					//layer.tips(this.value + ' ' + this.name + '：' + obj.elem.checked, obj.othis);
 				});
 
 				//监听锁定操作
 				form.on('checkbox(lockDemo)', function(obj) {
-					layer.tips(this.value + ' ' + this.name + '：' + obj.elem.checked, obj.othis);
+					//layer.tips(this.value + ' ' + this.name + '：' + obj.elem.checked, obj.othis);
 				});
 			});
 		</script>

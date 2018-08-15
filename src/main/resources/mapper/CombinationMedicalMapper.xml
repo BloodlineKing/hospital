@@ -2,7 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dyhc.hospital.dao.CombinationMedicalMapper">
-     <select id="showCombinationList" resultType="com.dyhc.hospital.entity.CombinationMedical">
-         select * from `combination_ medical` where medicalId=#{medicalId}
-     </select>
+
+    <!--自动高级映射-->
+    <resultMap id="combinations" type="com.dyhc.hospital.entity.CombinationMedical">
+        <id column="combination_ medical_id" property="combinationMedicalId"/>
+        <association property="medical" javaType="com.dyhc.hospital.entity.Medical">
+            <id column="medical_id" property="medicalId"/>
+        </association>
+    </resultMap>
+    <!--查询组合项下边的所有体检项目-->
+    <select id="showCombinationList" resultMap="combinations" >
+         SELECT * FROM `combination_ medical` c
+          JOIN `medical` m ON c.`medical_id` = m.`medical_id`
+          WHERE c.`combination_id`=#{medicalId};
+    </select>
 </mapper>

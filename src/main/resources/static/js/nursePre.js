@@ -5,7 +5,7 @@ layui.use('table', function() {
 	table.render({
 		elem: '#userInfo',
 		height: 315,
-		url: '/demo/table/user/' //数据接口
+		url: 'http://localhost:8080/getUserInfoByNameCode' //数据接口
 			,
 		page: true //开启分页
 			,
@@ -18,7 +18,7 @@ layui.use('table', function() {
 					sort: true,
 					fixed: 'left'
 				}, {
-					field: 'username',
+					field: 'userName',
 					title: '姓名',
 					width: 80
 				}, {
@@ -34,7 +34,7 @@ layui.use('table', function() {
 					title: '出生日期',
 					width: 100
 				}, {
-					field: 'idcard',
+					field: 'idCard',
 					title: '身份证',
 					width: 90
 				}, {
@@ -42,17 +42,12 @@ layui.use('table', function() {
 					title: '联系电话',
 					width: 100
 				}, {
-					field: 'namecode',
+					field: 'nameCode',
 					title: '姓名拼音简码',
 					width: 130
 				}, {
 					field: 'status',
 					title: '状态',
-					width: 80
-				},
-				{
-					field: 'bj',
-					title: '编辑',
 					width: 80
 				}
 			]

@@ -64,16 +64,17 @@
 						<div class="layui-col-md10">
 							<h3 class="layui-inline">请输入姓名或拼音简写:</h3>
 							<div class="layui-inline" style="width: 300px;">
-								<input type="text" name="username" required lay-verify="required" placeholder="请输入名字简写或名字" autocomplete="off" class="layui-input">
+								<input type="text" name="namecode" id="namecode" required lay-verify="required" placeholder="请输入名字简写或名字" autocomplete="off" class="layui-input">
 							</div>
 						</div>
 						<div class="layui-col-md2">
-							<button class="layui-btn layui-bg-green" id="LAY_delallmsg">快速搜索</button>
+							<input type="button" class="layui-btn layui-bg-green" id="LAY_delallmsg" value="快速搜索"/>
 						</div>
 					</div>
 				</div>
 				<div class="layui-tab layui-tab-brief" lay-filter="user">
-					<table id="userInfo" lay-filter="test"></table>
+					<table id="userInfo" lay-filter="test">
+					</table>
 				</div>
 			</div>
 		</div>
@@ -89,6 +90,22 @@
 		</div>
 		<script src="layui.js"></script>
 		<script type="text/javascript" src="js/nursePre.js"></script>
+	<script>
+        layui.use(['jquery'], function() {
+            var $ = jQuery = layui.$;
+            $("input[name='namecode']").bind("keyup",function () {
+                var namecode=$(this).val();
+                $.ajax({
+                    url:"http://localhost:8080/getUserInfoByNameCode",
+                    data:{namecode:namecode},
+                    dataType:"json",
+                    success:function (result) {
+                        //往表格绑定查出的数据result
+                    }
+                })
+            })
+        });
+	</script>
 	</body>
 
 </html>

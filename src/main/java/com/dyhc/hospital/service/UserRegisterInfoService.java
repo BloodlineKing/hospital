@@ -2,6 +2,8 @@ package com.dyhc.hospital.service;
 
 import com.dyhc.hospital.entity.UserRegisterInfo;
 
+import java.util.List;
+
 public interface UserRegisterInfoService {
 
     /**
@@ -45,10 +47,21 @@ public interface UserRegisterInfoService {
     Integer setAppointmentToRegister(UserRegisterInfo userRegisterInfo);
 
     /**
+     * 刘杰
      * 获取最近一个体检编号
      * @return
      */
     String getTestNumber( String today);
+
+    /**
+     * 刘杰
+     * 根据拼音简码获取信息
+     * @param nameCode
+     * @return
+     */
+    List<UserRegisterInfo> findUserInfoByNameCode(String nameCode);
+
+
 
 
 }

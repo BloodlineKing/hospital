@@ -182,13 +182,11 @@
 	<script type="application/javascript">
         layui.use(['jquery'], function(){
             var $ = jQuery = layui.$;
-            $(function () {
                 $(function() {
                     $("#username").on("keyup keydown change blur", function() {
                         $("#namecode").val($(this).toPinyin());
                     });
                 });
-            });
             $("input[name='telephone']").blur(function () {
                 var name=$("#namecode").val();
                 var telephone=$("input[name='telephone']").val();

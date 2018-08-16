@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserRegisterInfoServiceImpl implements UserRegisterInfoService {
 
@@ -15,6 +17,18 @@ public class UserRegisterInfoServiceImpl implements UserRegisterInfoService {
     private UserRegisterInfoMapper userRegisterInfoMapper;
 
     private Logger logger= LoggerFactory.getLogger(UserRegisterInfoServiceImpl.class);
+
+    @Override
+    public List<UserRegisterInfo> findUserInfoByNameCode(String nameCode) {
+        List<UserRegisterInfo> listUserRegisterInfos=null;
+        try {
+            listUserRegisterInfos=userRegisterInfoMapper.findUserInfoByNameCode(nameCode);
+        }catch (Exception e){
+            logger.error("根据拼音简码获取用户信息失败");
+            e.printStackTrace();
+        }
+        return listUserRegisterInfos;
+    }
 
     @Override
     public String getTestNumber(String today) {

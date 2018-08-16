@@ -5,7 +5,7 @@
 
     <!--查询单位信息-->
     <select id="getAllUnitsInfo" resultType="com.dyhc.hospital.entity.Units">
-      SELECT * FROM `units` WHERE `isdelete` = 1;
+      SELECT * FROM `units`;
     </select>
 
     <!--添加单位信息-->

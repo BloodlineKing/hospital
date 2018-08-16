@@ -67,8 +67,8 @@
 						<div class="layui-form-item layui-inline">
 							<label class="layui-form-label">是否启用：</label>
 							<div class="layui-input-block">
-								<input type="radio" name="isdelete" value="1" title="是" checked>
-								<input type="radio" name="isdelete" value="0" title="否">
+								<input type="radio" name="isdelete" value="1" title="是"  checked>
+								<input type="radio" name="isdelete" value="0" title="否" >
 							</div>
 						</div>
 						<div class="layui-form-item" style="width: 500px;">
@@ -131,11 +131,6 @@
 								<input type="phone" name="authorizedNumber" required lay-verify="required" placeholder="请输入编制人数" autocomplete="off" class="layui-input" id="authorizedNumber">
 							</div>
 						</div>
-						
-						
-						
-						
-						
 						<div class="layui-form-item layui-form-text">
 							<label class="layui-form-label">备注</label>
 							<div class="layui-input-block">
@@ -178,8 +173,10 @@
 		<script src="layui.js"></script>
 		<script src="js/jobs.js"></script>
 		<script type="application/javascript">
-            layui.use(['jquery'], function(){
+			var form;
+            layui.use(['form'], function(){
                 showUnitsInfo();
+                form = layui.form;
                 var $ = jQuery = layui.$;
 				$("#choose").click(function () {
 				    //判断 unitsId 是否为空
@@ -239,14 +236,23 @@
                             $("#companyNature").val(result.companyNature);
                             $("#authorizedNumber").val(result.authorizedNumber);
                             $("#remark").val(result.remark);
-                            $("#isdelete").val(result.isdelete);
+                            var statu = result.isdelete;
+                            $("input[name='isdelete'][value='"+result.isdelete+"']").attr("checked",true);
+                            alert(form);
+                            form.render();
                         }
                     })
                 });
             }
-            /*function choose() {
-                updUnitsInfo();
-            }*/
+
+
+
+
+
+
+                /*function choose() {
+                    updUnitsInfo();
+                }*/
 
             /*修改操作*/
             function updUnitsInfo() {

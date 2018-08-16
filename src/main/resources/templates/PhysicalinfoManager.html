@@ -23,7 +23,7 @@
 		</div>
 		<div class="layui-container layui-row" style="margin-top: 1%;">
 			<div class="layui-col-md9">
-				欢迎您，尊敬的系统管理员：<label class="username">admin</label>
+				欢迎您，尊敬的系统管理员：<label class="username" id="uname">admin</label>
 			</div>
 			<div class="layui-col-md3">
 				<label id="nowdate"></label>
@@ -299,6 +299,21 @@
 				var form = layui.form,
 					layer = layui.layer
 			})
+            layui.use(['jquery'],function () {
+                var $=jQuery=layui.$;
+                window.onload=function(){
+                    var a=getQueryString('userName');
+                    $("#uname").text(a)
+                    var b=$("#uname").val();
+             }
+            })
+
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                return null;
+            }
 		</script>
 
 	</body>

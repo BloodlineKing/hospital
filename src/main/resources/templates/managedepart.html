@@ -1,174 +1,337 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="utf-8">
-		<title>用户中心</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<meta name="keywords" content="fly,layui,前端社区">
-		<meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力">
-		<link rel="stylesheet" href="css/layui.css">
-		<link rel="stylesheet" href="css/global.css">
-	</head>
+<head>
+    <meta charset="utf-8">
+    <title>用户中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="fly,layui,前端社区">
+    <meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力">
+    <link rel="stylesheet" href="css/layui.css">
+    <link rel="stylesheet" href="css/global.css">
+</head>
 
-	<body>
+<body>
 <script src="js/nowdate.js" type="text/javascript">
-	
+
 </script>
-		<div class="fly-header layui-bg-black">
-			<div class="layui-row layui-col-space10">
-				<div class="layui-col-md4 layui-col-md-offset5" style="height: 50px;font-size: 26px; line-height: 50px;">
-					医疗体检管理系统
-				</div>
-			</div>
-		</div>
-		</div>
-<div class="layui-container layui-row" style="margin-top: 1%;">
-			<div class="layui-col-md9">
-				欢迎您，尊敬的系统管理员：<label class="username" id="uname">admin</label>
-			</div>
-			<div class="layui-col-md3">
-				<label id="nowdate"></label>
-			</div>
-		</div>
-		<div class="layui-container fly-marginTop fly-user-main">
-			<ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
-				<li class="layui-nav-item layui-nav-itemed">
-					<a href="javascript:;">体检科室</a>
-					<dl class="layui-nav-child">
-						<dd>
-							<a href="javascript:;">科室一</a>
-						</dd>
-						<dd>
-							<a href="javascript:;">科室一</a>
-						</dd>
-						<dd>
-							<a href="javascript:;">科室一</a>
-						</dd>
-					</dl>
-				</li>
-				
-			</ul>
-
-			<div class="site-tree-mobile layui-hide">
-				<i class="layui-icon">&#xe602;</i>
-			</div>
-			<div class="site-mobile-shade"></div>
-
-			<div class="site-tree-mobile layui-hide">
-				<i class="layui-icon">&#xe602;</i>
-			</div>
-			<div class="site-mobile-shade"></div>
-
-			<div class="fly-panel fly-panel-user" pad20>
-				<!--
-    <div class="fly-msg" style="margin-top: 15px;">
-      您的邮箱尚未验证，这比较影响您的帐号安全，<a href="activate.html">立即去激活？</a>
+<div class="fly-header layui-bg-black">
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-md4 layui-col-md-offset5" style="height: 50px;font-size: 26px; line-height: 50px;">
+            医疗体检管理系统
+        </div>
     </div>
-    -->
-				<div class="layui-container">
-					<div class="layui-row">
-						<div class="layui-col-md9" style="text-align: center;">
-							<div class="grid-demo grid-demo-bg2" style="background: white;">
-								<h1>科室信息编辑</h1>
-							</div>
-						</div>
-					</div>
-				</div>
-				<br/>
-				<form class="layui-form">
-					<div class="layui-inline">
-						<label class="layui-form-label">是否启用</label>
-						<div class="layui-input-block">
-							<input type="radio" name="sex" value="是" title="是" checked="">
-							<input type="radio" name="sex" value="否" title="否">
-						</div>
-					</div>
-					<div class="layui-inline">
-						<label class="layui-form-label">科室编号</label>
-						<div class="layui-input-inline">
-							<input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
-						</div>
-					</div>
-					<br/><br/>
-					<div class="layui-form-item">
-						<label class="layui-form-label">科室名称</label>
-						<div class="layui-input-inline">
-							<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入名称" class="layui-input" style="width: 600px;">
-						</div>
-					</div>
-					<div class="layui-row">
-						<label class="layui-form-label">科室类型</label>
-						<div class="layui-col-md3">
-							<input type="radio" name="sex" value="检查" title="检查" checked="">
-						</div>
-						<div class="layui-col-md3">
-							<input type="radio" name="sex" value="检验" title="检验">
-						</div>
-						<div class="layui-col-md3">
-							<input type="radio" name="sex" value="功能性" title="功能性">
-						</div>
-					</div>
-					<div class="layui-form-item layui-form-text">
-						<label class="layui-form-label">科室小结</label>
-						<div class="layui-input-block">
-							<textarea placeholder="请输入内容" class="layui-textarea" style="width: 600px;"></textarea>
-						</div>
-					</div>
-					<div class="layui-form-item layui-form-text">
-						<label class="layui-form-label">备注</label>
-						<div class="layui-input-block">
-							<textarea placeholder="请输入内容" class="layui-textarea" style="width: 600px;"></textarea>
-						</div>
-					</div>
-					<div style="text-align: center;">
-						<div class="layui-inline" style="width: 120px;">
-						<button class="layui-btn" style="width: 100px;">保存</button>
-					</div>
-					<div class="layui-inline" style="width: 120px;">
-						<button class="layui-btn" style="width: 100px;">取消</button>
-					</div>
-					<div class="layui-inline" style="width: 120px;">
-						<button class="layui-btn" style="width: 100px;">打印</button>
-					</div>
-					<div class="layui-inline">
-						<button class="layui-btn" style="width: 100px;">退出</button>
-					</div>
-					</div>
-				</form>
+</div>
+</div>
+<div class="layui-container layui-row" style="margin-top: 1%;">
+    <div class="layui-col-md9">
+        欢迎您，尊敬的系统管理员：<label class="username" id="uname"></label>
+    </div>
+    <div class="layui-col-md3">
+        <label id="nowdate"></label>
+    </div>
+</div>
+<div class="layui-container fly-marginTop fly-user-main">
+    <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
+        <li class="layui-nav-item layui-nav-itemed" >
+            <a href="javascript:;">体检科室</a>
+            <dl class="layui-nav-child" id="content">
+                <dd>
+                    <a href="javascript:;">科室一</a>
+                </dd>
+                <dd>
+                    <a href="javascript:;">科室一</a>
+                </dd>
+                <dd>
+                    <a href="javascript:;">科室一</a>
+                </dd>
+            </dl>
+        </li>
 
-			</div>
-		</div>
+    </ul>
 
-		<div class="fly-footer">
-			<p>
-				<a href="http://fly.layui.com/" target="_blank">医疗体检系统</a> 2018 &copy;
-				<a href="http://www.layui.com/" target="_blank">多元合创 出品</a>
-			</p>
-			<p>
+    <div class="site-tree-mobile layui-hide">
+        <i class="layui-icon">&#xe602;</i>
+    </div>
+    <div class="site-mobile-shade"></div>
 
-				<a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
-			</p>
-		</div>
+    <div class="site-tree-mobile layui-hide">
+        <i class="layui-icon">&#xe602;</i>
+    </div>
+    <div class="site-mobile-shade"></div>
 
-		<script src="layui.js"></script>
-		<script>
-			layui.use('element', function() {
-				var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+    <div class="fly-panel fly-panel-user" pad20>
+        <!--
+<div class="fly-msg" style="margin-top: 15px;">
+您的邮箱尚未验证，这比较影响您的帐号安全，<a href="activate.html">立即去激活？</a>
+</div>
+-->
+        <div class="layui-container">
+            <div class="layui-row">
+                <div class="layui-col-md9" style="text-align: center;">
+                    <div class="grid-demo grid-demo-bg2" style="background: white;">
+                        <h1>科室信息编辑</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <form class="layui-form" id="addform">
+            <div class="layui-inline">
+                <label class="layui-form-label">是否启用</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="deskStatus" value="1" title="是" checked="">
+                    <input type="radio" name="deskStatus" value="0" title="否">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">科室编号</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="deskId" lay-verify="deskId" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <br/><br/>
+            <div class="layui-form-item">
+                <label class="layui-form-label">科室名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="deskName" lay-verify="title" autocomplete="off" placeholder="请输入名称"
+                           class="layui-input" style="width: 600px;">
+                </div>
+            </div>
+            <div class="layui-row">
+                <label class="layui-form-label">科室类型</label>
+                <div class="layui-col-md3">
+                    <input type="radio" name="deskTypeId" value="1" title="检查" checked="checked">
+                </div>
+                <div class="layui-col-md3">
+                    <input type="radio" name="deskTypeId" value="2" title="检验">
+                </div>
+                <div class="layui-col-md3">
+                    <input type="radio" name="deskTypeId" value="3" title="功能性">
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">科室小结</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入内容" class="layui-textarea" style="width: 600px;"
+                              name="deskSummary" id="deskSummary"> </textarea>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">备注</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入内容" class="layui-textarea" style="width: 600px;" name="remark" id="remark"></textarea>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <div class="layui-inline" style="width: 120px;">
+                    <button type="submit" class="layui-btn" lay-submit style="width: 100px;" id="save">保存</button>
+                </div>
+                <div class="layui-inline" style="width: 120px;">
+                    <button class="layui-btn" style="width: 100px;">取消</button>
+                </div>
+                <div class="layui-inline" style="width: 120px;">
+                    <button class="layui-btn" style="width: 100px;">打印</button>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn" style="width: 100px;">退出</button>
+                </div>
+            </div>
+        </form>
 
-				//监听导航点击
-				element.on('nav(demo)', function(elem) {
-					//console.log(elem)
-					//layer.msg(elem.text());
-				});
-			});
+    </div>
+</div>
 
-			layui.use('form', function() {
-				var form = layui.form,
-					layer = layui.layer
-			})
-		</script>
+<div class="fly-footer">
+    <p>
+        <a href="http://fly.layui.com/" target="_blank">医疗体检系统</a> 2018 &copy;
+        <a href="http://www.layui.com/" target="_blank">多元合创 出品</a>
+    </p>
+    <p>
 
-	</body>
+        <a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
+    </p>
+</div>
+
+<script src="layui.js"></script>
+
+<script type="text/javascript" src="js/managedepart.js"></script>
+<script>
+    layui.use('element', function () {
+        var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+        //监听导航点击
+        element.on('nav(demo)', function (elem) {
+            //console.log(elem)
+            layer.msg(elem.text());
+        });
+    });
+
+    layui.use('form', function () {
+        var form = layui.form,
+            layer = layui.layer
+    })
+
+    var $=null;
+    layui.use(['jquery'], function () {
+        $ = jQuery = layui.$;
+        var a = getQueryString('userName');
+        window.onload = function () {
+            $("#uname").text(a);
+            showdesk();
+        }
+        $("#save").click(function () {
+            selectinfobyid();
+        })
+    })
+
+
+        //查询全部
+        function showdesk() {
+            $.ajax({
+                url: "getAllDeskinfo",
+                type: "post",
+                dataType: "json",
+                data: {},
+                success: function (data) {
+                    var content = "";
+                    $.each(data, function (i, e) {
+                        content += "<dd><a href='javascript:;' onclick='getallbyid(\"" + e.deskId + "\")'>" + e.deskName + "</a></dd>"
+                    })
+                    $("#content").html(content);
+                }, error: function () {
+                    alert("发生错误")
+                }
+            })
+            return false;
+        }
+
+
+        //添加信息
+        function addinfo() {
+            var addform = $("#addform").serialize();
+            $.ajax({
+                url: "addDeskinfo",
+                async: false,
+                data: addform,
+                dataType: "json",
+                type: "post",
+                success: function (data) {
+                    if (data == 1) {
+                        alert("添加成功");
+                        window.history.go(-1)
+                    } else {
+                        alert("添加失败")
+                    }
+                },
+                error: function () {
+                    alert("发生错误");
+                }
+            })
+        }
+
+        //根据id查询信息
+        function getallbyid(deskid) {
+            $.ajax({
+                url: "getDeskinfoByid",
+                type: "post",
+                dataType: "json",
+                data: {"deskId": deskid},
+                success: function (data) {
+                    if(data.deskStatus==1){
+                        $("input[title='是']").attr("checked",true);
+                        layui.form.render();
+                    }else{
+                        $("input[title='否']").attr("checked",true);
+                        layui.form.render();
+                    }
+                    $("input[name='deskId']").val(data.deskId);
+                    $("input[name='deskName']").val(data.deskName);
+
+                    if(data.deskTypeId==1){
+                    $("input[title='检查']").attr("checked",true)
+                        layui.form.render();
+                    }else  if(data.deskTypeId==2){
+                        $("input[title='检验']").prop("checked",true);
+                        layui.form.render();
+                    }else{
+                        $("input[title='功能性']").attr("checked",true)
+                        layui.form.render();
+                    }
+                    //$("input[name='deskTypeId']").val(data.deskTypeId);
+                    $("#deskSummary").text(data.deskSummary);
+                    var a="";
+                    if(data.remark==null){
+                    a=" "
+                    }else{
+                        a=data.remake
+                    }
+                    $("#remark").text(a);
+                }, error: function () {
+                    alert("发生错误")
+                }
+            })
+        }
+
+    /**
+     * 修改信息
+     */
+    function updinfo() {
+        var a = $("#addform").serialize();
+        $.ajax({
+            url: "updDeskinfo",
+            async: false,
+            data: a,
+            dataType: "json",
+            type: "post",
+            success: function (data) {
+                if (data==1)
+                    alert("修改成功");
+                else
+                    alert("修改失败")
+            },
+            error: function () {
+                alert("发生错误");
+            }
+        })
+    }
+
+
+
+        //根据id是否有信息判断添加修改
+        function selectinfobyid() {
+        var id=$("input[name='deskId']").val();
+            $.ajax({
+                url: "getinfoByid",
+                dataType: "json",
+                data: {"deskId": id},
+                type: "post",
+                success:function (data) {
+                    alert(data)
+                    if(data!=null||data!=""){
+                        alert("进入修改")
+                        updinfo();
+                    }else{
+                        alert("进入添加")
+                        addinfo();
+                    }
+                },error:function () {
+                    alert("发生错误")
+                }
+
+            })
+        }
+
+
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
+</script>
+
+</body>
 
 </html>

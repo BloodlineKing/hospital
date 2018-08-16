@@ -22,7 +22,7 @@ public interface DeskMapper {
      * @return
      */
 
-    List<Desk> getAllDeskInfo(@Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize) throws Exception;
+    List<Desk> getAllDeskInfo() throws Exception;
 
     /**
      * 添加科室信息
@@ -36,14 +36,14 @@ public interface DeskMapper {
      *
      * @return
      */
-    int delDeskInfo(@Param("deskId") int deskId) throws Exception;
+    int delDeskInfo(@Param("deskId") String deskId) throws Exception;
 
     /**
      * 根据id查询科室信息
      * @param deskId
      * @return
      */
-    List<Desk> getAllDeskInfoByid(@Param("deskId") int deskId) throws  Exception;
+    List<Desk> getAllDeskInfoByid(@Param("deskId") String deskId) throws  Exception;
 
 
     /**

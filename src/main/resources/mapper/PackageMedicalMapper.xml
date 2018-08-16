@@ -3,8 +3,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dyhc.hospital.dao.PackageMedicalMapper">
 
-    <select id="getPackageInfoByPackageId" resultType="com.dyhc.hospital.entity.PackageMedical">
-        select * from package_medical where packageId=#{packageId}
+    <!--查询套餐表下边的组合项的下边的体检项以及基本体检项-->
+    <select id="getPackageInfoByPackageId">
+      SELECT * FROM `combination_ medical` c
+      INNER JOIN `medical` m ON c.`medical_id` = m.`medical_id`
+      WHERE c.`combination_id` IN (
+      SELECT pm.`combination_id` FROM `package_medical` AS pm
+      WHERE pm.`package_id` = #{packageId})
+      UNION
+      SELECT * FROM `combination_ medical` c
+      INNER JOIN `medical` m ON c.`medical_id` = m.`medical_id`
+      WHERE c.`medical_id` IN (
+      SELECT pm.`medical_id` FROM `package_medical` AS pm
+      WHERE pm.`package_id` = #{packageId})
     </select>
 
 </mapper>

@@ -10,10 +10,10 @@ import java.util.List;
 @Mapper
 @Repository
 public interface CombinationMedicalMapper {
-    /**王娇娇
-     * //显示组合项下边的所有体检项目
-     * @param medicalId
+    /**
+     *  李文荣
+     *  显示组合项下边的所有体检项目
      * @return
      */
-    List<CombinationMedical> showCombinationList(@Param("medicalId") String medicalId) throws  Exception;
+    public List<CombinationMedical> showCombinationList(@Param("medicalId") String medicalId) throws  Exception;
 }

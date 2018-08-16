@@ -17,7 +17,7 @@ public interface ArchivesMapper {
      *  判断用户是否有存档 如果存在 就调用registerUserInfo()方法进行显示,如果没有就登记信息
      * @return
      */
-    Archives ifArchives(@Param("testNumber") String testNumber );
+    Archives ifArchives(@Param("testNumber") String testNumber )throws  Exception;
 
 
     /**
@@ -25,7 +25,7 @@ public interface ArchivesMapper {
      * 检查次数加1
      * @return
      */
-    public Integer updArchivesCheckCount(@Param("testNumber") String testNumber );
+    public Integer updArchivesCheckCount(@Param("testNumber") String testNumber )throws  Exception;
 
 
 

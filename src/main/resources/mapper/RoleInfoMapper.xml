@@ -3,8 +3,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dyhc.hospital.dao.RoleInfoMapper">
     <!--查询全部-->
-     <select id="getRoleInfoList" resultType="com.dyhc.hospital.entity.RoleType">
-         select * from getRoleInfoList
+     <select id="getRoleInfoList" resultType="com.dyhc.hospital.entity.RoleInfo">
+         select * from role_info
      </select>
     <!--增加角色信息-->
     <insert id="addRoleInfo">
@@ -15,7 +15,7 @@
        select * from role_info where role_info_id=#{roleInfoId}
    </select>
     <!--修改-->
-   <update id="updRoleInfo" parameterType="com.dyhc.hospital.entity.RoleType">
+   <update id="updRoleInfo" parameterType="com.dyhc.hospital.entity.RoleInfo">
        update
            role_info
         SET
@@ -26,4 +26,13 @@
          `role_type_id` = #{roleTypeId}
        WHERE `role_info_id` = #{roleInfoId};
    </update>
+
+    <select id="getRoleInfoByName" resultType="com.dyhc.hospital.entity.RoleInfo">
+         SELECT * FROM role_info WHERE user_name=#{userName}
+    </select>
+<!--登陆方法
+     ahthor:ycy-->
+    <select id="getLogin" resultType="com.dyhc.hospital.entity.RoleInfo">
+        SELECT * FROM role_info WHERE user_name=#{userName} AND PASSWORD=#{password} AND role_type_id=#{roleTypeId}
+    </select>
 </mapper>

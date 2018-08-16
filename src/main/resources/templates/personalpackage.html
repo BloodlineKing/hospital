@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>科室医生登录</title>
+		<title>护士登录</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<meta name="keywords" content="">
 		<meta name="description" content="医疗管理系统，为您提供更优质的服务">
@@ -22,7 +22,7 @@
 		</div>
 		<div class="layui-container layui-row" style="margin-top: 1%;">
 			<div class="layui-col-md9">
-				欢迎您，尊敬的护士：<label class="username">admin</label>
+				欢迎您，尊敬的护士：<label class="username"id="uname">admin</label>
 			</div>
 			<div class="layui-col-md3">
 				<label id="nowdate"></label>
@@ -513,6 +513,24 @@
 		<script src="layui.js "></script>
 		<script type="text/javascript " src="js/personalpackage.js "></script>
 		<script src="js/nowdate.js"></script>
+		<script type="text/javascript">
+            layui.use(['jquery'],function () {
+                var $=jQuery=layui.$;
+                window.onload=function(){
+                    var a=getQueryString('userName');
+                    $("#uname").text(a)
+                    var b=$("#uname").val();
+                }
+            })
+
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                return null;
+            }
+
+		</script>
 	</body>
 
 </html>

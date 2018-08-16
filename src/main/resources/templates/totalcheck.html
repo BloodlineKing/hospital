@@ -22,7 +22,7 @@
 		</div>
 		<div class="layui-container layui-row" style="margin-top: 1%;">
 			<div class="layui-col-md9">
-				欢迎您，尊敬的总检医生：<label class="username">admin</label>
+				欢迎您，尊敬的总检医生：<label class="username" id="uname">admin</label>
 			</div>
 			<div class="layui-col-md3">
 				<label id="nowdate"></label>
@@ -200,6 +200,24 @@
 		</div>
 		<script src="layui.js"></script>
 		<script type="text/javascript" src="js/totalcheck.js"></script>
+		<script type="text/javascript">
+			layui.use(['jquery'],function () {
+				var $=jQuery=layui.$;
+                window.onload=function(){
+                    var a=getQueryString('userName');
+                    $("#uname").text(a)
+                     var b=$("#uname").val();
+                }
+            })
+
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                return null;
+            }
+
+		</script>
 	</body>
 
 </html>

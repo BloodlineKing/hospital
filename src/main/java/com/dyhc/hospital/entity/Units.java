@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -26,6 +27,16 @@ public class Units {
     private Date createTime;
     private int modifyBy;
     private Date modifyTime;
+
+    public List<UnitsGroup> getGroupList() {
+        return groupList;
+    }
+
+    public void setGroupList(List<UnitsGroup> groupList) {
+        this.groupList = groupList;
+    }
+
+    private List<UnitsGroup> groupList;
 
     @Id
     @Column(name = "units_id")

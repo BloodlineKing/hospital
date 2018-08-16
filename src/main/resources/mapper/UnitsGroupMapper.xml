@@ -4,9 +4,10 @@
 <mapper namespace="com.dyhc.hospital.dao.UnitsGroupMapper">
 
     <!--查询单位分组信息-->
-    <select id="getAllUnitsGroupInfo" resultType="com.dyhc.hospital.entity.UnitsGroup">
-    SELECT * FROM units_group LIMIT #{pageIndex},#{pageSize}
-    </select>
+    <select id="getAllUnitsGroupInfo" resultMap="units">
+     SELECT * FROM units_group g
+     INNER JOIN units u ON g.units_id=u.`units_id`
+   </select>
 
     <!--添加单位分组信息-->
     <insert id="addUnitsGroupInfo">
@@ -21,9 +22,11 @@
 
     <!--根据id查询单位信息-->
     <select id="getAllUnitsGroupInfoByid" resultType="com.dyhc.hospital.entity.UnitsGroup">
-    SELECT * FROM units_group where units_group_id=#{unitsGroupId}
+        SELECT * FROM units_group g
+        INNER JOIN units u
+        ON g.`units_id`=u.`units_id`
+        WHERE g.units_group_id=#{unitsGroupId}
     </select>
-
 
     <!--修改单位信息-->
     <update id="updUnitsGroupInfo" parameterType="com.dyhc.hospital.entity.UnitsGroup">
@@ -44,4 +47,13 @@
           `isdelete` = #{isdelete}
         WHERE `units_group_id` = #{unitsGroupId};
     </update>
+
+    <!--自动高级映射-->
+    <resultMap id="units" type="com.dyhc.hospital.entity.Units">
+        <id column="units_id" property="unitsId"/>
+        <collection property="groupList" ofType="com.dyhc.hospital.entity.UnitsGroup">
+            <id column="units_group_id" property="unitsGroupId"/>
+        </collection>
+    </resultMap>
+
 </mapper>

@@ -16,6 +16,7 @@ public class UnitsGroup {
     private Integer ageUpperLimit;
     private Integer ageLowerLimit;
     private String dutyCondition;
+    private  String unitsName;
     private int createBy;
     @JSONField(format = "yyyy-MM-dd")
     private Date createTime;
@@ -23,6 +24,7 @@ public class UnitsGroup {
     @JSONField(format = "yyyy-MM-dd")
     private Date modifuTime;
     private int isdelete;
+
 
     @Id
     public String getUnitsGroupId() {
@@ -130,6 +132,14 @@ public class UnitsGroup {
 
     public void setModifuTime(Date modifuTime) {
         this.modifuTime = modifuTime;
+    }
+    @Basic
+    public String getUnitsName() {
+        return unitsName;
+    }
+
+    public void setUnitsName(String unitsName) {
+        this.unitsName = unitsName;
     }
 
     @Basic

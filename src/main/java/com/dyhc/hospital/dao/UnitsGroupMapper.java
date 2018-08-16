@@ -22,7 +22,7 @@ public interface UnitsGroupMapper {
      * @return
      */
 
-    List<UnitsGroup> getAllUnitsGroupInfo(@Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize) throws Exception;
+    List<UnitsGroup> getAllUnitsGroupInfo() throws Exception;
 
     /**
      * 添加单位分组信息

@@ -1,7 +1,11 @@
 package com.dyhc.hospital.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.dyhc.hospital.entity.Package;
+import com.dyhc.hospital.entity.PackageMedical;
 import com.dyhc.hospital.entity.UnitsGroup;
+import com.dyhc.hospital.service.PackageMedicalService;
+import com.dyhc.hospital.service.PackageService;
 import com.dyhc.hospital.service.UnitsGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +19,10 @@ import java.util.List;
 public class UnitsGroupController {
     @Autowired
     private UnitsGroupService unitsGroupService;
-    private String unitsGroupId;
+    @Autowired
+    private PackageService packageService;
+    @Autowired
+    private PackageMedicalService  packageMedicalService;
     private UnitsGroup unitsGroup;
 
     public List<UnitsGroup> getList() {
@@ -36,13 +43,6 @@ public class UnitsGroupController {
         this.unitsGroup = unitsGroup;
     }
 
-    public String getUnitsGroupId() {
-        return unitsGroupId;
-    }
-
-    public void setUnitsGroupId(String unitsGroupId) {
-        this.unitsGroupId = unitsGroupId;
-    }
 
    @RequestMapping("/getAll.do")
    @ResponseBody
@@ -77,10 +77,10 @@ public class UnitsGroupController {
     }
     @RequestMapping("/delGroup.do")
     @ResponseBody
-    public String delGroup() {
+    public String delGroup(@RequestParam("unitsGroupId") String unitsGroupIds) {
         Integer del = 0;
         try {
-            del = unitsGroupService.delUnitsGroupInfo(unitsGroupId);
+            del = unitsGroupService.delUnitsGroupInfo(unitsGroupIds);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -98,6 +98,29 @@ public class UnitsGroupController {
             e.printStackTrace();
         }
         return JSON.toJSONString(list);
+    }
+    @RequestMapping("/getPackage.do")
+    @ResponseBody
+    private String getPackage(){
+        List<Package> listP=null;
+        try{
+            listP=packageService.getAllPackageInfos();
+           System.out.println(listP.size());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return JSON.toJSONString(listP);
+    }
+    @RequestMapping("/getPackageMedical.do")
+    @ResponseBody
+    private  String getPackageMedical(@RequestParam("packageId") Integer packageId){
+        List<PackageMedical> page=null;
+        try {
+            page=packageMedicalService.getAllInfo(packageId);
+          }catch (Exception e){
+              e.printStackTrace();
+          }
+          return  JSON.toJSONString(page);
     }
 
 

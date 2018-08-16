@@ -25,6 +25,11 @@ public interface PackageMapper {
 
     List<Package> getAllPackageInfo(@Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize) throws  Exception;
 
+    /**王娇娇分组要用
+     * 查询全部套餐
+     * @return
+     */
+    List<Package> getAllPackageInfos()throws  Exception;
     /**
      * 添加套餐信息
      *

@@ -9,6 +9,24 @@ public class PackageMedical {
     private int packageId;
     private String combinationId;
     private String medicalId;
+    private  String com;
+    private  String medical;
+
+    public String getCom() {
+        return com;
+    }
+
+    public void setCom(String com) {
+        this.com = com;
+    }
+
+    public String getMedical() {
+        return medical;
+    }
+
+    public void setMedical(String medical) {
+        this.medical = medical;
+    }
 
     @Id
     public int getPackageMedicalId() {

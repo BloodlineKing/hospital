@@ -19,4 +19,12 @@ public interface PackageMedicalMapper {
      * @throws Exception
      */
     List<PackageMedical>  getPackageInfoByPackageId(@Param("packageId") int packageId )throws Exception;
+
+    /**
+     * 王娇娇
+     * 根据id查询下拉框所选的套餐里的组合项和体检项
+     * @param packageId
+     * @return
+     */
+    List<PackageMedical>  getAllInfo(@Param("packageId")Integer packageId)throws Exception;
 }

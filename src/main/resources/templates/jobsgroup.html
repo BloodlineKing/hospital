@@ -143,19 +143,14 @@
 						</div>
 						<div>
 						<div class="layui-form-item">
-							<label class="layui-form-label">选择套餐：</label>
-							<div class="layui-input-block">
-								<select name="city" lay-verify="required">
-									<option value=""></option>
-									<option value="0">北京</option>
-									<option value="1">上海</option>
-									<option value="2">广州</option>
-									<option value="3">深圳</option>
-									<option value="4">杭州</option>
+							<label class="layui-form-label" >选择套餐：</label>
+							<div class="layui-input-block" id="package">
+								<select name="package" lay-verify="required" onclick='getPById()'>
+
 								</select>
 							</div>
 						</div>
-						<div class="layui-input-block" style="border: solid 1px #C9C9C9;overflow:auto; width: 800px; height: 180px;">
+						<div class="layui-input-block"  id="medical"style="border: solid 1px #C9C9C9;overflow:auto; width: 800px; height: 180px;">
 								<div style="margin-left:2%;width: 300px; height: 50px; line-height: 50px;">
 									<a>第一个体检项</a>
 								</div>
@@ -224,10 +219,13 @@
 	     <script type="text/javascript">
              //窗体加载
              var element;
-             layui.use(['element'], function() {
+             var form;
+             layui.use(['element','form'], function() {
                  element=layui.element,
+					 form=layui.form,
                      $=layui.jquery;
                  getAll();
+                 getPackage();
                  element.init();
              });
              //查询全部
@@ -257,7 +255,6 @@
              }
              //根据id查询对象
              function  getById(unitsGroupId) {
-                 alert(unitsGroupId);
                      var $ = jQuery = layui.$;
                      $(function () {
                          $.getJSON("http://localhost:8080/getById.do?unitsGroupId="+unitsGroupId,{},function (date) {
@@ -269,6 +266,40 @@
 
                          })
                      })
+             }
+             //全部套餐
+             function  getPackage() {
+                 var $ = jQuery = layui.$;
+                 $(function () {
+					 $.getJSON("http://localhost:8080/getPackage.do",{},function (result) {
+					     alert(result);
+					     console.log(result)
+                           var content="<option value='请选择'>请选择</option>";
+                           $.each(result,function (i,e) {
+							   content+="<option value='"+e.packageId+"'>"+e.packageName+"</option>";
+                           });
+                           $("#package select[name=package]").html(content);
+                           form.render();
+                     });
+                 })
+             }
+             function  getPById() {
+                 var $ = jQuery = layui.$;
+                 var packageId=$("select[name=package]").val();
+                 alert(packageId);
+                 $.getJSON("http://localhost:8080/getPackageMedical.do",{"packageId":packageId},function (date) {
+                     alert(date);
+                     var content="";
+                     $.each(date,function (i,e) {
+                         content+="<div style=\"margin-left:2%;width: 300px; height: 50px; line-height: 50px;\">\n" +
+                             "<a>"+e.com+"</a>" +
+                             "<a>"+e.medical+"</a>" +
+                             "</div>"
+                     });
+                     $("#medical").html(content);
+					 
+                 })
+
              }
 		 </script>
 

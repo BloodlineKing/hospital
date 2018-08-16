@@ -6,6 +6,10 @@
     <select id="getAllPackageInfo" resultType="com.dyhc.hospital.entity.Package">
     SELECT * FROM package LIMIT #{pageIndex},#{pageSize}
     </select>
+    <!--查询全部套餐信息-->
+    <select id="getAllPackageInfos" resultType="com.dyhc.hospital.entity.Package">
+        SELECT * FROM package
+    </select>
 
     <!--添加套餐信息-->
     <insert id="addPackageInfo">

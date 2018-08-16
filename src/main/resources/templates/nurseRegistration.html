@@ -67,17 +67,18 @@
 				<h2>体检人员登记</h2>
 				<div class="layui-tab layui-tab-brief" lay-filter="user" style="font-size: 16px;">
 					<form class="layui-form">
+                        <input type="hidden" name="testNumber"/>
 						<div class="layui-form-item">
 							<label class="layui-form-label">姓名：</label>
 							<div class="layui-input-block">
-								<input style="width: 300px;" type="text" name="title" required lay-verify="required" placeholder="请输入姓名（必填）" autocomplete="off" class="layui-input">
+								<input style="width: 300px;" type="text" id="username" name="userName" required lay-verify="required" placeholder="请输入姓名（必填）" autocomplete="off" class="layui-input">
 							</div>
 						</div>
 						<div class="layui-form-item">
 							<label class="layui-form-label">年龄：</label>
 							<div class="layui-input-block">
 								<div class="layui-input-inline">
-									<input style="width: 300px;" type="text" name="age" required lay-verify="required|number" placeholder="请输入年龄（必填）" autocomplete="off" class="layui-input">
+									<input style="width: 300px;" type="text" name="age" lay-verify="number" placeholder="请输入年龄（必填）" autocomplete="off" class="layui-input">
 								</div>
 							</div>
 						</div>
@@ -91,26 +92,26 @@
 						<div class="layui-form-item">
 							<label class="layui-form-label">出生日期：</label>
 							<div class="layui-input-block">
-								<input style="width: 300px;" required lay-verify="required|date" name="bron" type="text" class="layui-input" id="born" placeholder="yyyy-MM-dd(必填)">
+								<input style="width: 300px;" lay-verify="date" name="bron" type="text" class="layui-input" id="born" placeholder="yyyy-MM-dd(必填)">
 							</div>
 						</div>
 						<div class="layui-form-item">
 							<label class="layui-form-label">身份证号：</label>
 							<div class="layui-input-block">
-								<input style="width: 300px;" required lay-verify="required|identity" name="id_card" type="text" class="layui-input" id="id_card" placeholder="请输入身份证（必填）">
+								<input style="width: 300px;" lay-verify="identity" name="idCard" type="text" class="layui-input" id="id_card" placeholder="请输入身份证（必填）">
 							</div>
 						</div>
 						<div class="layui-form-item">
 							<label class="layui-form-label">婚否：</label>
 							<div class="layui-input-block">
-								<input type="radio" name="marital_status" value="0" title="未婚" checked>
-								<input type="radio" name="marital_status" value="1" title="已婚	">
+								<input type="radio" name="maritalStatus" value="0" title="未婚" checked>
+								<input type="radio" name="maritalStatus" value="1" title="已婚">
 							</div>
 						</div>
 						<div class="layui-form-item">
 							<label class="layui-form-label">联系电话：</label>
 							<div class="layui-input-block">
-								<input style="width: 300px;" required lay-verify="required|phone" name="id_card" type="text" class="layui-input" id="id_card" placeholder="请输入身份证（必填）">
+								<input style="width: 300px;" required lay-verify="required|phone" name="telephone" type="text" class="layui-input" id="id_card" placeholder="请输入联系电话（必填）">
 							</div>
 						</div>
 						<div class="layui-form-item">
@@ -122,19 +123,19 @@
 						<div class="layui-form-item">
 							<label class="layui-form-label">姓名拼音简码：</label>
 							<div class="layui-input-block">
-								<input style="width: 300px;" type="text" name="name_code" required lay-verify="required" placeholder="请输入拼音简码（必填）" autocomplete="off" class="layui-input">
+								<input style="width: 300px;" type="text" readonly id="namecode" name="nameCode" required lay-verify="required" placeholder="请输入拼音简码（必填）" autocomplete="off" class="layui-input">
 							</div>
 						</div>
 						<div class="layui-form-item">
 							<label class="layui-form-label">工作编号：</label>
 							<div class="layui-input-block">
-								<input style="width: 300px;" type="text" name="work_number" placeholder="请输入工作编号" autocomplete="off" class="layui-input">
+								<input style="width: 300px;" type="text" name="workNumber" placeholder="请输入工作编号" autocomplete="off" class="layui-input">
 							</div>
 						</div>
 						<div class="layui-form-item">
 							<label class="layui-form-label">人员类别：</label>
 							<div class="layui-input-block">
-								<input style="width: 300px;" type="text" name="person_type" placeholder="请输入人员类别" autocomplete="off" class="layui-input">
+								<input style="width: 300px;" type="text" name="personType" placeholder="请输入人员类别" autocomplete="off" class="layui-input">
 							</div>
 						</div>
 						<div class="layui-form-item">
@@ -153,7 +154,7 @@
 						</div>
 						<div class="layui-form-item layui-col-md-offset1">
 							<div class="layui-input-block">
-								<button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+								<input type="button" onclick="submitInfo()" class="layui-btn" lay-filter="formDemo" value="立即提交"/>
 								<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 								<a href="#">EXCELE批量导入</a>
 							</div>
@@ -176,7 +177,56 @@
 		</div>
 
 		<script src="layui.js"></script>
-		<script src="js/nurseRegistration.js"></script>
+		<script src="js/nurseRegistration.js"></script>、
+        <script src="jQuery.Hz2Py-min.js.js"></script>
+	<script type="application/javascript">
+        layui.use(['jquery'], function(){
+            var $ = jQuery = layui.$;
+            $(function () {
+                $(function() {
+                    $("#username").on("keyup keydown change blur", function() {
+                        $("#namecode").val($(this).toPinyin());
+                    });
+                });
+            });
+            $("input[name='telephone']").blur(function () {
+                var name=$("#namecode").val();
+                var telephone=$("input[name='telephone']").val();
+                $.ajax({
+                    url:"http://localhost:8080/isHaveBefore",
+                    data:{name:name,telephone:telephone},
+                    dataType:"json",
+                    success:function (result) {
+                        if(result==""){
+                            alert("该用户无档案");
+                        }else{
+                            console.log(result);
+                            $("input[name='idCard']").val(result.idCard);
+                            $("input[name='age']").val(result.age);
+                            $("input[name='address']").val(result.address);
+                        }
+                    }
+                })
+            });
+        });
+        function submitInfo(){
+            layui.use(['jquery'], function() {
+                var $ = jQuery = layui.$;
+                var form=$("form").serialize();
+                alert(form);
+                $.ajax({
+                    url:"/addAppointment",
+                    data:form,
+                    dataType:"json",
+                    success:function (result) {
+                        if (result=="ok"){
+                            alert("填入信息成功");
+                        }
+                    }
+                })
+            });
+        }
+	</script>
 	</body>
 
 </html>

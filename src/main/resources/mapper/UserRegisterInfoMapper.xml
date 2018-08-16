@@ -16,7 +16,7 @@
     <select id="findUserRegisterInfoByTestNumber" resultType="com.dyhc.hospital.entity.UserRegisterInfo" >
         SELECT * FROM `user_register_info` WHERE `test_number` = #{testNumber};
     </select>
-    <!--进行用户登录信息-->
+    <!--进行用户登记信息-->
     <insert id="registerUserInfo">
         INSERT INTO `hospital_test_manager_db`.`user_register_info` ( `test_number`,`user_name`,`age`,`born`,`sex`,`id_card`,
               `marital_status`, `telephone`, `address`, `name_code`,`work_number`,`person_type`,
@@ -24,5 +24,51 @@
         VALUES( #{testNumber}, #{userName}, #{age},#{born},#{sex},#{idCard}, #{maritalStatus}, #{telephone},#{address},#{nameCode}
         ,#{workNumber}, #{personType},#{status},#{belongtoUnits},now(), #{createBy});
     </insert>
+
+
+    <!--刘杰——登记前根据姓名拼音简码查找是否有预约记录-->
+    <select id="findUserInfoByNameCode" resultType="com.dyhc.hospital.entity.UserRegisterInfo">
+        SELECT * FROM `user_register_info` where name_code = #{nameCode}
+    </select>
+
+    <!--刘杰——根据拼音简码和电话号查询用户信息-->
+    <select id="getUserInfoByNameAndTelephone" resultType="com.dyhc.hospital.entity.UserRegisterInfo">
+        SELECT * FROM `user_register_info` where name_code = #{name} and telephone=#{telephone}
+    </select>
+
+    <!--刘杰——修改档案中的体检次数，如果返回1说明修改成功并存在该用户信息，如果返回0说明档案里没有该用户-->
+    <update id="isHaveBefore">
+        update archives set check_count=check_count+1 where test_number=#{testNumber}
+    </update>
+
+    <!--刘杰——添加预约-->
+    <insert id="insertAppointment" parameterType="com.dyhc.hospital.entity.UserRegisterInfo">
+        INSERT INTO `user_register_info` ( `test_number`,`user_name`,`sex`,
+              `telephone`, `name_code`)
+        VALUES( #{testNumber}, #{userName},#{sex},  #{telephone},#{nameCode});
+    </insert>
+
+    <!--刘杰——修改预约为登记-->
+    <update id="setAppointmentToRegister" parameterType="com.dyhc.hospital.entity.UserRegisterInfo">
+    UPDATE
+  `hospital_test_manager_db`.`user_register_info`
+SET
+  `user_name` =  #{userName},`age` =  #{age},`born` =  #{born},
+  `sex` = #{sex},`id_card` = #{idCard},
+`marital_status` =  #{maritalStatus},
+`telephone` =  #{telephone},`address` =  #{address},
+  `name_code` = #{nameCode},
+  `work_number` =  #{workNumber},`person_type` =  #{personType},
+  `status` = #{status},
+  `belongto_units` =  #{belongtoUnits},
+  `create_time` = now(),
+  `create_by` =#{createBy}
+WHERE `test_number` =  #{testNumber};
+    </update>
+
+    <!--刘杰——获取今天的最近的一次体检编号-->
+    <select id="getTestNumber" resultType="java.lang.String">
+        select test_number from user_register_info where test_number like CONCAT(#{today},'%') order by test_number desc
+    </select>
 
 </mapper>

@@ -22,7 +22,7 @@ public interface UnitsMapper {
      * @return
      */
 
-    List<Units> getAllUnitsInfo(@Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize) throws Exception;
+    List<Units> getAllUnitsInfo() throws Exception;
 
     /**
      * 添加单位信息
@@ -36,14 +36,14 @@ public interface UnitsMapper {
      *
      * @return
      */
-    int delUnitsInfo(@Param("unitsId") int unitsId) throws Exception;
+    //int delUnitsInfo(@Param("unitsId") int unitsId,@Param("isdelete")int isdelete) throws Exception;
 
     /**
      * 根据id单位信息
      * @param unitsId
      * @return
      */
-    List<Units> getAllUnitsInfoByid(@Param("unitsId") int unitsId) throws  Exception;
+    Units getAllUnitsInfoByid(@Param("unitsId") int unitsId) throws  Exception;
 
 
     /**
@@ -52,4 +52,11 @@ public interface UnitsMapper {
      * @return
      */
     int updUnitsInfo(Units units) throws  Exception;
+
+    /**
+     * 查询单位编号的最后一位 倒序查询
+     * 李文荣
+     * @return
+     */
+    Units getUnitsNameByDesc() throws Exception;
 }

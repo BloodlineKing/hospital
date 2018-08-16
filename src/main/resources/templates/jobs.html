@@ -36,21 +36,12 @@
 				<!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
 				<li class="layui-nav-item ">
 					<a href="javascript:;">体检单位</a>
-					<dl class="layui-nav-child">
-						<dd>
-							<a href="javascript:;">单位1</a>
-						</dd>
-						<dd>
-							<a href="javascript:;">单位2</a>
-						</dd>
-						<dd>
-							<a href="javascript:;">单位3</a>
-						</dd>
+					<dl class="layui-nav-child" id="unitsName">
+
 					</dl>
 				</li>
 				
 			</ul>
-
 			<div class="site-tree-mobile layui-hide">
 				<i class="layui-icon">&#xe602;</i>
 			</div>
@@ -66,78 +57,78 @@
 					<h2>体检单位信息维护</h2>
 				</div>
 				<div style="margin-top:2%;">
-					<form class="layui-form" action="">
+					<form class="layui-form" action="" id="info">
 						<div class="layui-form-item layui-inline" style="width: 400px;">
 							<label class="layui-form-label">编号：</label>
 							<div class="layui-input-block" style="width: 200px;">
-								<input type="text" name="title" placeholder="(只读)" readonly="readonly" autocomplete="off" class="layui-input">
+								<input type="text" name="unitsId" placeholder="(只读)" readonly="readonly" autocomplete="off" class="layui-input" id="unitsId">
 							</div>
 						</div>
 						<div class="layui-form-item layui-inline">
 							<label class="layui-form-label">是否启用：</label>
 							<div class="layui-input-block">
-								<input type="radio" name="isdelete" value="0" title="是" checked>
-								<input type="radio" name="isdelete" value="1" title="否">
+								<input type="radio" name="isdelete" value="1" title="是" checked>
+								<input type="radio" name="isdelete" value="0" title="否">
 							</div>
 						</div>
 						<div class="layui-form-item" style="width: 500px;">
 							<label class="layui-form-label">单位名称：</label>
 							<div class="layui-input-block" style="width: 500px;">
-								<input type="text" name="title" required lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
+								<input type="text" name="unitsName" required lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input" id="unitsNames">
 							</div>
 						</div>
 						<div class="layui-form-item layui-inline" style="width: 400px;">
 							<label class="layui-form-label">拼音简码：</label>
 							<div class="layui-input-block" style="width: 200px;">
-								<input type="text" name="title" required lay-verify="required" placeholder="请输入简码" autocomplete="off" class="layui-input">
+								<input type="text" name="spellCode" required lay-verify="required" placeholder="请输入简码" autocomplete="off" class="layui-input" id="spellCode">
 							</div>
 						</div>
 						<div class="layui-form-item layui-inline" style="width: 200px;">
 							<label class="layui-form-label">邮政编码：</label>
 							<div class="layui-input-block" style="width: 200px;">
-								<input type="text" name="title" required lay-verify="required" placeholder="请输入邮政编码" autocomplete="off" class="layui-input">
+								<input type="text" name="postalCode" required lay-verify="required" placeholder="请输入邮政编码" autocomplete="off" class="layui-input" id="postalCode">
 							</div>
 						</div><br />
 						<div class="layui-form-item layui-inline" style="width: 400px;">
 							<label class="layui-form-label">联系人：</label>
 							<div class="layui-input-block" style="width: 200px;">
-								<input type="text" name="title" required lay-verify="required" placeholder="请输入简码" autocomplete="off" class="layui-input">
+								<input type="text" name="unitsPrincipal" required lay-verify="required" placeholder="请输入简码" autocomplete="off" class="layui-input" id="unitsPrincipal">
 							</div>
 						</div>
 						<div class="layui-form-item layui-inline" style="width: 200px;">
 							<label class="layui-form-label">联系电话：</label>
 							<div class="layui-input-block" style="width: 200px;">
-								<input type="phone" name="title" required lay-verify="required" placeholder="请输入邮政编码" autocomplete="off" class="layui-input">
+								<input type="phone" name="telephone" required lay-verify="required" placeholder="请输入邮政编码" autocomplete="off" class="layui-input" id="telephone">
 							</div>
 						</div>
 						<div class="layui-form-item" style="width: 500px;">
 							<label class="layui-form-label">联系地址：</label>
 							<div class="layui-input-block" style="width: 500px;">
-								<input type="text" name="title" required lay-verify="required" placeholder="请输入联系地址" autocomplete="off" class="layui-input">
+								<input type="text" name="address" required lay-verify="required" placeholder="请输入联系地址" autocomplete="off" class="layui-input" id="address">
 							</div>
 						</div>
 						<div class="layui-form-item" style="width: 500px;">
 							<label class="layui-form-label">业务银行：</label>
 							<div class="layui-input-block" style="width: 500px;">
-								<input type="text" name="title" required lay-verify="required" placeholder="请输入业务银行" autocomplete="off" class="layui-input">
+								<input type="text" name="businessBank" required lay-verify="required" placeholder="请输入业务银行" autocomplete="off" class="layui-input" id="businessBank">
 							</div>
 						</div>
 						<div class="layui-form-item" style="width: 500px;">
 							<label class="layui-form-label">银行账号：</label>
 							<div class="layui-input-block" style="width: 500px;">
-								<input type="text" name="title" required lay-verify="required" placeholder="请输入银行账号" autocomplete="off" class="layui-input">
+								<input type="text" name="bankNumber" required lay-verify="required" placeholder="请输入银行账号" autocomplete="off" class="layui-input" id="bankNumber">
 							</div>
 						</div>
 						<div class="layui-form-item layui-inline" style="width: 400px;">
 							<label class="layui-form-label">企业性质：</label>
 							<div class="layui-input-block" style="width: 200px;">
-								<input type="text" name="title" required lay-verify="required" placeholder="请输入企业性质" autocomplete="off" class="layui-input">
+								<input type="text" name="companyNature" required lay-verify="required" placeholder="请输入企业性质" autocomplete="off" class="layui-input" id="companyNature">
 							</div>
 						</div>
 						<div class="layui-form-item layui-inline" style="width: 200px;">
 							<label class="layui-form-label">编制人数：</label>
 							<div class="layui-input-block" style="width: 200px;">
-								<input type="phone" name="title" required lay-verify="required" placeholder="请输入编制人数" autocomplete="off" class="layui-input">
+								<input type="phone" name="authorizedNumber" required lay-verify="required" placeholder="请输入编制人数" autocomplete="off" class="layui-input" id="authorizedNumber">
 							</div>
 						</div>
 						
@@ -148,12 +139,13 @@
 						<div class="layui-form-item layui-form-text">
 							<label class="layui-form-label">备注</label>
 							<div class="layui-input-block">
-								<textarea name="desc" placeholder="请输入备注内容" class="layui-textarea"></textarea>
+								<textarea name="remark" placeholder="请输入备注内容" class="layui-textarea" id="remark"></textarea>
 							</div>
 						</div>
 						<div class="layui-form-item">
 							<div class="layui-input-block">
-								<button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
+								<input type="button" class="layui-btn" id="choose" value="保存"  />
+
 							</div>
 						</div>
 					</form>
@@ -185,6 +177,105 @@
 		</div>
 		<script src="layui.js"></script>
 		<script src="js/jobs.js"></script>
+		<script type="application/javascript">
+            layui.use(['jquery'], function(){
+                showUnitsInfo();
+                var $ = jQuery = layui.$;
+				$("#choose").click(function () {
+				    //
+					/*updUnitsInfo();*/
+				});
+			});
+
+            /*显示信息*/
+            function showUnitsInfo() {
+                var $ = jQuery = layui.$;
+                var content = "";
+                $(function () {
+                    /*查询所有公司名称*/
+                    $.ajax({
+                        url: "http://localhost:8080/showUnitsInfo.do",
+                        data: {},
+                        dataType: "json",
+                        success: function (result) {
+                            $.each(result,function (i,e) {
+                                content += "<dd><a href='javascript:;' onclick='findById(\""+ e.unitsId +"\")'>"+e.unitsName+"</a></dd>";
+                            });
+                            $("#unitsName").html(content);
+                        }
+                    })
+                });
+            }
+
+            /*根据公司名称显示公司信息*/
+            function findById(unitsId) {
+                var $ = jQuery = layui.$;
+                $(function () {
+                    $.ajax({
+                        url: "http://localhost:8080/getAllUnitsInfoByid.do?unitsId="+unitsId,
+                        data: {},
+                        dataType: "json",
+                        success: function (result) {
+							$("#unitsId").val(result.unitsId);
+                            $("#unitsNames").val(result.unitsName);
+                            $("#spellCode").val(result.spellCode);
+                            $("#postalCode").val(result.postalCode);
+                            $("#unitsPrincipal").val(result.unitsPrincipal);
+                            $("#telephone").val(result.telephone);
+                            $("#address").val(result.address);
+                            $("#businessBank").val(result.businessBank);
+                            $("#bankNumber").val(result.bankNumber);
+                            $("#companyNature").val(result.companyNature);
+                            $("#authorizedNumber").val(result.authorizedNumber);
+                            $("#remark").val(result.remark);
+                            $("#isdelete").val(result.isdelete);
+                        }
+                    })
+                });
+            }
+            /*function choose() {
+                updUnitsInfo();
+            }*/
+
+            /*修改操作*/
+            function updUnitsInfo() {
+                var $ = jQuery = layui.$;
+                var content = $("form").serialize();
+                alert(content);
+				$.ajax({
+					url: "http://localhost:8080/updUnitsInfo.do",
+					data: content,
+					dataType: "json",
+					type:"get",
+					success: function (result) {
+					   if(result>0){
+						   alert("修改成功!");
+
+					   }
+					}
+                });
+
+            }
+
+            /*添加信息*/
+            function addUnitsInfo() {
+                var $ = jQuery = layui.$;
+                var content = $("form").serialize();
+                alert(content);
+                $.ajax({
+                    url: "http://localhost:8080/addUnitsInfo.do",
+                    data: content,
+                    dataType: "json",
+                    type:"get",
+                    success: function (result) {
+                        if(result>0){
+                            alert("添加成功!");
+                            showUnitsInfo();
+                        }
+                    }
+                });
+            }
+		</script>
 	</body>
 
 </html>

@@ -5,19 +5,21 @@
 
     <!--查询单位信息-->
     <select id="getAllUnitsInfo" resultType="com.dyhc.hospital.entity.Units">
-    SELECT * FROM units LIMIT #{pageIndex},#{pageSize}
+      SELECT * FROM `units` WHERE `isdelete` = 1;
     </select>
 
     <!--添加单位信息-->
     <insert id="addUnitsInfo">
       INSERT INTO units
-      VALUES(#{unitsId},#{unitsName},#{spellCode},#{unitsPrincipal},#{telephone},#{postalCode},#{address},#{businessBank},#{bankNumber},#{companyNature},#{authorizedNumber},#{remark},#{isdelete},#{createBy},#{createTime},#{modifyBy},#{modifyTime})
+      VALUES(#{unitsId},#{unitsName},#{spellCode},#{unitsPrincipal},#{telephone},#{postalCode},
+      #{address},#{businessBank},#{bankNumber},#{companyNature},#{authorizedNumber},#{remark},#{isdelete},
+      1,now(),#{modifyBy},#{modifyTime})
     </insert>
 
     <!--删除单位信息-->
-    <update id="delUnitsInfo">
-        UPDATE units SET isdelete=0 WHERE units_id=#{unitsId}
-    </update>
+   <!-- <update id="delUnitsInfo">
+        UPDATE units SET isdelete=#{isdelete} WHERE units_id=#{unitsId}
+    </update>-->
 
     <!--根据id查询单位信息-->
     <select id="getAllUnitsInfoByid" resultType="com.dyhc.hospital.entity.Units">
@@ -42,11 +44,15 @@
           `authorized_number` = #{authorizedNumber},
           `remark` = #{remark},
           `isdelete` = #{isdelete},
-          `create_by` = #{createBy},
-          `create_time` = #{createTime},
           `modify_by` = #{modifyBy},
-          `modify_time` = #{modifyTime}
+          `modify_time` = now()
         WHERE `units_id` = #{unitsId};
     </update>
+
+    <!--查询单位编号的最后一位 倒序查询-->
+    <select id="getUnitsNameByDesc" resultType="com.dyhc.hospital.entity.Units">
+      SELECT * FROM `units` ORDER BY `units_id` DESC;
+    </select>
+
 
 </mapper>

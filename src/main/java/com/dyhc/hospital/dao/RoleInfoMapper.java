@@ -37,5 +37,19 @@ public interface RoleInfoMapper {
      */
     RoleInfo getRoleInfoById(@Param("roleInfoId") Integer roleInfoId)throws Exception;
 
+    /**
+     * 根据名字查询信息
+     * @param userName
+     * @return
+     */
+    RoleInfo getRoleInfoByName(@Param("userName") String  userName) throws Exception;
+    /**
+     * 登陆方法
+     * @param userName
+     * @param password
+     * @author ycy
+     * @return
+     */
+    List<RoleInfo> getLogin(@Param("userName") String userName,@Param("password") String password,@Param("roleTypeId") int roleTypeId)throws Exception;
 
 }

@@ -68,7 +68,7 @@ WHERE `test_number` =  #{testNumber};
 
     <!--刘杰——获取今天的最近的一次体检编号-->
     <select id="getTestNumber" resultType="java.lang.String">
-        select test_number from user_register_info where test_number like CONCAT(#{today},'%') order by test_number desc
+        select test_number from user_register_info where test_number like CONCAT(#{today},'%') order by test_number desc limit 0,1
     </select>
 
 </mapper>

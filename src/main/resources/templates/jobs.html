@@ -98,7 +98,7 @@
 						<div class="layui-form-item layui-inline" style="width: 200px;">
 							<label class="layui-form-label">联系电话：</label>
 							<div class="layui-input-block" style="width: 200px;">
-								<input type="phone" name="telephone" required lay-verify="required" placeholder="请输入邮政编码" autocomplete="off" class="layui-input" id="telephone">
+								<input type="phone" name="telephone" required lay-verify="required" placeholder="请输入联系电话" autocomplete="off" class="layui-input" id="telephone">
 							</div>
 						</div>
 						<div class="layui-form-item" style="width: 500px;">
@@ -150,7 +150,7 @@
 						</div>
 					</form>
 					<div class="layui-input-block ss">
-						<button class="layui-btn">取消</button>
+						<button class="layui-btn" id="reback">取消</button>
 					</div>
 					<div class="layui-input-block ss1">
 						<button class="layui-btn">打印</button>
@@ -182,9 +182,20 @@
                 showUnitsInfo();
                 var $ = jQuery = layui.$;
 				$("#choose").click(function () {
-				    //
-					/*updUnitsInfo();*/
+				    //判断 unitsId 是否为空
+					var unitsId = $("#unitsId").val();
+					if(unitsId.trim() == ""){
+						//添加操作
+                        addUnitsInfo();
+					}else{
+					    //修改
+                        updUnitsInfo();
+					}
 				});
+				/*取消按钮*/
+				$("#reback").click(function () {
+                    trimInfo();
+                });
 			});
 
             /*显示信息*/
@@ -241,7 +252,6 @@
             function updUnitsInfo() {
                 var $ = jQuery = layui.$;
                 var content = $("form").serialize();
-                alert(content);
 				$.ajax({
 					url: "http://localhost:8080/updUnitsInfo.do",
 					data: content,
@@ -270,11 +280,31 @@
                     success: function (result) {
                         if(result>0){
                             alert("添加成功!");
+                            trimInfo();
                             showUnitsInfo();
                         }
                     }
                 });
             }
+
+            /*清空信息*/
+            function trimInfo() {
+                var $ = jQuery = layui.$;
+                $("#unitsId").val("");
+                $("#unitsNames").val("");
+                $("#spellCode").val("");
+                $("#postalCode").val("");
+                $("#unitsPrincipal").val("");
+                $("#telephone").val("");
+                $("#address").val("");
+                $("#businessBank").val("");
+                $("#bankNumber").val("");
+                $("#companyNature").val("");
+                $("#authorizedNumber").val("");
+                $("#remark").val("");
+                $("#isdelete").val("");
+            }
+
 		</script>
 	</body>
 

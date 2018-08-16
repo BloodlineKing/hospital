@@ -51,7 +51,7 @@
 
     <!--查询单位编号的最后一位 倒序查询-->
     <select id="getUnitsNameByDesc" resultType="com.dyhc.hospital.entity.Units">
-      SELECT * FROM `units` ORDER BY `units_id` DESC;
+      SELECT * FROM `units` ORDER BY `units_id` DESC limit 1;
     </select>
 
 

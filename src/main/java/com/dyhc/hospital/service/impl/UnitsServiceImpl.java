@@ -32,6 +32,7 @@ public class UnitsServiceImpl implements UnitsService {
     public int addUnitsInfo(Units units) throws Exception {
         int result=0;
         //获取最大的id
+
         String unitsId = unitsMapper.getUnitsNameByDesc().getUnitsId();
         Integer unitsIdInt=Integer.parseInt(unitsId);
         unitsIdInt = unitsIdInt + 1;

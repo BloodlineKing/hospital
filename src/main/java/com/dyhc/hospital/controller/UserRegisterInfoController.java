@@ -3,6 +3,7 @@ package com.dyhc.hospital.controller;
 import com.alibaba.fastjson.JSON;
 import com.dyhc.hospital.entity.UserRegisterInfo;
 import com.dyhc.hospital.service.UserRegisterInfoService;
+import com.dyhc.hospital.util.LayUI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -105,8 +106,12 @@ public class UserRegisterInfoController {
     @RequestMapping("getUserInfoByNameCode")
     @ResponseBody
     public String getUserInfoByNameCode(@RequestParam("namecode")String namecode){
+        LayUI<UserRegisterInfo> layui=new LayUI<>();
+        layui.setCode(0);
+        layui.setCount(100);
         List<UserRegisterInfo> userRegisterInfoList=userRegisterInfoService.findUserInfoByNameCode(namecode);
-        return JSON.toJSONString(userRegisterInfoList);
+        layui.setData(userRegisterInfoList);
+        return JSON.toJSONString(layui);
     }
 
     /**

@@ -306,12 +306,9 @@
                 data: {"deskId": id},
                 type: "post",
                 success:function (data) {
-                    alert(data)
-                    if(data!=null||data!=""){
-                        alert("进入修改")
+                    if(data.length!=0){
                         updinfo();
                     }else{
-                        alert("进入添加")
                         addinfo();
                     }
                 },error:function () {

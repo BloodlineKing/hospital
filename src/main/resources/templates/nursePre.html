@@ -68,7 +68,7 @@
 							</div>
 						</div>
 						<div class="layui-col-md2">
-							<input type="button" class="layui-btn layui-bg-green" id="LAY_delallmsg" value="快速搜索"/>
+							<input type="button" name="search" onclick="search()" class="layui-btn layui-bg-green" id="LAY_delallmsg" value="快速搜索"/>
 						</div>
 					</div>
 				</div>
@@ -90,21 +90,9 @@
 		</div>
 		<script src="layui.js"></script>
 		<script type="text/javascript" src="js/nursePre.js"></script>
+		<script type="application/javascript" src="DataTableExtend.js"></script>
 	<script>
-        layui.use(['jquery'], function() {
-            var $ = jQuery = layui.$;
-            $("input[name='namecode']").bind("keyup",function () {
-                var namecode=$(this).val();
-                $.ajax({
-                    url:"http://localhost:8080/getUserInfoByNameCode",
-                    data:{namecode:namecode},
-                    dataType:"json",
-                    success:function (result) {
-                        //往表格绑定查出的数据result
-                    }
-                })
-            })
-        });
+
 	</script>
 	</body>
 

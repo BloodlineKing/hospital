@@ -1,5 +1,6 @@
 package com.dyhc.hospital.dao;
 
+import com.dyhc.hospital.entity.Units;
 import com.dyhc.hospital.entity.UnitsGroup;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -52,4 +53,12 @@ public interface UnitsGroupMapper {
      * @return
      */
     int updUnitsGroupInfo(UnitsGroup unitsGroup) throws  Exception;
+    /**
+     * 查询单位编号的最后一位 倒序查询
+     * 王娇娇
+     * @return
+     */
+    String getUnitsGroupMax(@Param("unitsId") String unitsId) throws Exception;
+
+
 }

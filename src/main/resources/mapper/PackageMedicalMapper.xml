@@ -18,11 +18,7 @@
       WHERE pm.`package_id` = #{packageId})
     </select>
     <select id="getAllInfo" resultType="com.dyhc.hospital.entity.PackageMedical">
-       SELECT p.*,c.`combinationName` AS com,m.`project_name` AS medical FROM  `package_medical` p
-       INNER JOIN combination c
-       ON p.`combination_id`=c.`combination_id`
-       INNER JOIN medical m
-       ON p.`medical_id`=m.`medical_id`
+        SELECT p.*,(SELECT c.`combinationName` FROM  combination c WHERE c.`combination_id`=p.`combination_id`) AS com,(SELECT m.`project_name` FROM  medical m WHERE m.`medical_id`=p.`medical_id`) AS medical FROM  `package_medical` p
        WHERE p.`package_id`=#{packageId}
     </select>
 

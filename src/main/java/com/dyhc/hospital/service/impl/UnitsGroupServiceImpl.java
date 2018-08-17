@@ -5,6 +5,7 @@ import com.dyhc.hospital.entity.UnitsGroup;
 import com.dyhc.hospital.service.UnitsGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
 public class UnitsGroupServiceImpl implements UnitsGroupService {
     @Autowired
     private UnitsGroupMapper unitsGroupMapper;
+
     @Override
     public List<UnitsGroup> getAllUnitsGroupInfo() throws Exception {
         return unitsGroupMapper.getAllUnitsGroupInfo();
@@ -20,6 +22,7 @@ public class UnitsGroupServiceImpl implements UnitsGroupService {
     @Override
     public int addUnitsGroupInfo(UnitsGroup unitsGroup) throws Exception {
         return unitsGroupMapper.addUnitsGroupInfo(unitsGroup);
+
     }
 
     @Override
@@ -35,5 +38,31 @@ public class UnitsGroupServiceImpl implements UnitsGroupService {
     @Override
     public int updUnitsGroupInfo(UnitsGroup unitsGroup) throws Exception {
         return unitsGroupMapper.updUnitsGroupInfo(unitsGroup);
+    }
+
+    @Override
+    public String getUnitsGroupMax(String unitsId) throws Exception {
+        //获取最大的id
+        //000104
+        String unitsGroupId = unitsGroupMapper.getUnitsGroupMax(unitsId);
+        if(unitsGroupId==null){
+            unitsGroupId=unitsId+"01";
+        }else {
+            //0001
+            String unitsIds = unitsGroupId.substring(0, 4);
+            //04
+            String unitsGroupIdString = unitsGroupId.substring(4, 6);
+            //4
+            Integer unitsGroupIdInt = Integer.parseInt(unitsGroupIdString);
+            // 5=4+1
+            unitsGroupIdInt = unitsGroupIdInt + 1;
+            unitsGroupId = unitsGroupIdInt.toString();
+            //if(5.length<2)   "0"+5
+            if (unitsGroupId.length() < 2) {
+                unitsGroupId = "0" + unitsGroupId;
+            }
+            unitsGroupId = unitsIds + unitsGroupId;
+        }
+        return unitsGroupId;
     }
 }

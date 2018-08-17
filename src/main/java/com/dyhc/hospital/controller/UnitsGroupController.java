@@ -1,9 +1,11 @@
 package com.dyhc.hospital.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.dyhc.hospital.entity.GroupOrTestInfo;
 import com.dyhc.hospital.entity.Package;
 import com.dyhc.hospital.entity.PackageMedical;
 import com.dyhc.hospital.entity.UnitsGroup;
+import com.dyhc.hospital.service.GroupOrTestInfoService;
 import com.dyhc.hospital.service.PackageMedicalService;
 import com.dyhc.hospital.service.PackageService;
 import com.dyhc.hospital.service.UnitsGroupService;
@@ -18,11 +20,13 @@ import java.util.List;
 @Controller
 public class UnitsGroupController {
     @Autowired
-    private UnitsGroupService unitsGroupService;
+    private UnitsGroupService unitsGroupService;//单位分组
     @Autowired
-    private PackageService packageService;
+    private PackageService packageService;//套餐
     @Autowired
-    private PackageMedicalService  packageMedicalService;
+    private GroupOrTestInfoService groupOrTestInfoService;//分组表与套餐表
+    @Autowired
+    private PackageMedicalService  packageMedicalService;//套餐与体检项表
     private UnitsGroup unitsGroup;
 
     public List<UnitsGroup> getList() {
@@ -57,23 +61,32 @@ public class UnitsGroupController {
     }
     @RequestMapping("/addGroup.do")
     @ResponseBody
-    public String addGroup() {
-        Integer save = 0;
-        if(unitsGroup.getUnitsGroupId()!=null||!unitsGroup.getUnitsGroupId().equals("")){
+    public String addGroup(UnitsGroup unitsGroup,@RequestParam("package")Integer packageId) {
+          String json="";
+            System.out.println(packageId);
             try{
-                save=unitsGroupService.updUnitsGroupInfo(unitsGroup);
+                if(unitsGroup!=null) {
+                    //添加单位分组
+                    unitsGroup.setCreateBy(1);
+                    unitsGroup.setIsdelete(0);
+                    Integer  save = unitsGroupService.addUnitsGroupInfo(unitsGroup);
+                    //实例化单位分组和体检关系
+                    GroupOrTestInfo groupOrTestInfo = new GroupOrTestInfo();
+                    //设置单位分组编号
+                    groupOrTestInfo.setUnitsGroupId(unitsGroup.getUnitsGroupId());
+                    //设置套餐编号
+                    groupOrTestInfo.setPackageId(packageId);
+                    Integer groupInfo = groupOrTestInfoService.addGroup(groupOrTestInfo);
+                    if(save>0&&groupInfo>0){
+                        json="{\"status\":\"ok\"}";
+                    }else{
+                        json="{\"status\":\"no\"}";
+                    }
+                }
             }catch (Exception e){
                 e.printStackTrace();
             }
-        }else {
-            try {
-                save = unitsGroupService.addUnitsGroupInfo(unitsGroup);
-            } catch (Exception e) {
-                e.printStackTrace();
-
-            }
-        }
-        return JSON.toJSONString(save);
+        return json;
     }
     @RequestMapping("/delGroup.do")
     @ResponseBody
@@ -101,7 +114,7 @@ public class UnitsGroupController {
     }
     @RequestMapping("/getPackage.do")
     @ResponseBody
-    private String getPackage(){
+    public String getPackage(){
         List<Package> listP=null;
         try{
             listP=packageService.getAllPackageInfos();
@@ -113,7 +126,7 @@ public class UnitsGroupController {
     }
     @RequestMapping("/getPackageMedical.do")
     @ResponseBody
-    private  String getPackageMedical(@RequestParam("packageId") Integer packageId){
+    public  String getPackageMedical(@RequestParam("packageId") Integer packageId){
         List<PackageMedical> page=null;
         try {
             page=packageMedicalService.getAllInfo(packageId);
@@ -121,6 +134,17 @@ public class UnitsGroupController {
               e.printStackTrace();
           }
           return  JSON.toJSONString(page);
+    }
+    @RequestMapping("/getMax.do")
+    @ResponseBody
+    public  String getMax(@RequestParam("unitsId")String unitsId){
+         String result=null;
+         try {
+            result=unitsGroupService.getUnitsGroupMax(unitsId);
+         }catch (Exception e){
+            e.printStackTrace();
+         }
+         return  result;
     }
 
 

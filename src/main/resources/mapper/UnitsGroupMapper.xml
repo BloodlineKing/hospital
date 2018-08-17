@@ -5,14 +5,14 @@
 
     <!--查询单位分组信息-->
     <select id="getAllUnitsGroupInfo" resultMap="units">
-     SELECT * FROM units_group g
-     INNER JOIN units u ON g.units_id=u.`units_id`
+     SELECT * FROM `units` u
+     LEFT JOIN `units_group` ug ON u.`units_id` = ug.`units_id`
    </select>
 
     <!--添加单位分组信息-->
     <insert id="addUnitsGroupInfo">
       INSERT INTO units_group
-      VALUES(#{unitsGroupId},#{groupName},#{unitsId},#{sexCondition},#{maritalCondition},#{ageUpperLimit},#{ageLowerLimit},#{dutyCondition},#{createBy},#{createTime},#{modifyBy},#{modifuTime},#{isdelete})
+      VALUES(#{unitsGroupId},#{groupName},#{unitsId},#{sexCondition},#{maritalCondition},#{ageUpperLimit},#{ageLowerLimit},#{dutyCondition},#{createBy},now(),null,null,#{isdelete})
     </insert>
 
     <!--删除单位分组信息-->
@@ -55,5 +55,14 @@
             <id column="units_group_id" property="unitsGroupId"/>
         </collection>
     </resultMap>
+
+    <!--查询单位编号的最后一位 倒序查询-->
+    <select id="getUnitsGroupMax" resultType="string">
+     SELECT ug.`units_group_id` FROM `units_group` ug
+     WHERE ug.`units_id` = #{unitsId}
+     ORDER BY ug.`units_group_id` DESC
+     LIMIT 1
+
+    </select>
 
 </mapper>

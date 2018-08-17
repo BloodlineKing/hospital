@@ -42,4 +42,13 @@ public interface UnitsGroupService {
      * @return
      */
     int updUnitsGroupInfo(UnitsGroup unitsGroup) throws  Exception;
+
+    /**
+     * 查询单位编号的最后一位 倒序查询
+     * 王娇娇
+     * @return
+     */
+    String getUnitsGroupMax(@Param("unitsId") String unitsId) throws Exception;
+
+
 }

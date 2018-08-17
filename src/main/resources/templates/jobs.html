@@ -238,21 +238,12 @@
                             $("#remark").val(result.remark);
                             var statu = result.isdelete;
                             $("input[name='isdelete'][value='"+result.isdelete+"']").attr("checked",true);
-                            alert(form);
+                           
                             form.render();
                         }
                     })
                 });
             }
-
-
-
-
-
-
-                /*function choose() {
-                    updUnitsInfo();
-                }*/
 
             /*修改操作*/
             function updUnitsInfo() {
@@ -266,7 +257,6 @@
 					success: function (result) {
 					   if(result>0){
 						   alert("修改成功!");
-
 					   }
 					}
                 });

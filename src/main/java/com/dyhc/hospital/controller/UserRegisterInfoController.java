@@ -51,7 +51,7 @@ public class UserRegisterInfoController {
         //接收到页面传入的体检编号，如果有值则是登记，没有则是预约
         String testNumberIn=userRegisterInfo.getTestNumber();
         //预约
-        if (testNumberIn==null){
+        if (testNumberIn==null||testNumberIn==""){
             Date d = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
             String dateNowStr = sdf.format(d);

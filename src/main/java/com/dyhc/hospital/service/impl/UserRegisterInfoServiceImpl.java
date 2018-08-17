@@ -1,12 +1,14 @@
 package com.dyhc.hospital.service.impl;
 
 import com.dyhc.hospital.dao.UserRegisterInfoMapper;
+import com.dyhc.hospital.entity.Medical;
 import com.dyhc.hospital.entity.UserRegisterInfo;
 import com.dyhc.hospital.service.UserRegisterInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -29,6 +31,26 @@ public class UserRegisterInfoServiceImpl implements UserRegisterInfoService {
         }
         return listUserRegisterInfos;
     }
+
+    /**
+     * lwr
+     * @param testNumber
+     * @return
+     */
+    @Override
+    public UserRegisterInfo findTestNumberUserRegisterInfo(String testNumber) {
+        UserRegisterInfo listUserRegisterInfos=null;
+        try {
+            listUserRegisterInfos = userRegisterInfoMapper.findTestNumberUserRegisterInfo(testNumber);
+        }catch (Exception e){
+            logger.error("根据体检编号获取用户信息失败");
+            e.printStackTrace();
+        }
+        return listUserRegisterInfos;
+    }
+
+
+
 
     @Override
     public String getTestNumber(String today) {
@@ -96,5 +118,18 @@ public class UserRegisterInfoServiceImpl implements UserRegisterInfoService {
             logger.error("添加预约或登记异常");
         }
         return result;
+    }
+
+
+    @Override
+    public List<Medical> showUserMedical(String testNumber) {
+        List<Medical> info=null;
+        try {
+            info=userRegisterInfoMapper.showUserMedical(testNumber);
+        }catch (Exception e){
+            logger.error("体检信息错误");
+            e.printStackTrace();
+        }
+        return info;
     }
 }

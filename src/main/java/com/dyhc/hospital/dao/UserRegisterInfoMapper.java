@@ -1,5 +1,6 @@
 package com.dyhc.hospital.dao;
 
+import com.dyhc.hospital.entity.Medical;
 import com.dyhc.hospital.entity.UserRegisterInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -83,5 +84,23 @@ public interface UserRegisterInfoMapper {
      * @return
      */
     String getTestNumber(@Param("today") String today) throws Exception;
+
+    /**
+     *  根据用户体检编号查询用户信息
+     *  李文荣
+     * @param testNumber
+     * @return
+     */
+    UserRegisterInfo findTestNumberUserRegisterInfo(@Param("testNumber") String testNumber)throws Exception;
+
+    /**
+     * 李文荣
+     *  根据体检编号查看用户体检项
+     * @param testNumber
+     * @return
+     */
+    List<Medical> showUserMedical(@Param("testNumber") String testNumber);
+
+
 
 }

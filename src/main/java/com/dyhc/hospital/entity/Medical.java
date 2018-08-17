@@ -26,6 +26,39 @@ public class Medical {
     private String minValue;
     private String maxValue;
     private int isEnalbe;
+    private BigDecimal zong;  //总价格
+
+    public String getMeStatusString() {
+        return meStatusString;
+    }
+
+    public void setMeStatusString(String meStatusString) {
+        this.meStatusString = meStatusString;
+    }
+
+    //检查状态的字符串
+    private String meStatusString;
+
+    public BigDecimal getZong() {
+        return zong;
+    }
+
+    public void setZong(BigDecimal zong) {
+        this.zong = zong;
+    }
+
+    public int getTestStatus() {
+        return testStatus;
+    }
+
+    public void setTestStatus(int testStatus) {
+        this.testStatus = testStatus;
+    }
+
+    //检查状态
+    private int testStatus;
+
+
 
     @Id
     @Column(name = "medical_id")

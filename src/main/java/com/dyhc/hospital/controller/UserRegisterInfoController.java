@@ -1,18 +1,25 @@
 package com.dyhc.hospital.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.dyhc.hospital.entity.Medical;
 import com.dyhc.hospital.entity.UserRegisterInfo;
 import com.dyhc.hospital.service.UserRegisterInfoService;
-import com.dyhc.hospital.util.LayUI;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class UserRegisterInfoController {
@@ -52,7 +59,7 @@ public class UserRegisterInfoController {
         //接收到页面传入的体检编号，如果有值则是登记，没有则是预约
         String testNumberIn=userRegisterInfo.getTestNumber();
         //预约
-        if (testNumberIn==null||testNumberIn==""){
+        if (testNumberIn==null){
             Date d = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
             String dateNowStr = sdf.format(d);
@@ -106,12 +113,8 @@ public class UserRegisterInfoController {
     @RequestMapping("getUserInfoByNameCode")
     @ResponseBody
     public String getUserInfoByNameCode(@RequestParam("namecode")String namecode){
-        LayUI<UserRegisterInfo> layui=new LayUI<>();
-        layui.setCode(0);
-        layui.setCount(100);
         List<UserRegisterInfo> userRegisterInfoList=userRegisterInfoService.findUserInfoByNameCode(namecode);
-        layui.setData(userRegisterInfoList);
-        return JSON.toJSONString(layui);
+        return JSON.toJSONString(userRegisterInfoList);
     }
 
     /**
@@ -125,4 +128,48 @@ public class UserRegisterInfoController {
         UserRegisterInfo userRegisterInfo=userRegisterInfoService.getUserInfoByNameAndTelephone(namecode, telephone);
         return JSON.toJSONString(userRegisterInfo);
     }
+
+
+    /**
+     * 根据用户体检编号查询用户信息
+     * 李文荣
+     * @return
+     */
+    @RequestMapping("/findTestNumberUserRegisterInfo.do")
+    @ResponseBody
+    public String findTestNumberUserRegisterInfo(@RequestParam("testNumber") String testNumber){
+        UserRegisterInfo info = userRegisterInfoService.findTestNumberUserRegisterInfo(testNumber);
+        return JSON.toJSONString(info);
+    }
+
+
+    /**
+     * 根据用户体检编号查出来用户的体检信息
+     * @param testNumber
+     * @return
+     */
+    @RequestMapping("showUserMedical.do")
+    @ResponseBody
+    public Map<String,Object> showUserMedical(@Param("testNumber") String testNumber){
+        List<Medical> info = userRegisterInfoService.showUserMedical(testNumber);
+        BigDecimal jia = new BigDecimal(0);
+        for (Medical i :info ) {
+            jia=jia.add(i.getPrice());
+            i.setZong(jia);
+            if(i.getTestStatus() == 0){
+                i.setMeStatusString("未检查");
+            }else{
+                i.setMeStatusString("已检查");
+            }
+        }
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("code",0);
+        map.put("msg","错误提示");
+        map.put("data",info);
+        return map;
+    }
+
+
+
+
 }

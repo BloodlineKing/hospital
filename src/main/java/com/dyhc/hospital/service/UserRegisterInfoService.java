@@ -1,6 +1,8 @@
 package com.dyhc.hospital.service;
 
+import com.dyhc.hospital.entity.Medical;
 import com.dyhc.hospital.entity.UserRegisterInfo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -60,6 +62,22 @@ public interface UserRegisterInfoService {
      * @return
      */
     List<UserRegisterInfo> findUserInfoByNameCode(String nameCode);
+
+    /**
+     *  根据用户体检编号查询用户信息
+     *  李文荣
+     * @param testNumber
+     * @return
+     */
+    UserRegisterInfo findTestNumberUserRegisterInfo(@Param("testNumber") String testNumber);
+
+    /**
+     * 李文荣
+     *  根据体检编号查看用户体检项
+     * @param testNumber
+     * @return
+     */
+    List<Medical> showUserMedical(@Param("testNumber") String testNumber);
 
 
 

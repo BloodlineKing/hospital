@@ -3,15 +3,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dyhc.hospital.dao.UserRegisterInfoMapper">
     <!--查询个人的预约记录-->
-   <select id="findUserRegisterInfos" resultType="com.dyhc.hospital.entity.UserRegisterInfo">
-       SELECT * FROM `user_register_info` WHERE `create_time` IS NULL AND `create_by` IS NULL
-       <if test="nameCode != null and nameCode != ''">
-               and name_code = #{nameCode}
-           </if>
-           <if test="telephone != null and telephone != ''">
-               and telephone = #{telephone}
-           </if>
-   </select>
+    <select id="findUserRegisterInfos" resultType="com.dyhc.hospital.entity.UserRegisterInfo">
+        SELECT * FROM `user_register_info` WHERE `create_time` IS NULL AND `create_by` IS NULL
+        <if test="nameCode != null and nameCode != ''">
+            and name_code = #{nameCode}
+        </if>
+        <if test="telephone != null and telephone != ''">
+            and telephone = #{telephone}
+        </if>
+    </select>
     <!--根据用户编号查看存档信息 存在这个用户 就把用户信息显示出来,并且检查次数加1==>updArchivesCheckCount()方法-->
     <select id="findUserRegisterInfoByTestNumber" resultType="com.dyhc.hospital.entity.UserRegisterInfo" >
         SELECT * FROM `user_register_info` WHERE `test_number` = #{testNumber};
@@ -71,4 +71,34 @@ WHERE `test_number` =  #{testNumber};
         select test_number from user_register_info where test_number like CONCAT(#{today},'%') order by test_number desc limit 0,1
     </select>
 
+    <!-- 根据用户体检编号查询用户信息    李文荣-->
+    <select id="findTestNumberUserRegisterInfo" resultType="com.dyhc.hospital.entity.UserRegisterInfo" >
+        SELECT * FROM `user_register_info` WHERE `test_number` = #{testNumber};
+    </select>
+
+    <!--根据用户体检编号查看用户下边的体检项目  李文荣-->
+    <select id="showUserMedical" resultType="com.dyhc.hospital.entity.Medical">
+        SELECT m.*,uti.`test_status` FROM `user_test_info` uti
+        INNER JOIN `medical` m ON m.`medical_id` = uti.`medical_id`
+        WHERE uti.test_number = #{testNumber}
+        UNION
+        SELECT m.*,uti.`test_status` FROM `user_test_info` uti
+        INNER JOIN `combination_ medical` cm ON uti.`combination_id` = cm.`combination_id`
+        INNER JOIN `medical` m ON cm.`medical_id` = m.`medical_id`
+        WHERE uti.test_number = #{testNumber}
+        UNION
+        SELECT m.*,uti.`test_status`
+        FROM `user_test_info` uti
+        INNER JOIN `package_medical` pm ON uti.package_id = pm.package_id
+        INNER JOIN `combination_ medical` cm ON pm.combination_id = cm.combination_id
+        INNER JOIN `medical` m ON m.`medical_id` = cm.medical_id
+        WHERE uti.test_number = #{testNumber}
+        UNION
+        SELECT m.*,uti.`test_status`
+        FROM `user_test_info` uti
+        INNER JOIN `package_medical` pm ON uti.package_id = pm.package_id
+        INNER JOIN `medical` m ON pm.`medical_id` = m.medical_id
+        WHERE uti.test_number = #{testNumber}
+
+    </select>
 </mapper>

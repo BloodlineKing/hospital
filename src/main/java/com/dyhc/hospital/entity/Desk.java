@@ -1,9 +1,12 @@
 package com.dyhc.hospital.entity;
 
+import com.dyhc.hospital.entity.specialentity.MedicalPlus;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -14,6 +17,17 @@ public class Desk {
     private String deskSummary;
     private int deskStatus;
     private String remark;
+    private List<MedicalPlus> madicallist;
+
+    public List<MedicalPlus> getMadicallist() {
+        return madicallist;
+    }
+
+    public void setMadicallist(List<MedicalPlus> madicallist) {
+        this.madicallist = madicallist;
+    }
+
+
 
     @Id
     @Column(name = "desk_id")

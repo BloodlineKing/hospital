@@ -5,8 +5,15 @@
 
 
     <!--查询科室项目信息-->
-    <select id="getMedicalInfoByDesk" resultType="com.dyhc.hospital.entity.Medical">
-    SELECT * FROM medical where desk_id=#{deskId} LIMIT #{pageIndex},#{pageSize}
+    <select id="getMedicalInfoByDesk" resultMap="desk">
+    SELECT d.desk_name,m.`medical_id`,m.`desk_id`,m.`project_name`,m.`apply_gender`,m.`pingying_code`,m.`normal_result`,m.`result_type`,
+m.`price`,m.`prompt_info`,m.`unit`,m.`reference_lower_limit`,m.`reference_upper_limit`,m.`low_tip`,m.`high_tip`,m.`min_value`,m.`max_value`,m.`isEnalbe`
+FROM medical m INNER JOIN desk d ON m.desk_id=d.desk_id
+    </select>
+
+    <!--查询单位编号的最后一位 倒序查询-->
+    <select id="getMedicalNameByDesc" resultType="com.dyhc.hospital.entity.Medical">
+      SELECT * FROM `medical` ORDER BY `medical_id` DESC limit 1;
     </select>
 
     <!--添加科室项目信息-->
@@ -21,12 +28,14 @@
     </update>
 
     <!--根据id查询科室项目信息-->
-    <select id="getAllMedicalInfoByid" resultType="com.dyhc.hospital.entity.Medical">
-    SELECT * FROM medical where medical_id=#{medicalId}
+    <select id="getAllMedicalInfoByid" resultMap="desk">
+SELECT d.desk_name,m.`medical_id`,m.`desk_id`,m.`project_name`,m.`apply_gender`,m.`pingying_code`,m.`normal_result`,m.`result_type`,
+m.`price`,m.`prompt_info`,m.`unit`,m.`reference_lower_limit`,m.`reference_upper_limit`,m.`low_tip`,m.`high_tip`,m.`min_value`,m.`max_value`,m.`isEnalbe`
+FROM medical m INNER JOIN desk d ON m.desk_id=d.desk_id WHERE medical_id=#{medicalId}
     </select>
 
     <!-- 根据拼音简码查询体检信息 -->
-    <select id="getMedicalList" resultType="com.dyhc.hospital.entity.Medical">
+    <select id="getMedicalList" resultMap="desk">
         select * from medical
         where pingying_code like concat('%',#{namecode},'%')
     </select>
@@ -41,18 +50,25 @@
           `project_name` = #{projectName},
           `apply_gender` = #{applyGender},
           `pingying_code` = #{pingyingCode},
-          `normal_result` = #{normalResult;},
-          `result_type` = #{resultType;},
-          `price` = #{price;},
-          `prompt_info` = #{promptInfo;},
-          `unit` = #{unit;},
-          `reference_lower_limit` = #{referenceLowerLimit;},
-          `reference_ upper_limit` = #{referenceUpperLimit;},
-          `low_tip` = #{lowTip;},
-          `high_tip` = #{highTip;},
-          `min_value` = #{minValue;},
-          `max_value` = #{maxValue;},
-          `isEnable`=isEnalbe
-        WHERE `desk_id` = #{deskId};
+          `normal_result` = #{normalResult},
+          `result_type` = #{resultType},
+          `price` = #{price},
+          `prompt_info` = #{promptInfo},
+          `unit` = #{unit},
+          `reference_lower_limit` = #{referenceLowerLimit},
+          `reference_upper_limit` = #{referenceUpperLimit},
+          `low_tip` = #{lowTip},
+          `high_tip` = #{highTip},
+          `min_value` = #{minValue},
+          `max_value` = #{maxValue},
+          `isEnalbe`=isEnalbe
+        WHERE medical_id=#{medicalId};
     </update>
+
+    <resultMap id="desk" type="com.dyhc.hospital.entity.Desk">
+        <id column="desk_id" property="deskId"/>
+        <collection property="madicallist" ofType="com.dyhc.hospital.entity.specialentity.MedicalPlus">
+            <id column="medical_id" property="medicalId"/>
+        </collection>
+    </resultMap>
 </mapper>

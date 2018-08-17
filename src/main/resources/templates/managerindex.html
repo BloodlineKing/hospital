@@ -35,7 +35,7 @@
 				<button style="width: 150px; height: 50px;" class="layui-btn layui-bg-green" id="gosection">科室信息维护</button>
 			</div>
 			<div class="layui-col-md3">
-				<button style="width: 150px; height: 50px;" onclick="href('nursePre.html')" class="layui-btn layui-bg-green">体检项信息维护</button>
+				<button style="width: 150px; height: 50px;"class="layui-btn layui-bg-green" id="gophysical">体检项信息维护</button>
 				
 			</div>
 			<div class="layui-col-md3">
@@ -84,9 +84,13 @@
                 window.onload=function(){
                     var a=getQueryString('userName');
                     $("#uname").text(a);
-					$("#gosection").click(function () {
+                    $("#gosection").click(function () {
                         var a=getQueryString('userName');
                         window.location.href="managedepart.html?userName="+a;
+                    })
+                    $("#gophysical").click(function () {
+                        var a=getQueryString('userName');
+                        window.location.href="PhysicalinfoManager.html?userName="+a;
                     })
 
 

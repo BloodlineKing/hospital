@@ -2,6 +2,7 @@ package com.dyhc.hospital.dao;
 
 
 import com.dyhc.hospital.entity.Medical;
+import com.dyhc.hospital.entity.specialentity.MedicalPlus;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -18,12 +19,9 @@ public interface MedicalMapper {
 
     /**
      * 查询科室体检项目
-     * @param pageIndex
-     * @param pageSize
-     * @param deskId
      * @return
      */
-    List<Medical> getMedicalInfoByDesk(@Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize, @Param("deskId") int deskId) throws  Exception;
+    List<MedicalPlus> getMedicalInfoByDesk() throws  Exception;
 
     /**
      * 添加科室体检项目
@@ -38,12 +36,12 @@ public interface MedicalMapper {
      * @param medicalId
      * @return
      */
-    List<Medical> getAllMedicalInfoByid(@Param("medicalId") int medicalId) throws  Exception;
+    List<MedicalPlus> getAllMedicalInfoByid(@Param("medicalId") String medicalId) throws  Exception;
 
     /**
      * 根据拼音简码查询体检信息
      */
-    List<Medical> getMedicalList(@Param("namecode") int namecode)throws  Exception;
+    List<MedicalPlus> getMedicalList(@Param("namecode") String namecode)throws  Exception;
 
     /**
      * 修改科室科室信息
@@ -51,4 +49,12 @@ public interface MedicalMapper {
      * @return
      */
     int updMedicalInfo(Medical medical) throws  Exception;
+
+
+    /**
+     * 查询项目最后一位倒序
+     * @return
+     * @throws Exception
+     */
+    Medical getMedicalNameByDesc() throws Exception;
 }

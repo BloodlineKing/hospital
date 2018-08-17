@@ -34,30 +34,30 @@
 				<li class="layui-nav-item layui-nav-itemed">
 					<a href="javascript:;">体检科室</a>
 					<dl class="layui-nav-child">
-						<dd>
-							<a href="javascript:;">科室一</a>
-							<dl class="layui-nav-child">
-								<dd>
-									<a href="javascript:;">体检项一</a>
-								</dd>
-							</dl>
-						</dd>
-						<dd>
-							<a href="javascript:;">科室一</a>
-							<dl class="layui-nav-child">
-								<dd>
-									<a href="javascript:;">体检项一</a>
-								</dd>
-							</dl>
-						</dd>
-						<dd>
-							<a href="javascript:;">科室一</a>
-							<dl class="layui-nav-child">
-								<dd>
-									<a href="javascript:;">体检项一</a>
-								</dd>
-							</dl>
-						</dd>
+						<!--<dd>-->
+							<!--<a href="javascript:;">科室一</a>-->
+							<!--<dl class="layui-nav-child">-->
+								<!--<dd>-->
+									<!--<a href="javascript:;">体检项一</a>-->
+								<!--</dd>-->
+							<!--</dl>-->
+						<!--</dd>-->
+						<!--<dd>-->
+							<!--<a href="javascript:;">科室一</a>-->
+							<!--<dl class="layui-nav-child">-->
+								<!--<dd>-->
+									<!--<a href="javascript:;">体检项一</a>-->
+								<!--</dd>-->
+							<!--</dl>-->
+						<!--</dd>-->
+						<!--<dd>-->
+							<!--<a href="javascript:;">科室一</a>-->
+							<!--<dl class="layui-nav-child">-->
+								<!--<dd>-->
+									<!--<a href="javascript:;">体检项一</a>-->
+								<!--</dd>-->
+							<!--</dl>-->
+						<!--</dd>-->
 					</dl>
 				</li>
 				
@@ -89,15 +89,15 @@
 					</div>
 				</div>
 				<br/><br/>
-				<form class="layui-form" style="height: 700px;">
+				<form class="layui-form" style="height: 700px;" id="myform">
 
 					<div class="layui-row">
 						<div class="layui-col-md6">
 							<div class="layui-inline">
 								<label class="layui-form-label">是否启用</label>
 								<div class="layui-input-block">
-									<input type="radio" name="sf" value="是" title="是">
-									<input type="radio" name="sf" value="否" title="否">
+									<input type="radio" name="isEnalbe" value="1" title="是" checked="checked">
+									<input type="radio" name="isEnalbe" value="0" title="否">
 								</div>
 							</div>
 						</div>
@@ -105,7 +105,7 @@
 							<div class="layui-inline">
 								<label class="layui-form-label">体检项编号</label>
 								<div class="layui-input-inline">
-									<input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" readonly="readonly">
+									<input type="text" name="medicalId" lay-verify="medicalId" autocomplete="off" class="layui-input" readonly="readonly">
 								</div>
 							</div>
 						</div>
@@ -115,15 +115,16 @@
 					<div class="layui-inline">
 						<label class="layui-form-label">科室名称</label>
 						<div class="layui-input-inline">
-							<input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" readonly="readonly" placeholder="科室名称" style="width: 340px;">
+							<input type="text" id="deskName" lay-verify="deskName" autocomplete="off" class="layui-input" readonly="readonly" placeholder="科室名称" style="width: 340px;">
+							<input type="hidden" name="deskId">
 						</div>
 					</div>
 
 					<div class="layui-inline">
-						<label class="layui-form-label">是否启用</label>
+						<label class="layui-form-label">性别</label>
 						<div class="layui-input-block">
-							<input type="radio" name="sex" value="男" title="男">
-							<input type="radio" name="sex" value="女" title="女">
+							<input type="radio" name="applyGender" value="男" title="男" checked="checked">
+							<input type="radio" name="applyGender" value="女" title="女">
 						</div>
 					</div>
 					<br/><br/>
@@ -133,7 +134,7 @@
 							<div class="layui-inline">
 								<label class="layui-form-label">体检项名称</label>
 								<div class="layui-input-inline">
-									<input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" placeholder="体检项名称" style="width: 340px;">
+									<input type="text" name="projectName" lay-verify="projectName" autocomplete="off" class="layui-input" placeholder="体检项名称" style="width: 340px;">
 								</div>
 							</div>
 						</div>
@@ -142,7 +143,7 @@
 							<div class="layui-inline">
 								<label class="layui-form-label">拼音简码</label>
 								<div class="layui-input-inline">
-									<input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" readonly="readonly" placeholder="拼音简码">
+									<input type="text" name="pingyingCode" lay-verify="pingyingCode" autocomplete="off" class="layui-input" readonly="readonly" placeholder="拼音简码">
 								</div>
 							</div>
 						</div>
@@ -153,7 +154,7 @@
 							<div class="layui-inline">
 								<label class="layui-form-label">正常结果</label>
 								<div class="layui-input-inline">
-									<input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" placeholder="正常结果" style="width: 340px;">
+									<input type="text" name="normalResult" lay-verify="normalResult" autocomplete="off" class="layui-input" placeholder="正常结果" style="width: 340px;">
 								</div>
 							</div>
 						</div>
@@ -161,7 +162,7 @@
 							<div class="layui-inline">
 								<label class="layui-form-label">结果类型</label>
 								<div class="layui-input-inline">
-									<input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" placeholder="结果类型">
+									<input type="text" name="resultType" lay-verify="resultType" autocomplete="off" class="layui-input" placeholder="结果类型">
 								</div>
 							</div>
 						</div>
@@ -172,7 +173,7 @@
 							<div class="layui-inline">
 								<label class="layui-form-label">单位</label>
 								<div class="layui-input-inline">
-									<input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" style="width: 100px;">
+									<input type="text" name="unit" lay-verify="unit" autocomplete="off" class="layui-input" style="width: 100px;">
 								</div>
 							</div>
 						</div>
@@ -180,7 +181,7 @@
 							<div class="layui-inline">
 								<label class="layui-form-label">参考上限</label>
 								<div class="layui-input-inline">
-									<input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" style="width: 100px;">
+									<input type="text" name="referenceUpperLimit" lay-verify="referenceUpperLimit" autocomplete="off" class="layui-input" style="width: 100px;">
 								</div>
 							</div>
 						</div>
@@ -188,7 +189,7 @@
 							<div class="layui-inline">
 								<label class="layui-form-label">参考下限</label>
 								<div class="layui-input-inline">
-									<input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" style="width: 100px;">
+									<input type="text" name="referenceLowerLimit" lay-verify="referenceLowerLimit" autocomplete="off" class="layui-input" style="width: 100px;">
 								</div>
 							</div>
 						</div>
@@ -199,7 +200,7 @@
 							<div class="layui-inline">
 								<label class="layui-form-label">偏低提示</label>
 								<div class="layui-input-inline">
-									<input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" style="width: 100px;">
+									<input type="text" name="lowTip" lay-verify="lowTip" autocomplete="off" class="layui-input" style="width: 100px;">
 								</div>
 							</div>
 						</div>
@@ -207,7 +208,7 @@
 							<div class="layui-inline">
 								<label class="layui-form-label">偏高提示</label>
 								<div class="layui-input-inline">
-									<input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" style="width: 100px;">
+									<input type="text" name="highTip" lay-verify="highTip" autocomplete="off" class="layui-input" style="width: 100px;">
 								</div>
 							</div>
 						</div>
@@ -218,7 +219,7 @@
 							<div class="layui-inline">
 								<label class="layui-form-label">最小值</label>
 								<div class="layui-input-inline">
-									<input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" style="width: 100px;">
+									<input type="text" name="minValue" lay-verify="minValue" autocomplete="off" class="layui-input" style="width: 100px;">
 								</div>
 							</div>
 						</div>
@@ -226,7 +227,7 @@
 							<div class="layui-inline">
 								<label class="layui-form-label">最大值</label>
 								<div class="layui-input-inline">
-									<input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" style="width: 100px;">
+									<input type="text" name="maxValue" lay-verify="maxValue" autocomplete="off" class="layui-input" style="width: 100px;">
 								</div>
 							</div>
 						</div>
@@ -235,21 +236,21 @@
 					<div class="layui-input-block" style="margin-left: 0px;">
 						<label class="layui-form-label">单价</label>
 						<div class="layui-input-inline">
-							<input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" style="width: 100px;">
+							<input type="text" name="price" lay-verify="price" autocomplete="off" class="layui-input" style="width: 100px;">
 						</div>
 					</div>
 					<br />
 					<label class="layui-form-label">位置提示</label>
 					<div class="layui-input-block">
-						<textarea placeholder="请输入内容" class="layui-textarea" style="width: 600px;"></textarea>
+						<textarea placeholder="请输入内容" class="layui-textarea" name="promptInfo" style="width: 600px;"></textarea>
 					</div>
 					<br />
 					<div class="layui-row" style="margin-left: 100px;">
 						<div class="layui-col-md3" style="width: 150px; text-align: right;">
-							<button class="layui-btn" style="width: 140px;">保存</button>
+							<button class="layui-btn" lay-submit style="width: 140px;" id="save">保存</button>
 						</div>
 						<div class="layui-col-md3" style="width: 150px;text-align: right;">
-								<button class="layui-btn" style="width: 140px; ">取消</button>
+								<button class="layui-btn" style="width: 140px; " id="clear">取消</button>
 							</div>
 								<div class="layui-col-md3 "style="width: 150px;text-align: right; ">
 							<button class="layui-btn" style="width: 140px;">打印</button>
@@ -257,18 +258,8 @@
 						<div class="layui-col-md3" style="width: 150px;text-align: right;">
 								<button class="layui-btn " style="width: 140px; ">退出</button>
 							</div>
-							
 						</div>
-						
-							
-					
-					
-
-				
-					
 				</form>
-				
-
 			</div>
 		</div>
 
@@ -284,9 +275,11 @@
 		</div>
 
 		<script src="layui.js "></script>
+		<script src="jQuery.Hz2Py-min.js.js"></script>
 		<script>
+            var element=null;
 			layui.use('element', function() {
-				var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+				 element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
 
 				//监听导航点击
 				element.on('nav(demo)', function(elem) {
@@ -299,15 +292,169 @@
 				var form = layui.form,
 					layer = layui.layer
 			})
+            var $=null;
             layui.use(['jquery'],function () {
-                var $=jQuery=layui.$;
+                 $=jQuery=layui.$;
+                $(function() {
+                    $("input[name='projectName']").on("keyup keydown change blur", function() {
+                        $("input[name='pingyingCode']").val($(this).toPinyin());
+                    });
+                });
                 window.onload=function(){
                     var a=getQueryString('userName');
                     $("#uname").text(a)
                     var b=$("#uname").val();
+                    showmedical();
              }
+                $("#save").click(function () {
+                    updaddpanduan();
+                })
+                $("#clear").click(function () {
+                    $("#myform").reset();
+                })
             })
+			//绑定导航栏
+			function showmedical() {
+                $.ajax({
+                    url: "getAllMedicalinfo",
+                    type: "post",
+                    dataType: "json",
+                    data: {},
+                    success: function (data) {
+                        var content = "";
+                        $.each(data, function (i, e) {
+                            console.log(data)
+                            content+= "<dd class='layui-nav-item'>" +
+                                "<a href=\"javascript:;\" onclick='showdeskname(this)'>" + e.deskName + "</a><input type='hidden' id='deskid0' value='"+e.deskId	+"'>";
+                            $.each(e.madicallist,function (i,b) {
+                                content+="<dl class=\"layui-nav-child\">" +
+                                    "<dd>" +
+                                    "<a href=\"javascript:;\" onclick='getById(\""+ b.medicalId +"\")'>"+ b.projectName +"</a>" +
+                                    "</dd>" +
+                                    "</dl>";
+                            })
+                            content+="</dd>";
+                        });
+                        $(".layui-nav-child").html(content);
+                        element.init();
 
+                    }, error: function () {
+                        alert("发生错误")
+                    }
+                })
+                return false;
+            }
+
+            //判断新增修改
+            function updaddpanduan() {
+                var id= $("input[name='medicalId']").val();
+                if(id==null||id==""){
+					addinfo();
+				}else{
+					updinfo();
+				}
+            }
+
+
+            //添加信息
+            function addinfo() {
+                var addform = $("#myform").serialize();
+                $.ajax({
+                    url: "addMedicalinfo",
+                    async: false,
+                    data: addform,
+                    dataType: "json",
+                    type: "post",
+                    success: function (data) {
+                        if (data == 1) {
+                            alert("添加成功");
+                        } else {
+                            alert("添加失败")
+                        }
+                    },
+                    error: function () {
+                        alert("发生错误");
+                    }
+                })
+            }
+
+            /**
+             * 修改信息
+             */
+            function updinfo() {
+                var a = $("#myform").serialize();
+                $.ajax({
+                    url: "updMedicalinfo",
+                    async: false,
+                    data: a,
+                    dataType: "json",
+                    type: "post",
+                    success: function (data) {
+                        if (data==1)
+                            alert("修改成功");
+                        else
+                            alert("修改失败")
+                    },
+                    error: function () {
+                        alert("发生错误");
+                    }
+                })
+            }
+            
+            
+            
+            //根据id查询信息
+            function getById(medicalId) {
+                $.ajax({
+                    url: "getMedicalinfoByid",
+                    type: "post",
+                    dataType: "json",
+                    data: {"medicalId": medicalId},
+					success:function (data) {
+                        console.log(data[0].madicallist[0])
+                        if(data[0].madicallist[0].isEnalbe==1){
+                            $("input[title='是']").attr("checked",true);
+                            layui.form.render();
+                        }else{
+                            $("input[title='否']").attr("checked",true);
+                            layui.form.render();
+                        }
+                        $("input[name='medicalId']").val(data[0].madicallist[0].medicalId);
+                        $("#deskName").val(data[0].deskName);
+
+                        if(data[0].madicallist[0].applyGender.trim("男")){
+                            $("input[title='男']").attr("checked",true);
+                            layui.form.render();
+                        }else{
+                            $("input[title='女']").attr("checked",true);
+                            layui.form.render();
+                        }
+                        $("input[name='projectName']").val(data[0].madicallist[0].projectName);
+                        $("input[name='pingyingCode']").val(data[0].madicallist[0].pingyingCode);
+                        $("input[name='normalResult']").val(data[0].madicallist[0].normalResult);
+                        $("input[name='resultType']").val(data[0].madicallist[0].resultType);
+                        $("input[name='unit']").val(data[0].madicallist[0].unit);
+                        $("input[name='referenceLowerLimit']").val(data[0].madicallist[0].referenceLowerLimit);
+                        $("input[name='referenceUpperLimit']").val(data[0].madicallist[0].referenceUpperLimit);
+                        $("input[name='lowTip']").val(data[0].madicallist[0].lowTip);
+                        $("input[name='highTip']").val(data[0].madicallist[0].highTip);
+                        $("input[name='minValue']").val(data[0].madicallist[0].minValue);
+                        $("input[name='maxValue']").val(data[0].madicallist[0].maxValue);
+                        $("input[name='price']").val(data[0].madicallist[0].price);
+                        $("textarea[name='promptInfo']").text(data[0].madicallist[0].promptInfo);
+                    },error:function () {
+						alert("发生错误")
+                    }
+                });
+            }
+            //获取科室名称
+		function showdeskname(object) {
+		var deskname=$(object).text();
+            $("#deskName").val(deskname);
+            var deskid=$("#deskid0").val();//中转一下
+            $("input[name='deskId']").val(deskid);
+
+        }
             function getQueryString(name) {
                 var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
                 var r = window.location.search.substr(1).match(reg);

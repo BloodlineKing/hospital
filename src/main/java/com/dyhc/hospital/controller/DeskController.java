@@ -13,6 +13,10 @@ import sun.security.krb5.internal.crypto.Des;
 
 import java.util.List;
 
+/**
+ * 科室控制层
+ * ycy
+ */
 @Controller
 public class DeskController {
 
@@ -40,12 +44,6 @@ public class DeskController {
     @ResponseBody
     public String addDeskinfo(Desk desk){
         int a=deskService.addDeskInfo(desk);
-//        String msg="";
-//        if(a>0){
-//        msg="添加成功";
-//        }else{
-//            msg="添加失败";
-//        }
         return JSON.toJSONString(a);
     }
 
@@ -82,9 +80,9 @@ public class DeskController {
      */
     @RequestMapping("getinfoByid")
     @ResponseBody
-    public Desk getDeskByid(@Param("deskId")String deskId){
+    public Object getDeskByid(@Param("deskId")String deskId){
         List<Desk> list = deskService.getAllDeskInfoByid(deskId);
-        return list.get(0);
+        return JSON.toJSONString(list);
     }
 
 

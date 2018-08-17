@@ -17,6 +17,10 @@ public class RoleTypeController {
 
     private Logger logger= LoggerFactory.getLogger(RoleTypeController.class);
 
+    /**
+     * 刘杰
+     * @return
+     */
     @RequestMapping("listRoleType")
     @ResponseBody
     public String listRoleType(){

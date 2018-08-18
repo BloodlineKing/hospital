@@ -7,5 +7,27 @@
        insert into cost_detail values(null,#{list.testNumber},#{list.medicalId},#{list.costType},now(),#{list.note})
    </insert>
 
+    <!--添加收费明细记录-->
+    <!-- 缴费 状态为0 -->
+    <insert id="addCostDetailByPayment">
+        INSERT INTO `hospital_test_manager_db`.`cost_detail` (
+          `cost_detail_id`,
+          `test_number`,
+          `medical_id`,
+          `cost_type`,
+          `date`,
+          `note`
+        )
+        VALUES
+          (
+            null ,
+            #{testNumber},
+            #{medicalId},
+            0,
+            now(),
+            #{note}
+          );
+    </insert>
+
 
 </mapper>

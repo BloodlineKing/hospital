@@ -74,3 +74,9 @@ function ceil(){
         }
     });
 }
+
+
+/*结账*/
+$("#isOk").click(function () {
+
+});

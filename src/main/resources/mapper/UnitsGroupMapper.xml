@@ -40,12 +40,9 @@
           `age_upper_limit` = #{ageUpperLimit},
           `age_lower_limit` = #{ageLowerLimit},
           `duty_condition` = #{dutyCondition},
-          `create_by` = #{createBy},
-          `create_time` = #{createTime},
           `modify_by` = #{modifyBy},
-          `modifu_time` = #{modifuTime},
-          `isdelete` = #{isdelete}
-        WHERE `units_group_id` = #{unitsGroupId};
+          `modifu_time` = now()
+        WHERE `units_group_id` = #{unitsGroupId}
     </update>
 
     <!--自动高级映射-->

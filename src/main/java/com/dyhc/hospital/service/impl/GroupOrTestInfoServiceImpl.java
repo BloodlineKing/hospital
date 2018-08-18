@@ -21,7 +21,8 @@ public class GroupOrTestInfoServiceImpl implements GroupOrTestInfoService {
     }
 
     @Override
-    public GroupOrTestInfo getById(Integer groupOrTestInfoId) throws Exception {
-        return groupOrTestInfoMapper.getById(groupOrTestInfoId);
+    public Integer getByIdUnitsGroupId(String unitsGroupId) throws Exception {
+        return groupOrTestInfoMapper.getByIdUnitsGroupId(unitsGroupId);
     }
+
 }

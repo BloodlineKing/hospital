@@ -63,25 +63,38 @@ public class UnitsGroupController {
     @ResponseBody
     public String addGroup(UnitsGroup unitsGroup,@RequestParam("package")Integer packageId) {
           String json="";
+         Integer  save=0;
+        Integer groupInfo=0;
             System.out.println(packageId);
             try{
-                if(unitsGroup!=null) {
+                list=unitsGroupService.getAllUnitsGroupInfoByid(unitsGroup.getUnitsGroupId());
+                if(list.get(0)==null) {
                     //添加单位分组
                     unitsGroup.setCreateBy(1);
                     unitsGroup.setIsdelete(0);
-                    Integer  save = unitsGroupService.addUnitsGroupInfo(unitsGroup);
                     //实例化单位分组和体检关系
                     GroupOrTestInfo groupOrTestInfo = new GroupOrTestInfo();
                     //设置单位分组编号
                     groupOrTestInfo.setUnitsGroupId(unitsGroup.getUnitsGroupId());
                     //设置套餐编号
                     groupOrTestInfo.setPackageId(packageId);
-                    Integer groupInfo = groupOrTestInfoService.addGroup(groupOrTestInfo);
-                    if(save>0&&groupInfo>0){
-                        json="{\"status\":\"ok\"}";
-                    }else{
-                        json="{\"status\":\"no\"}";
-                    }
+                    groupInfo= groupOrTestInfoService.addGroup(groupOrTestInfo);
+                }else{
+                    //修改单位分组
+                    unitsGroup.setModifyBy(1);
+                    save= unitsGroupService.updUnitsGroupInfo(unitsGroup);
+                    //实例化单位分组和体检关系
+                    GroupOrTestInfo groupOrTestInfo = new GroupOrTestInfo();
+                    //设置单位分组编号
+                    groupOrTestInfo.setUnitsGroupId(unitsGroup.getUnitsGroupId());
+                    //设置套餐编号
+                    groupOrTestInfo.setPackageId(packageId);
+                    groupInfo= groupOrTestInfoService.updateGroup(groupOrTestInfo);
+                }
+                if(save>0&&groupInfo>0){
+                    json="{\"status\":\"ok\"}";
+                }else{
+                    json="{\"status\":\"no\"}";
                 }
             }catch (Exception e){
                 e.printStackTrace();
@@ -102,10 +115,12 @@ public class UnitsGroupController {
     }
     @RequestMapping("/getById.do")
     @ResponseBody
-    public String getById(@RequestParam("unitsGroupId") String unitsGroupIds ){
+    public String getById(@RequestParam("unitsGroupId") String unitsGroupIds){
         System.out.println("=>"+unitsGroupIds);
         try{
             list=unitsGroupService.getAllUnitsGroupInfoByid(unitsGroupIds);
+            Integer PackageId=groupOrTestInfoService.getByIdUnitsGroupId(unitsGroupIds);
+            list.get(0).setPackageId(PackageId);
             System.out.println(list.size());
         }catch (Exception e){
             e.printStackTrace();

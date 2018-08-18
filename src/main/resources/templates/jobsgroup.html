@@ -83,9 +83,9 @@
 						<div class="layui-form-item">
 							<label class="layui-form-label">婚姻状况：</label>
 							<div class="layui-input-block">
-								<input type="radio" name="maritalCondition" value="0" title="未婚" checked>
-								<input type="radio" name="maritalCondition" value="1" title="已婚">
-								<input type="radio" name="maritalCondition" value="1" title="不限">
+								<input type="radio" name="maritalCondition" value="未婚" title="未婚" checked>
+								<input type="radio" name="maritalCondition" value="已婚" title="已婚">
+								<input type="radio" name="maritalCondition" value="不限" title="不限">
 							</div>
 						</div>
 
@@ -178,18 +178,15 @@
                      $=layui.jquery;
                  getAll();
                  getPackage();
-                 element.init();
-                 var packId= 0;
 
+                 var packId= 0;
                  //监听select下拉框
                  form.on('select(pid)',function (data) {
-                     alert(data.value);
                      if(!isNaN(data.value)){
                          packId=data.value;
                          getPById(data.value);
                      }
                  });
-
 
                  $("#save").click(function () {
                      add(packId);
@@ -197,7 +194,7 @@
 
              });
 
-             //查询全部
+             //查询全部三级菜单
              function  getAll() {
                      var $ = jQuery = layui.$;
                      $(function () {
@@ -225,6 +222,7 @@
              }
              function getAddId(unitsId,unitsName) {
                  var $ = jQuery = layui.$;
+                 $("form")[0].reset();
                  $("input[name=unitsName]").val(unitsName);
                  $("input[name=unitsId]").val(unitsId);
                  $(function () {
@@ -238,47 +236,48 @@
              //根据id查询对象
              function  getById(unitsGroupId) {
                      var $ = jQuery = layui.$;
+                     //$(form)[0].clear();
                      $(function () {
-                         $.getJSON("http://localhost:8080/getById.do?unitsGroupId="+unitsGroupId,{},function (date) {
+                         $.getJSON("http://localhost:8080/getById.do",{"unitsGroupId":unitsGroupId},function (date) {
                              $.each(date,function (i,e) {
+                                 console.log(e);
                                  $("input[name=unitsName]").val(e.unitsName);
                                  $("input[name=unitsGroupId]").val(e.unitsGroupId);
                                  $("input[name=groupName]").val(e.groupName);
 								 $("input[name=unitsId]").val(e.unitsId);
-                                 $("input[name='maritalCondition'][value='"+e.maritalCondition+"']").attr("checked",true);
-                                 $("input[name='sexCondition'][value='"+e.sexCondition+"']").attr("checked",true);
-                                 $("input[name=ageUpperLimit]").val(e.ageUpperLimit);
-                                 $("input[name=ageLowerLimit]").val(e.ageLowerLimit);
-                                 $("input[name=dutyCondition]").val(e.dutyCondition);
+								 $("input[name='maritalCondition'][value='"+e.maritalCondition+"']").prop("checked",true);
+								 $("input[name='sexCondition'][value='"+e.sexCondition+"']").prop("checked",true);
+								 $("input[name=ageUpperLimit]").val(e.ageUpperLimit);
+								 $("input[name=ageLowerLimit]").val(e.ageLowerLimit);
+								 $("input[name=dutyCondition]").val(e.dutyCondition);
+                                 $("select[name=package]").val(e.packageId);
+                                 getPById(e.packageId);
+								 form.render();
                              });
                          });
-                         getSelect();
-                         form.render();
                      });
              };
-
              //全部套餐
              function  getPackage() {
                  var $ = jQuery = layui.$;
                  $(function () {
 					 $.getJSON("http://localhost:8080/getPackage.do",{},function (result) {
-					     alert(result);
 					     console.log(result)
                            var content="<option value='请选择'>请选择</option>";
                            $.each(result,function (i,e) {
 							   content+="<option value='"+e.packageId+"'>"+e.packageName+"</option>";
                            });
                            $("#package select[name=package]").html(content);
-
+                           element.init();
 
                      });
                  })
              }
              //所选套餐下的体检组合和体检项目
+
              function  getPById(packageId) {
                  var $ = jQuery = layui.$;
                  $.getJSON("http://localhost:8080/getPackageMedical.do",{"packageId":packageId},function (date) {
-                     alert(date);
                      var content="";
                      $.each(date,function (i,e) {
                          if(e.medical==null){
@@ -301,10 +300,8 @@
                  var $ = jQuery = layui.$;
                  $(function () {
                      var arr=$("form").serialize();
-                     alert(arr);
                      console.log(arr);
                      $.get("http://localhost:8080/addGroup.do",arr,function (date) {
-                         alert(date);
                          console.log(date);
                          if($.parseJSON(date).status=="ok"){
                              alert("保存成功!");

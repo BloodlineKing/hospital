@@ -4,6 +4,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -24,6 +25,16 @@ public class UnitsGroup {
     @JSONField(format = "yyyy-MM-dd")
     private Date modifuTime;
     private int isdelete;
+
+    public int getPackageId() {
+        return packageId;
+    }
+
+    public void setPackageId(int packageId) {
+        this.packageId = packageId;
+    }
+
+    private int packageId;
 
 
     @Id

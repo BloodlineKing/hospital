@@ -25,9 +25,9 @@ public interface GroupOrTestInfoMapper {
 
     /**
      * 根据id查询
-     * @param groupOrTestInfoId
+     * @param unitsGroupId
      * @return
      * @throws Exception
      */
-    GroupOrTestInfo getById(Integer groupOrTestInfoId)throws Exception;
+    Integer getByIdUnitsGroupId(String unitsGroupId)throws Exception;
 }

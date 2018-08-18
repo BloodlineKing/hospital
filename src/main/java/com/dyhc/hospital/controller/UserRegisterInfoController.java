@@ -4,16 +4,14 @@ import com.alibaba.fastjson.JSON;
 import com.dyhc.hospital.entity.Medical;
 import com.dyhc.hospital.entity.UserRegisterInfo;
 import com.dyhc.hospital.service.UserRegisterInfoService;
+import com.dyhc.hospital.util.LayUI;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -113,8 +111,12 @@ public class UserRegisterInfoController {
     @RequestMapping("getUserInfoByNameCode")
     @ResponseBody
     public String getUserInfoByNameCode(@RequestParam("namecode")String namecode){
+        LayUI<UserRegisterInfo> layUI=new LayUI<>();
+        layUI.setCode(0);
+        layUI.setCount(100);
         List<UserRegisterInfo> userRegisterInfoList=userRegisterInfoService.findUserInfoByNameCode(namecode);
-        return JSON.toJSONString(userRegisterInfoList);
+        layUI.setData(userRegisterInfoList);
+        return JSON.toJSONString(layUI);
     }
 
     /**

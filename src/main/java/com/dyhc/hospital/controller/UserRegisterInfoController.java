@@ -144,6 +144,15 @@ public class UserRegisterInfoController {
         return JSON.toJSONString(info);
     }
 
+    public BigDecimal getJia() {
+        return jia;
+    }
+
+    public void setJia(BigDecimal jia) {
+        this.jia = jia;
+    }
+
+    private  BigDecimal jia = new BigDecimal(0); ;
 
     /**
      * 根据用户体检编号查出来用户的体检信息
@@ -154,13 +163,13 @@ public class UserRegisterInfoController {
     @ResponseBody
     public Map<String,Object> showUserMedical(@Param("testNumber") String testNumber){
         List<Medical> info = userRegisterInfoService.showUserMedical(testNumber);
-        BigDecimal jia = new BigDecimal(0);
+        jia = new BigDecimal(0);
         for (Medical i :info ) {
-            jia=jia.add(i.getPrice());
-            i.setZong(jia);
             if(i.getTestStatus() == 0){
                 i.setMeStatusString("未检查");
             }else{
+                jia=jia.add(i.getPrice());
+                i.setZong(jia);
                 i.setMeStatusString("已检查");
             }
         }
@@ -170,6 +179,18 @@ public class UserRegisterInfoController {
         map.put("data",info);
         return map;
     }
+
+    /**
+     * 计算总价格
+     * @param
+     * @return
+     */
+    @RequestMapping("ceilPrice.do")
+    @ResponseBody
+    public String ceilPrice(){
+        return JSON.toJSONString(jia);
+    }
+
 
 
 

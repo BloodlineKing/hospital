@@ -19,4 +19,11 @@ public interface CostDetailMapper {
     * @return
     */
    int addCostDetail(CostDetail costDetail )throws Exception;
+
+   /**
+    *  李文荣
+    *  添加收费明细记录
+    * @return
+    */
+   Integer addCostDetailByPayment(CostDetail costDetail)throws Exception;
 }
